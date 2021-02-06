@@ -1,0 +1,37 @@
+{
+  "name": "proto",
+  "private": true,
+  "scripts": {
+    "start": "meteor run",
+    "test": "meteor test --once --driver-package meteortesting:mocha",
+    "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
+    "visualize": "meteor --production --extra-packages bundle-visualizer"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.11.2",
+    "bcrypt": "^5.0.0",
+    "history": "^4.9.0",
+    "meteor-node-stubs": "^1.0.1",
+    "react": "^16.14.0",
+    "react-addons-pure-render-mixin": "^15.6.3",
+    "react-datepicker": "^3.4.1",
+    "react-dom": "^16.13.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-s-alert": "^1.4.1",
+    "semantic-ui-react": "^2.0.3",
+    "simpl-schema": "^1.10.2"
+  },
+  "meteor": {
+    "mainModule": {
+      "client": "imports/startup/client/main.jsx",
+      "server": "server/main.js"
+    },
+    "testModule": "tests/main.js"
+  },
+  "devDependencies": {
+    "less": "^2.7.3",
+    "postcss": "^6.0.22",
+    "postcss-load-config": "^1.2.0"
+  }
+}
