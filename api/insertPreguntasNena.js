@@ -733,6 +733,179 @@ export const insertPregNena = new ValidatedMethod({
       habilitado: false
     };
     ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 2,
+      seccion: "Segundo momento",
+      codigo: "520",
+      orden: 520,
+      contactoid: contactoid,
+      texto: "Semanas de gestación al momento del uso",
+      estado: false,
+      tipo: "C",
+      habilitado: false
+    };
+    ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 2,
+      seccion: "Segundo momento",
+      codigo: "530",
+      orden: 530,
+      contactoid: contactoid,
+      texto: "Medicamento utilizado",
+      estado: false,
+      tipo: "C",
+      habilitado: false
+    };
+    ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 2,
+      seccion: "Segundo momento",
+      codigo: "540",
+      orden: 540,
+      contactoid: contactoid,
+      texto:
+        "¿Estás acompañadx al momento del uso de la medicación por alguien que sabe que estás abortando?",
+      estado: false,
+      tipo: "C",
+      habilitado: false
+    };
+    ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 2,
+      seccion: "Segundo momento",
+      codigo: "550",
+      orden: 550,
+      contactoid: contactoid,
+      texto: "Sobre la expulsión",
+      estado: false,
+      tipo: "C",
+      habilitado: false
+    };
+    ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 2,
+      seccion: "Segundo momento",
+      codigo: "560",
+      orden: 560,
+      contactoid: contactoid,
+      texto:
+        "¿Se comunica con su acompañante de la colectiva durante el uso de la medicación?",
+      estado: false,
+      tipo: "C",
+      habilitado: false
+    };
+    ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 2,
+      seccion: "Segundo momento",
+      codigo: "570",
+      orden: 570,
+      contactoid: contactoid,
+      texto:
+        "¿Concurrió a guardia médica dentro de las 72 hs del uso de la medicación? ",
+      estado: false,
+      tipo: "B",
+      habilitado: false
+    };
+    ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 2,
+      seccion: "Segundo momento",
+      codigo: "580",
+      orden: 580,
+      contactoid: contactoid,
+      texto: "¿Le contó al personal de salud que usó medicación?",
+      estado: false,
+      tipo: "B",
+      habilitado: false
+    };
+    ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 2,
+      seccion: "Segundo momento",
+      codigo: "590",
+      orden: 590,
+      contactoid: contactoid,
+      texto: "¿Cómo fue en tratadx en la guardia médica? ",
+      estado: false,
+      tipo: "C",
+      habilitado: false
+    };
+    ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 2,
+      seccion: "Segundo momento",
+      codigo: "600",
+      orden: 600,
+      contactoid: contactoid,
+      texto: "¿Cómo fue en tratadx en la guardia médica?",
+      estado: false,
+      tipo: "C",
+      habilitado: false
+    };
+    ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 2,
+      seccion: "Segundo momento",
+      codigo: "610",
+      orden: 610,
+      contactoid: contactoid,
+      texto: "¿Concurrió a control médico post-aborto?",
+      estado: false,
+      tipo: "C",
+      habilitado: false
+    };
+    ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 2,
+      seccion: "Segundo momento",
+      codigo: "620",
+      orden: 620,
+      contactoid: contactoid,
+      texto: "¿Culminó el proceso con método anticonceptivo?",
+      estado: false,
+      tipo: "C",
+      habilitado: false
+    };
+    ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 2,
+      seccion: "Segundo momento",
+      codigo: "630",
+      orden: 630,
+      contactoid: contactoid,
+      texto: "¿Cuál?",
+      estado: false,
+      tipo: "C",
+      habilitado: false
+    };
+    ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 2,
+      seccion: "Segundo momento",
+      codigo: "640",
+      orden: 640,
+      contactoid: contactoid,
+      texto: "¿Abortó?",
+      estado: false,
+      tipo: "C",
+      habilitado: false
+    };
+    ContactoPregunta.insert(pregunta);
+
     ///////////////////////////////
     ///////////////////////////////
     ///////////////////////////////

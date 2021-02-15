@@ -398,9 +398,13 @@ class ListaPreguntas extends Component {
   }
   renderAutonumerico() {
     return (
-      <Segment raised inverted color="purple">
+      <Segment inverted color="purple">
         <center>
-          <Statistic inverted size="tiny">
+          <div />
+
+          <br />
+          <br />
+          <Statistic inverted size="small">
             <Statistic.Value>
               <Icon name="heart" />
               {this.props.contacto.autonumerico}
@@ -422,7 +426,8 @@ class ListaPreguntas extends Component {
           name={pregunta.codigo}
           active={menuActivo === pregunta.texto}
           onClick={this.handleItemClick}
-          disabled={!pregunta.habilitado}
+          //cambiar para habilitar
+          //disabled={!pregunta.habilitado}
         >
           <Label circular color={pregunta.estado ? "purple" : "teal"} />
           {pregunta.texto}
@@ -430,84 +435,113 @@ class ListaPreguntas extends Component {
       ));
     }
   }
-  renderMomentos() {
+
+  renderPrimerMomento() {
     return (
       <div>
-        <Segment raised>
-          <Header as="h2" textAlign="center">
-            <Icon name="paw" size="big" />
-          </Header>
-          <Divider />
+        <Segment.Group raised>
+          <Segment>
+            <Header as="h2" textAlign="center">
+              <Icon name="paw" size="big" />
+            </Header>
+          </Segment>
 
+          <Segment style={{ overflow: "auto", maxHeight: 500 }}>
+            <Header textAlign="center">Información General</Header>
+            <Menu vertical fluid>
+              {this.renderMenu(this.props.preguntas.slice(0, 10))}
+            </Menu>
+
+            <Header textAlign="center">
+              Contacto con la Colectiva y acompañamiento
+            </Header>
+            <Menu vertical fluid>
+              {this.renderMenu(this.props.preguntas.slice(10, 13))}
+            </Menu>
+
+            <Header textAlign="center">Sobre el aborto</Header>
+            <Menu vertical fluid>
+              {this.renderMenu(this.props.preguntas.slice(13, 18))}
+            </Menu>
+
+            <Header textAlign="center">Escolaridad y Activismos</Header>
+            <Menu vertical fluid>
+              {this.renderMenu(this.props.preguntas.slice(18, 30))}
+            </Menu>
+
+            <Header textAlign="center">Aspectos de su vida cotidiana</Header>
+            <Menu vertical fluid>
+              {this.renderMenu(this.props.preguntas.slice(30, 35))}
+            </Menu>
+
+            <Header textAlign="center">
+              Información ginecológica previa a este embarazo
+            </Header>
+            <Menu vertical fluid>
+              {this.renderMenu(this.props.preguntas.slice(35, 41))}
+            </Menu>
+
+            <Header textAlign="center">Embarazo actual</Header>
+            <Menu vertical fluid>
+              {this.renderMenu(this.props.preguntas.slice(41, 52))}
+            </Menu>
+          </Segment>
+        </Segment.Group>
+      </div>
+    );
+  }
+
+  renderSegundoMomento() {
+    return (
+      <Segment.Group raised>
+        <Segment>
+          <Header as="h2" textAlign="center">
+            <Header as="h2" textAlign="center">
+              <center>
+                <Icon name="paw" size="large" />
+                <Icon name="paw" size="large" />
+              </center>
+            </Header>
+          </Header>
+        </Segment>
+
+        <Segment style={{ overflow: "auto", maxHeight: 500 }}>
           <Header textAlign="center">Información General</Header>
           <Menu vertical fluid>
             {this.renderMenu(this.props.preguntas.slice(0, 10))}
           </Menu>
-
-          <Header textAlign="center">
-            Contacto con la Colectiva y acompañamiento
-          </Header>
-          <Menu vertical fluid>
-            {this.renderMenu(this.props.preguntas.slice(10, 13))}
-          </Menu>
-
-          <Header textAlign="center">Sobre el aborto</Header>
-          <Menu vertical fluid>
-            {this.renderMenu(this.props.preguntas.slice(13, 18))}
-          </Menu>
-
-          <Header textAlign="center">Escolaridad y Activismos</Header>
-          <Menu vertical fluid>
-            {this.renderMenu(this.props.preguntas.slice(18, 30))}
-          </Menu>
-
-          <Header textAlign="center">Aspectos de su vida cotidiana</Header>
-          <Menu vertical fluid>
-            {this.renderMenu(this.props.preguntas.slice(30, 35))}
-          </Menu>
-
-          <Header textAlign="center">
-            Información ginecológica previa a este embarazo
-          </Header>
-          <Menu vertical fluid>
-            {this.renderMenu(this.props.preguntas.slice(35, 41))}
-          </Menu>
-
-          <Header textAlign="center">Embarazo actual</Header>
-          <Menu vertical fluid>
-            {this.renderMenu(this.props.preguntas.slice(41, 52))}
-          </Menu>
         </Segment>
-        <Segment raised>
-          <Header as="h3" textAlign="center">
-            <center>
-              <Icon name="paw" size="big" />
-              <Icon name="paw" size="big" />
-            </center>
-          </Header>
-          <Menu vertical fluid>
-            {this.renderMenu()}
-          </Menu>
-        </Segment>
-      </div>
+      </Segment.Group>
     );
   }
+
   render() {
     if (this.props.isLoading) {
       return <LoaderExampleText />;
     }
     return (
-      <Grid textAlign="left">
-        <Grid.Row>
-          <Grid.Column width={4}>
-            {this.renderAutonumerico()}
-            {this.renderMomentos()}
-          </Grid.Column>
-          <Grid.Column width={11}>
-            <Segment raised>{this.renderSwitch()}</Segment>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+      <div>
+        <Grid textAlign="left">
+          <Grid.Row>
+            <Grid.Column width={1} />
+            <Grid.Column stretched width={3}>
+              {this.renderAutonumerico()}
+            </Grid.Column>
+            <Grid.Column width={11}>
+              <Segment raised>{this.renderSwitch()}</Segment>
+            </Grid.Column>
+            <Grid.Column width={1} />
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={1} />
+            <Grid.Column width={7}>{this.renderPrimerMomento()}</Grid.Column>
+            <Grid.Column width={7}>{this.renderSegundoMomento()}</Grid.Column>
+            <Grid.Column width={1} />
+          </Grid.Row>
+        </Grid>
+        <br />
+        <br />
+      </div>
     );
   }
 }
