@@ -2,7 +2,7 @@ import { Mongo } from "meteor/mongo";
 
 import { SimpleSchema } from "meteor/aldeed:simple-schema";
 
-export default ContactoPregunta = new Mongo.Collection("contactopregunta");
+export default (ContactoPregunta = new Mongo.Collection("contactopregunta"));
 
 ContactoPregunta.schema = new SimpleSchema({
   codigo: {
@@ -11,6 +11,14 @@ ContactoPregunta.schema = new SimpleSchema({
   orden: {
     type: Number,
     optional: true
+  },
+  //1, 2 o 3
+  momento: {
+    type: Number
+  },
+  //"Info general", "Momento del Aborto", etc
+  seccion: {
+    type: String
   },
   texto: {
     type: String

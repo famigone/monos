@@ -65,7 +65,7 @@ export default class LoginForm extends Component {
         style={{ height: "100vh" }}
         verticalAlign="middle"
       >
-        <Grid.Row></Grid.Row>
+        <Grid.Row />
         <Grid.Row>
           <center>
             <img src="/img/socorristas.png" />
@@ -73,7 +73,7 @@ export default class LoginForm extends Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column style={{ maxWidth: 450 }}>
-            <Header as="h2" color="pink" textAlign="center"></Header>
+            <Header as="h2" color="purple" textAlign="center" />
 
             <Form size="large" onSubmit={this.onSubmit}>
               <Segment stacked>
@@ -95,15 +95,15 @@ export default class LoginForm extends Component {
                   value={this.state.password}
                 />
 
-                <Button color="pink" fluid size="large">
+                <Button color="purple" fluid size="large">
                   Login
                 </Button>
               </Segment>
             </Form>
-            <Message>Socorristas en Red - Sistema de Consultas</Message>
+            <Message>Socorristas en Red - Plataforma de Protocolas</Message>
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row></Grid.Row>
+        <Grid.Row />
       </Grid>
     );
   }

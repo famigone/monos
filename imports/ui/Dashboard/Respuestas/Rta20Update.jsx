@@ -152,7 +152,7 @@ export default class Rta20Update extends Component {
               </Form.Field>
             ) : null}
           </Form.Group>
-          <Button color="pink" type="submit">
+          <Button color="purple" type="submit">
             Siguiente
           </Button>
         </Form>

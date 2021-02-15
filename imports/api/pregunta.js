@@ -2,12 +2,13 @@ import { Mongo } from "meteor/mongo";
 
 import { SimpleSchema } from "meteor/aldeed:simple-schema";
 
-export default Pregunta = new Mongo.Collection("pregunta");
+export default (Pregunta = new Mongo.Collection("pregunta"));
 
 Pregunta.schema = new SimpleSchema({
   pregunta: {
     type: String
   },
+
   orden: {
     type: Number,
     optional: true

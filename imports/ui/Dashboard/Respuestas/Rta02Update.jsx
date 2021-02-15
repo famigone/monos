@@ -150,7 +150,7 @@ export default class Rta02Update extends Component {
               />
             </Form.Field>
           </Form.Group>
-          <Button color="pink" type="submit">
+          <Button color="purple" type="submit">
             Siguiente
           </Button>
         </Form>

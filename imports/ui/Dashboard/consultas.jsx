@@ -92,7 +92,7 @@ export default withTracker(
     //console.log(desde);
     //console.log(fechaDesde);
     //console.log(codigo);
-    console.log(codigo);
+    //  console.log(codigo);
     const handles = [
       Meteor.subscribe(
         "contacto",

@@ -22,7 +22,7 @@ export default class Footer extends Component {
         <Segment
           inverted
           vertical
-          color="pink"
+          color="purple"
           style={{
             position: "fixed",
             width: "100%",

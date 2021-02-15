@@ -109,7 +109,7 @@ class AbmUsuarios extends Component {
               <input ref="inputPass" placeholder="ingrese una contraseña" />
             </Form.Field>
           </Form.Group>
-          <Button color="pink" type="submit">
+          <Button color="purple" type="submit">
             Guardar
           </Button>
         </Form>

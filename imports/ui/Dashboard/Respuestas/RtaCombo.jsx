@@ -369,7 +369,7 @@ export default class RtaCombo extends Component {
               />
             </Form.Field>
           </Form.Group>
-          <Button color="pink" type="submit">
+          <Button color="purple" type="submit">
             Siguiente
           </Button>
         </Form>

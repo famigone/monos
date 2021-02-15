@@ -112,7 +112,7 @@ export default class RtaString extends Component {
               <input ref="inputRespuesta" placeholder="ingrese una respuesta" />
             </Form.Field>
           </Form.Group>
-          <Button color="pink" type="submit">
+          <Button color="purple" type="submit">
             Siguiente
           </Button>
           <Message floating hidden={this.state.hiddenFin}>

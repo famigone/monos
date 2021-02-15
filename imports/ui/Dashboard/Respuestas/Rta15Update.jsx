@@ -218,7 +218,7 @@ export default class Rta15Update extends Component {
               </Form.Field>
             ) : null}
           </Form.Group>
-          <Button color="pink" type="submit">
+          <Button color="purple" type="submit">
             Siguiente
           </Button>
           <Message floating hidden={this.state.hiddenFin}>

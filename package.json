@@ -12,6 +12,7 @@
     "bcrypt": "^5.0.0",
     "history": "^4.9.0",
     "meteor-node-stubs": "^1.0.1",
+    "moment": "^2.29.1",
     "react": "^16.14.0",
     "react-addons-pure-render-mixin": "^15.6.3",
     "react-datepicker": "^3.4.1",

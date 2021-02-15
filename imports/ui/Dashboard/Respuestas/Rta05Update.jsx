@@ -144,7 +144,7 @@ export default class Rta05Update extends Component {
               </Form.Field>
             ) : null}
           </Form.Group>
-          <Button color="pink" type="submit">
+          <Button color="purple" type="submit">
             Guardar
           </Button>
         </Form>

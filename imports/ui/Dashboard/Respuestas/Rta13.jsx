@@ -124,7 +124,7 @@ export default class Rta13 extends Component {
               <input ref="inputAdopcion" placeholder="Adopción" />
             </Form.Field>
           </Form.Group>
-          <Button color="pink" type="submit">
+          <Button color="purple" type="submit">
             Siguiente
           </Button>
         </Form>

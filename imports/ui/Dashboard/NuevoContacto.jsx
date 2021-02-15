@@ -8,7 +8,8 @@ import SidebarExampleSidebar from "./SidebarExampleSidebar.js";
 import ListaPreguntas from "./ListaPreguntas.js";
 import NuevaPregunta from "./NuevaPregunta.jsx";
 import "react-s-alert/dist/s-alert-default.css";
-import { insertContacto, insertContactoPreguntaBase } from "/api/methods.js";
+import { insertContactoPreguntaBase } from "/api/methods.js";
+import { insertPregNena } from "/api/insertPreguntasNena.js";
 export default class NuevoContacto extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +19,7 @@ export default class NuevoContacto extends Component {
     var cabeceraId;
     //creamos la cabecera del nuevo Contacto
     const one = {};
-    cabeceraId = insertContacto.call(one, (err, res) => {
+    cabeceraId = insertPregNena.call(one, (err, res) => {
       if (err) {
         console.log(err);
       }

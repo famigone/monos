@@ -145,7 +145,7 @@ export default class Rta19Update extends Component {
               </Form.Field>
             ) : null}
           </Form.Group>
-          <Button color="pink" type="submit">
+          <Button color="purple" type="submit">
             Guardar
           </Button>
         </Form>

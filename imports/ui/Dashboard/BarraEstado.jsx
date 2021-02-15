@@ -28,12 +28,11 @@ export default class MenuExampleSecondary extends Component {
     const { activeItem } = this.state;
 
     return (
-      <Menu inverted color="pink">
+      <Menu inverted color="purple">
         <Menu.Item>
           {/*<Image centered size="tiny" src="/img/ripioh_white.png" />*/}
           SOCORRISTAS EN RED
         </Menu.Item>
-
         <Menu.Item
           as={Link}
           to="/listadoconsultas"
@@ -45,21 +44,7 @@ export default class MenuExampleSecondary extends Component {
           <Icon name="female" />
         </Menu.Item>
 
-        <Menu.Item>{Meteor.user().username}</Menu.Item>
-
         <Menu.Menu position="right">
-          {Meteor.user().username === "admin" ? (
-            <Menu.Item
-              name="usuarios"
-              as={Link}
-              to="/listadoconsultas"
-              onClick={this.handleItemClick}
-              active={activeItem === "usuarios"}
-            >
-              <Icon name="th list" />
-            </Menu.Item>
-          ) : null}
-
           <Menu.Item
             name="consultasadmin"
             as={Link}
@@ -70,17 +55,16 @@ export default class MenuExampleSecondary extends Component {
             <Icon name="pie chart" />
           </Menu.Item>
 
-          {Meteor.user().username === "admin" ? (
-            <Menu.Item
-              name="users"
-              as={Link}
-              to="/usuarios"
-              active={activeItem === "map"}
-              onClick={this.handleItemMap}
-            >
-              <Icon name="users" />
-            </Menu.Item>
-          ) : null}
+          <Menu.Item
+            name="users"
+            as={Link}
+            to="/usuarios"
+            active={activeItem === "map"}
+            onClick={this.handleItemMap}
+          >
+            <Icon name="users" />
+          </Menu.Item>
+
           <Menu.Item
             active={activeItem === "Logout"}
             as={Link}

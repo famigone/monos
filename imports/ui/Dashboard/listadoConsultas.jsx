@@ -129,7 +129,7 @@ class ListadoConsultas extends Component {
         <Header as="h2" dividing>
           <Icon name="clock" />
           <Header.Content>
-            Listado de Consultas
+            Listado de Protocolas
             <Header.Subheader>
               Puede filtrar por fecha de carga
             </Header.Subheader>
@@ -186,7 +186,7 @@ class ListadoConsultas extends Component {
               />
             </Form.Field>
           </Form.Group>
-          <Button color="pink" type="submit">
+          <Button color="purple" type="submit">
             {this.state.txt}
           </Button>
         </Form>

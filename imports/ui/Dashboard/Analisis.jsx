@@ -504,9 +504,9 @@ class Analisis extends Component {
     return (
       <Grid>
         <Grid.Row>
-          <Grid.Column width={1}></Grid.Column>
+          <Grid.Column width={1} />
           <Grid.Column width={14}>{this.renderForm()}</Grid.Column>
-          <Grid.Column width={1}></Grid.Column>
+          <Grid.Column width={1} />
         </Grid.Row>
 
         <Grid.Row>

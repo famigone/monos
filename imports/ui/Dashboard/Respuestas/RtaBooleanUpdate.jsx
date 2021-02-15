@@ -108,7 +108,7 @@ export default class RtaBooleanUpdate extends Component {
             />
           </Form.Field>
 
-          <Button color="pink" type="submit">
+          <Button color="purple" type="submit">
             Siguiente
           </Button>
         </Form>

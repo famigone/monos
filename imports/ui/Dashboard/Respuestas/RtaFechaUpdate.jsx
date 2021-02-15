@@ -99,7 +99,7 @@ export default class RtaStringUpdate extends Component {
               />
             </Form.Field>
           </Form.Group>
-          <Button color="pink" type="submit">
+          <Button color="purple" type="submit">
             Guardar
           </Button>
         </Form>

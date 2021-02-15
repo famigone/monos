@@ -181,7 +181,7 @@ export default class Rta22 extends Component {
             </Form.Field>
           ))}
 
-          <Button color="pink" type="submit">
+          <Button color="purple" type="submit">
             Siguiente
           </Button>
         </Form>

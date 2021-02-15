@@ -159,7 +159,7 @@ class ListaPreguntas extends Component {
       menuActivo: this.props.preguntas[pos].texto,
       tipo: this.props.preguntas[pos].tipo
     });
-    console.log("itema actual: ", this.props.preguntas[pos].texto);
+    //  console.log("itema actual: ", this.props.preguntas[pos].texto);
     //this.onUpdateActual(name);
   };
   constructor(props) {
@@ -190,9 +190,9 @@ class ListaPreguntas extends Component {
     //  console.log("ORDEN ", orden);
     if (!this.props.preguntas[parseInt(sgtePos)].estado) {
       //const two = { id: this.props.preguntas[orden]._id };
-      console.log("orden ", orden);
-      console.log("sgteCodigo ", sgteCodigo);
-      console.log("sgtePos ", sgtePos);
+      //    console.log("orden ", orden);
+      //    console.log("sgteCodigo ", sgteCodigo);
+      //    console.log("sgtePos ", sgtePos);
       updateContactoPreguntaSgte.call(tree, (err, res) => {
         if (err) {
           console.log(err);
@@ -207,22 +207,7 @@ class ListaPreguntas extends Component {
     });
     //console.log("tado posterior: " + this.state.activeItem);
   };
-  renderMenu() {
-    const { menuActivo } = this.state;
-    //console.log(activeItem);
-    return this.props.preguntas.map(pregunta => (
-      <Menu.Item
-        key={pregunta._id}
-        name={pregunta.codigo}
-        active={menuActivo === pregunta.texto}
-        onClick={this.handleItemClick}
-        disabled={!pregunta.habilitado}
-      >
-        <Label circular color={pregunta.estado ? "pink" : "teal"}></Label>
-        {pregunta.texto}
-      </Menu.Item>
-    ));
-  }
+
   routerCombos() {
     const laPregunta = this.props.preguntas[this.state.activeItem];
     if (laPregunta.codigo == "2")
@@ -413,17 +398,98 @@ class ListaPreguntas extends Component {
   }
   renderAutonumerico() {
     return (
-      <Segment raised>
+      <Segment raised inverted color="purple">
         <center>
-          <Statistic size="tiny">
+          <Statistic inverted size="tiny">
             <Statistic.Value>
-              <Icon name="star outline" />
+              <Icon name="heart" />
               {this.props.contacto.autonumerico}
             </Statistic.Value>
             <Statistic.Label>IDENTIFICACIÓN</Statistic.Label>
           </Statistic>
         </center>
       </Segment>
+    );
+  }
+  renderMenu(preguntas) {
+    const { menuActivo } = this.state;
+    //console.log(activeItem);
+
+    if (preguntas) {
+      return preguntas.map(pregunta => (
+        <Menu.Item
+          key={pregunta._id}
+          name={pregunta.codigo}
+          active={menuActivo === pregunta.texto}
+          onClick={this.handleItemClick}
+          disabled={!pregunta.habilitado}
+        >
+          <Label circular color={pregunta.estado ? "purple" : "teal"} />
+          {pregunta.texto}
+        </Menu.Item>
+      ));
+    }
+  }
+  renderMomentos() {
+    return (
+      <div>
+        <Segment raised>
+          <Header as="h2" textAlign="center">
+            <Icon name="paw" size="big" />
+          </Header>
+          <Divider />
+
+          <Header textAlign="center">Información General</Header>
+          <Menu vertical fluid>
+            {this.renderMenu(this.props.preguntas.slice(0, 10))}
+          </Menu>
+
+          <Header textAlign="center">
+            Contacto con la Colectiva y acompañamiento
+          </Header>
+          <Menu vertical fluid>
+            {this.renderMenu(this.props.preguntas.slice(10, 13))}
+          </Menu>
+
+          <Header textAlign="center">Sobre el aborto</Header>
+          <Menu vertical fluid>
+            {this.renderMenu(this.props.preguntas.slice(13, 18))}
+          </Menu>
+
+          <Header textAlign="center">Escolaridad y Activismos</Header>
+          <Menu vertical fluid>
+            {this.renderMenu(this.props.preguntas.slice(18, 30))}
+          </Menu>
+
+          <Header textAlign="center">Aspectos de su vida cotidiana</Header>
+          <Menu vertical fluid>
+            {this.renderMenu(this.props.preguntas.slice(30, 35))}
+          </Menu>
+
+          <Header textAlign="center">
+            Información ginecológica previa a este embarazo
+          </Header>
+          <Menu vertical fluid>
+            {this.renderMenu(this.props.preguntas.slice(35, 41))}
+          </Menu>
+
+          <Header textAlign="center">Embarazo actual</Header>
+          <Menu vertical fluid>
+            {this.renderMenu(this.props.preguntas.slice(41, 52))}
+          </Menu>
+        </Segment>
+        <Segment raised>
+          <Header as="h3" textAlign="center">
+            <center>
+              <Icon name="paw" size="big" />
+              <Icon name="paw" size="big" />
+            </center>
+          </Header>
+          <Menu vertical fluid>
+            {this.renderMenu()}
+          </Menu>
+        </Segment>
+      </div>
     );
   }
   render() {
@@ -435,9 +501,7 @@ class ListaPreguntas extends Component {
         <Grid.Row>
           <Grid.Column width={4}>
             {this.renderAutonumerico()}
-            <Menu vertical fluid>
-              {this.renderMenu()}
-            </Menu>
+            {this.renderMomentos()}
           </Grid.Column>
           <Grid.Column width={11}>
             <Segment raised>{this.renderSwitch()}</Segment>
@@ -453,7 +517,7 @@ export default withTracker(({ preguntas, id }) => {
     Meteor.subscribe("respuestaOne", id),
     Meteor.subscribe("contactoOne", id)
   ];
-  console.log("contactoid:" + id);
+  //  console.log("contactoid:" + id);
   const loading = handles.some(handle => !handle.ready());
   return {
     preguntas: preguntas,
