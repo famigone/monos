@@ -127,7 +127,7 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       texto:
         "¿Consideramos que recibió indicaciones del uso de la medicación según el protocolo de la OMS?",
       estado: false,
-      tipo: "C",
+      tipo: "B",
       habilitado: true,
       activo: true
     };

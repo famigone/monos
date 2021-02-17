@@ -87,6 +87,349 @@ export default class RtaComboUpdate extends Component {
 
   renderForm() {
     var options = [];
+    options[530] = [
+      {
+        key: 1,
+        text: "Servicio Privado",
+        value: "Servicio Privado"
+      },
+      {
+        key: 2,
+        text: "Servicio Público",
+        value: "Servicio Público"
+      },
+      {
+        key: 3,
+        text: "Consultorio salud integral (Red ECOS, Casa Fusa, etc)",
+        value: "Consultorio salud integral (Red ECOS, Casa Fusa, etc)"
+      }
+    ];
+    options[540] = [
+      {
+        key: 1,
+        text: "Por solicitud de IVE",
+        value: "Por solicitud de IVE"
+      },
+      {
+        key: 2,
+        text: "Por Causal Salud",
+        value: "Por Causal Salud"
+      },
+      {
+        key: 3,
+        text: "Por Causal Violación",
+        value: "Por Causal Violación"
+      }
+    ];
+    options[550] = [
+      {
+        key: 1,
+        text: "No",
+        value: "No"
+      },
+      {
+        key: 2,
+        text: "Sí",
+        value: "Sí"
+      },
+      {
+        key: 3,
+        text: "No sabe",
+        value: "No sabe"
+      }
+    ];
+
+    options[560] = [
+      {
+        key: 1,
+        text: "4",
+        value: "4"
+      },
+      {
+        key: 2,
+        text: "5",
+        value: "5"
+      },
+      {
+        key: 3,
+        text: "6",
+        value: "6"
+      },
+      {
+        key: 4,
+        text: "7",
+        value: "7"
+      },
+      {
+        key: 5,
+        text: "8",
+        value: "8"
+      },
+      {
+        key: 6,
+        text: "9",
+        value: "9"
+      },
+      {
+        key: 7,
+        text: "10",
+        value: "10"
+      },
+      {
+        key: 8,
+        text: "11",
+        value: "11"
+      },
+      {
+        key: 9,
+        text: "12",
+        value: "12"
+      },
+      {
+        key: 10,
+        text: "13",
+        value: "13"
+      },
+      {
+        key: 11,
+        text: "14",
+        value: "14"
+      },
+      {
+        key: 12,
+        text: "15",
+        value: "15"
+      },
+      {
+        key: 13,
+        text: "16",
+        value: "16"
+      },
+      {
+        key: 14,
+        text: "17",
+        value: "17"
+      },
+      {
+        key: 15,
+        text: "18",
+        value: "18"
+      },
+      {
+        key: 16,
+        text: "19",
+        value: "19"
+      },
+      {
+        key: 17,
+        text: "20",
+        value: "20"
+      },
+      {
+        key: 18,
+        text: "21",
+        value: "21"
+      },
+      {
+        key: 19,
+        text: "22",
+        value: "22"
+      },
+      {
+        key: 20,
+        text: "23",
+        value: "23"
+      },
+      {
+        key: 21,
+        text: "24",
+        value: "24"
+      },
+      {
+        key: 22,
+        text: "25 o más",
+        value: "24 o más"
+      }
+    ];
+    options[580] = [
+      {
+        key: 1,
+        text: "Procedimiento instrumental / quirúrgico: AMEU",
+        value: "Procedimiento instrumental / quirúrgico: AMEU"
+      },
+      {
+        key: 2,
+        text: "Procedimiento instrumental / quirúrgico: Legrado",
+        value: "Procedimiento instrumental / quirúrgico: Legrado"
+      },
+      {
+        key: 3,
+        text: "Procedimiento instrumental / quirúrgico: Cesárea",
+        value: "Procedimiento instrumental / quirúrgico: Cesárea"
+      },
+      {
+        key: 4,
+        text: "Procedimiento con medicamentos: Misoprostol",
+        value: "Procedimiento con medicamentos: Misoprostol"
+      },
+      {
+        key: 5,
+        text: "Procedimiento con medicamentos: Mifepristona y Misoprostol",
+        value: "Procedimiento con medicamentos: Mifepristona y Misoprostol"
+      },
+      {
+        key: 6,
+        text: "Procedimiento inicial con medicamentos para culminar con: ",
+        value: "Procedimiento inicial con medicamentos para culminar con: "
+      },
+      {
+        key: 7,
+        text: "Procedimiento inicial con medicamentos para culminar con: AMEU",
+        value:
+          "Procedimiento inicial con medicamentos para culminar con: LEGRADO"
+      }
+    ];
+    options[600] = [
+      {
+        key: 1,
+        text: "No",
+        value: "No"
+      },
+      {
+        key: 2,
+        text: "Si",
+        value: "Si"
+      },
+      {
+        key: 3,
+        text: "No esta segurx",
+        value: "No esta segurx"
+      }
+    ];
+
+    options[610] = [
+      {
+        key: 1,
+        text: "No",
+        value: "No"
+      },
+      {
+        key: 2,
+        text: "Si",
+        value: "Si"
+      },
+      {
+        key: 3,
+        text: "En parte",
+        value: "En parte"
+      }
+    ];
+
+    options[620] = [
+      {
+        key: 1,
+        text: "Muy bien",
+        value: "Muy bien"
+      },
+      {
+        key: 2,
+        text: "Bien",
+        value: "Bien"
+      },
+      {
+        key: 3,
+        text: "Regular",
+        value: "Regular"
+      },
+      {
+        key: 4,
+        text: "Mal",
+        value: "Mal"
+      }
+    ];
+    options[650] = [
+      {
+        key: 1,
+        text: "No",
+        value: "No"
+      },
+      {
+        key: 2,
+        text: "Si",
+        value: "Si"
+      },
+      {
+        key: 3,
+        text: "No vuelve a comunicarse",
+        value: "No vuelve a comunicarse"
+      }
+    ];
+    options[660] = [
+      {
+        key: 1,
+        text: "No",
+        value: "No"
+      },
+      {
+        key: 2,
+        text: "Si",
+        value: "Si"
+      },
+      {
+        key: 3,
+        text: "Sin dato",
+        value: "Sin dato"
+      }
+    ];
+
+    options[670] = [
+      {
+        key: 1,
+        text: "Preservativo",
+        value: "Preservativo"
+      },
+      {
+        key: 2,
+        text: "Anticonceptivo oral",
+        value: "Anticonceptivo oral"
+      },
+      {
+        key: 3,
+        text: "DIU",
+        value: "DIU"
+      },
+      {
+        key: 4,
+        text: "Inyectable mensual/trimestral",
+        value: "Inyectable mensual/trimestral"
+      },
+      {
+        key: 5,
+        text: "Parches",
+        value: "Parches"
+      },
+      {
+        key: 6,
+        text: "Implantes",
+        value: "Implantes"
+      },
+      {
+        key: 7,
+        text: "Ligadura tubaria",
+        value: "Ligadura tubaria"
+      },
+      {
+        key: 8,
+        text: "Vasectomía",
+        value: "Vasectomía"
+      },
+      {
+        key: 9,
+        text: "Otro",
+        value: "Otro"
+      }
+    ];
+
     options[10] = [
       {
         key: 1,

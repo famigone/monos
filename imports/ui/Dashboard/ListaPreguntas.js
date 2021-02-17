@@ -409,7 +409,7 @@ class ListaPreguntas extends Component {
 
             <Header textAlign="center">Embarazo actual</Header>
             <Menu vertical fluid>
-              {this.renderMenu(this.props.preguntas.slice(41, 52))}
+              {this.renderMenu(this.props.preguntas.slice(41, 51))}
             </Menu>
           </Segment>
         </Segment.Group>
@@ -434,7 +434,7 @@ class ListaPreguntas extends Component {
         <Segment style={{ overflow: "auto", maxHeight: 500 }}>
           <Header textAlign="center">Segundo Momento</Header>
           <Menu vertical fluid>
-            {this.renderMenu(this.props.preguntas.slice(52))}
+            {this.renderMenu(this.props.preguntas.slice(51))}
           </Menu>
         </Segment>
       </Segment.Group>
