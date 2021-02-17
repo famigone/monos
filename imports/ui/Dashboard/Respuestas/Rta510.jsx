@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types"; // ES6
 import ContactoPregunta from "/imports/api/contactoPregunta.js";
 import ReactDOM from "react-dom";
-
+import { insertPregNenaSegundoILE } from "/api/insertPreguntasNenaSegundoILE.js";
+import { insertPregNenaSegundoFem } from "/api/insertPreguntasNenaSegundoFem.js";
 import LoaderExampleText from "/imports/ui/Dashboard/LoaderExampleText.js";
 import "react-s-alert/dist/s-alert-default.css";
 import { insertRespuesta, updateContactoPregunta } from "/api/methods.js";
@@ -37,7 +38,7 @@ import {
 
 //const App = () => (
 
-export default class Rta02 extends Component {
+export default class Rta510 extends Component {
   state = { valor: "", hidden: true };
 
   handleOnChange = (e, data) => {
@@ -67,56 +68,98 @@ export default class Rta02 extends Component {
         } else {
           //marcar la contactoPregunta como contestada
           const two = { id: this.props.pregunta._id };
+
           updateContactoPregunta.call(two, (err, res) => {
             if (err) {
               console.log(err);
+            } else {
+              if (this.state.valor == "Decide solicitar ILE/IVE") {
+                this.props.cambiarActual(this.props.pregunta.codigo);
+                this.crearSegundoMomentoIle();
+              } else if (
+                this.state.valor == "Resuelve Aborto libre y feminista"
+              ) {
+                this.props.cambiarActual(this.props.pregunta.codigo);
+                this.crearSegundoMomentoFem();
+              } else if (
+                this.state.valor == "No vuelve a conectarse" ||
+                this.state.valor == "Decide continuar su embarazo" ||
+                this.state.valor == "Aborto espontáneo"
+              ) {
+                this.setState({ hidden: false });
+              }
             }
           });
         }
       });
-      if (
-        this.state.valor == "Necesita información sobre cómo abortar" ||
-        this.state.valor == "Está en proceso de aborto y necesita orientación"
-      ) {
-        //todo sigue como siempre
-        //le sumo 2 en vez de 1 porque borre la pregunta siguiente... la del
-        //nro de identificación
-        //this.props.cambiarActual(String(this.props.pregunta.orden + 1));
-        this.props.cambiarActual(this.props.pregunta.codigo);
-      } else {
-        this.setState({
-          hidden: false
-        });
-      }
     }
   }
+  crearSegundoMomentoIle() {
+    const one = {};
 
+    one.contactoid = this.props.pregunta.contactoid;
+    insertPregNenaSegundoILE.call(one, (err, res) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+  }
+  crearSegundoMomentoFem() {
+    const one = {};
+
+    one.contactoid = this.props.pregunta.contactoid;
+    insertPregNenaSegundoFem.call(one, (err, res) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+  }
   renderForm() {
     var options = [];
     //opciones de pregunta 2
-    options[2] = [
+    options[0] = [
       {
         key: 1,
-        text: "Necesita información sobre cómo abortar",
-        value: "Necesita información sobre cómo abortar"
+        text: "No vuelve a conectarse",
+        value: "No vuelve a conectarse"
       },
       {
         key: 2,
-        text: "Está en proceso de aborto y necesita orientación",
-        value: "Está en proceso de aborto y necesita orientación"
+        text: "Decide continuar su embarazo",
+        value: "Decide continuar su embarazo"
       },
       {
         key: 3,
-        text: "Necesita información para alguien cercano",
-        value: "Necesita información para alguien cercano"
+        text: "Aborto espontáneo",
+        value: "Aborto espontáneo"
       },
-      { key: 4, text: "Otra razón", value: "Otra razón" }
+      {
+        key: 4,
+        text: "Decide solicitar ILE/IVE",
+        value: "Decide solicitar ILE/IVE"
+      },
+      {
+        key: 5,
+        text: "Resuelve Aborto libre y feminista",
+        value: "Resuelve Aborto libre y feminista"
+      }
     ];
 
     return (
       <div>
+        <Container textAlign="right">
+          <Label color="teal">
+            <Icon name="time" />
+            {this.props.pregunta.momento == 1
+              ? "PRIMER MOMENTO"
+              : "SEGUNDO MOMENTO"}
+          </Label>
+          <Label color="teal">
+            <Icon name="check circle" />
+            {this.props.pregunta.seccion}
+          </Label>
+        </Container>
         <Header as="h2" dividing>
-          <Icon name="question circle outline" />
           <Header.Content>
             {this.props.pregunta.texto}
             <Header.Subheader>
@@ -133,11 +176,11 @@ export default class Rta02 extends Component {
                 search
                 selection
                 onChange={this.handleOnChange}
-                options={options[Number(this.props.pregunta.codigo)]}
+                options={options[0]}
               />
             </Form.Field>
           </Form.Group>
-          <Button color="purple" type="submit">
+          <Button color="teal" type="submit">
             Siguiente
           </Button>
         </Form>

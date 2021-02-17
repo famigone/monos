@@ -18,6 +18,7 @@ import LoginForm from "../../ui/Dashboard/LoginForm.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 ////////////////////////////////
 import NuevoContacto from "../../ui/Dashboard/NuevoContacto.jsx";
+import NuevoContactoMujer from "../../ui/Dashboard/NuevoContactoMujer.jsx";
 import ListadoConsultas from "../../ui/Dashboard/listadoConsultas.jsx";
 import AbmUsuarios from "../../ui/Dashboard/abmUsuarios.jsx";
 import NuevaPregunta from "../../ui/Dashboard/NuevaPregunta.jsx";
@@ -48,6 +49,11 @@ export const Ruteador = () => (
 
       <App>
         <Route exact path="/nuevocontacto/" component={NuevoContacto} />
+        <Route
+          exact
+          path="/nuevocontactomujer/"
+          component={NuevoContactoMujer}
+        />
         <Route exact path="/listadoconsultas/" component={ListadoConsultas} />
         <Route exact path="/nuevapregunta/:id" children={<NuevaPregunta />} />
         <Route exact path="/nuevapregunta" component={NuevaPregunta} />

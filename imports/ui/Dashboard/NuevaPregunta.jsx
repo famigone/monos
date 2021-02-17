@@ -44,7 +44,7 @@ export default withTracker(({ id }) => {
   const handles = [Meteor.subscribe("contactopreguntatodes", id)];
   const loading = handles.some(handle => !handle.ready());
   var lasPreguntas;
-  if (!loading) lasPreguntas = ContactoPregunta.find({}).fetch();
+  if (!loading) lasPreguntas = ContactoPregunta.find({ activo: true }).fetch();
   //console.log(lasPreguntas);
   return {
     preguntas: lasPreguntas,

@@ -40,7 +40,16 @@ export default class MenuExampleSecondary extends Component {
         >
           <Icon name="th list" />
         </Menu.Item>
+
         <Menu.Item as={Link} to="/nuevocontacto" onClick={this.handleItemClick}>
+          <Icon name="child" />
+        </Menu.Item>
+
+        <Menu.Item
+          as={Link}
+          to="/nuevocontactomujer"
+          onClick={this.handleItemClick}
+        >
           <Icon name="female" />
         </Menu.Item>
 

@@ -1,13 +1,17 @@
 import { Mongo } from "meteor/mongo";
 import { SimpleSchema } from "meteor/aldeed:simple-schema";
 
-export default Contacto = new Mongo.Collection("contacto");
+export default (Contacto = new Mongo.Collection("contacto"));
 
 Contacto.schema = new SimpleSchema({
   activo: {
     type: Boolean,
     optional: true
   }, //borrado lógico
+  tipo: {
+    type: Number,
+    optional: true
+  }, //1 nena, 2 mujer
   autonumerico: {
     type: Number,
     optional: true,

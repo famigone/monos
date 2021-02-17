@@ -26,31 +26,12 @@ import RtaBooleanUpdate from "./Respuestas/RtaBooleanUpdate.jsx";
 import RtaFecha from "./Respuestas/RtaFecha.jsx";
 import RtaFechaUpdate from "./Respuestas/RtaFechaUpdate.jsx";
 import RtaCombo from "./Respuestas/RtaCombo.jsx";
+import RtaMultiple from "./Respuestas/RtaMultiple.jsx";
+import RtaMultipleUpdate from "./Respuestas/RtaMultipleUpdate.jsx";
 import RtaComboUpdate from "./Respuestas/RtaComboUpdate.jsx";
-import Rta02 from "./Respuestas/Rta02.jsx";
-import Rta02Update from "./Respuestas/Rta02Update.jsx";
-import Rta05 from "./Respuestas/Rta05.jsx";
-import Rta05Update from "./Respuestas/Rta05Update.jsx";
-import Rta13 from "./Respuestas/Rta13.jsx";
-import Rta13Update from "./Respuestas/Rta13Update.jsx";
-import Rta15 from "./Respuestas/Rta15.jsx";
-import Rta15Update from "./Respuestas/Rta15Update.jsx";
-import Rta16 from "./Respuestas/Rta16.jsx";
-import Rta16Update from "./Respuestas/Rta16Update.jsx";
-import Rta17 from "./Respuestas/Rta17.jsx";
-import Rta17Update from "./Respuestas/Rta17Update.jsx";
-import Rta19 from "./Respuestas/Rta19.jsx";
-import Rta19Update from "./Respuestas/Rta19Update.jsx";
-import Rta20 from "./Respuestas/Rta20.jsx";
-import Rta20Update from "./Respuestas/Rta20Update.jsx";
-import Rta21 from "./Respuestas/Rta21.jsx";
-import Rta21Update from "./Respuestas/Rta21Update.jsx";
-import Rta22 from "./Respuestas/Rta22.jsx";
+import Rta510 from "./Respuestas/Rta510.jsx";
+import Rta510Update from "./Respuestas/Rta510Update.jsx";
 
-//import Rta22Update from "./Respuestas/Rta22Update.jsx";
-import Rta22Up from "./Respuestas/Rta22Up.jsx";
-import Rta23 from "./Respuestas/Rta23.jsx";
-import Rta23Update from "./Respuestas/Rta23Update.jsx";
 import Respuesta from "/imports/api/respuesta.js";
 import Contacto from "/imports/api/contacto.js";
 import { withTracker } from "meteor/react-meteor-data";
@@ -63,83 +44,15 @@ class ListaPreguntas extends Component {
 
   ruteadorPreguntas(actual) {
     //RECIBO CÓDIGO ORIGEN Y RETORNO CÓDIGO DESTINO
+    var rta;
     switch (actual) {
-      case "0": {
-        return "1";
-      }
-      case "1": {
-        return "2";
-      }
-      case "2": {
-        return "4";
-      }
-      case "4": {
-        return "5";
-      }
-      case "5": {
-        return "6";
-      }
-      case "6": {
-        return "7";
-      }
-      case "7": {
-        return "8";
-      }
-      case "8": {
-        return "9";
-      }
-      case "9": {
-        return "10";
-      }
-      case "10": {
-        return "11";
-      }
-      case "11": {
-        return "12";
-      }
-      case "12": {
-        return "13";
-      }
-      case "13": {
-        return "14";
-      }
-      case "14": {
-        return "15";
-      }
-      case "15": {
-        return "16";
-      }
-      case "16": {
-        return "17";
-      }
-      case "17": {
-        return "18";
-      }
-      case "18": {
-        return "19";
-      }
-      case "19": {
-        return "20";
-      }
-      case "20": {
-        return "21";
-      }
-      case "21": {
-        return "22";
-      }
-      case "22": {
-        return "23";
-      }
-      case "23": {
-        return "24";
-      }
-      case "24": {
-        return "25";
-      }
-      case "25": {
-        return "26";
-      }
+      case 10:
+        rta = 20;
+        break;
+      default:
+        rta = actual + 10;
     }
+    return rta;
   }
 
   posicionCodigo(codigo) {
@@ -180,8 +93,9 @@ class ListaPreguntas extends Component {
     //this.actualizarREP = this.actualizarREP.bind(this);
   }
   onUpdateActual = orden => {
+    console.log("orden: ", orden);
     //////////////////////////////////////////
-    var sgteCodigo = this.ruteadorPreguntas(orden);
+    var sgteCodigo = this.ruteadorPreguntas(Number(orden));
     var sgtePos = this.posicionCodigo(sgteCodigo);
     const tree = { id: this.props.preguntas[sgtePos]._id };
     //////////////////////////////////////////
@@ -210,15 +124,16 @@ class ListaPreguntas extends Component {
 
   routerCombos() {
     const laPregunta = this.props.preguntas[this.state.activeItem];
-    if (laPregunta.codigo == "2")
+    //console.log("RATATATATAA ", laPregunta.codigo);
+    if (laPregunta.codigo == "510")
       return laPregunta.estado ? (
-        <Rta02Update
+        <Rta510Update
           pregunta={laPregunta}
           rta={this.obtenerRtaActual()}
           cambiarActual={this.onUpdateActual}
         />
       ) : (
-        <Rta02 pregunta={laPregunta} cambiarActual={this.onUpdateActual} />
+        <Rta510 pregunta={laPregunta} cambiarActual={this.onUpdateActual} />
       );
     else if (laPregunta.codigo == "5")
       return laPregunta.estado ? (
@@ -372,13 +287,20 @@ class ListaPreguntas extends Component {
         break;
       //L texto libre, F fecha, N número, C combo, M múltiple, B boolean
       case "M":
-        return (
-          <RtaString
+        return laPregunta.estado ? (
+          <RtaMultipleUpdate
+            pregunta={laPregunta}
+            cambiarActual={this.onUpdateActual}
+            rtas={this.obtenerRtas()}
+          />
+        ) : (
+          <RtaMultiple
             pregunta={laPregunta}
             cambiarActual={this.onUpdateActual}
           />
         );
         break;
+
       //L texto libre, F fecha, N número, C combo, M múltiple, B boolean
       case "B":
         return laPregunta.estado ? (
@@ -409,7 +331,9 @@ class ListaPreguntas extends Component {
               <Icon name="heart" />
               {this.props.contacto.autonumerico}
             </Statistic.Value>
-            <Statistic.Label>IDENTIFICACIÓN</Statistic.Label>
+            <br />
+            <br />
+            <Statistic.Label>NIÑECES Y ADOLESCENCIAS</Statistic.Label>
           </Statistic>
         </center>
       </Segment>
@@ -447,7 +371,9 @@ class ListaPreguntas extends Component {
           </Segment>
 
           <Segment style={{ overflow: "auto", maxHeight: 500 }}>
-            <Header textAlign="center">Información General</Header>
+            <Header textAlign="center">
+              Primer Momento: Información General
+            </Header>
             <Menu vertical fluid>
               {this.renderMenu(this.props.preguntas.slice(0, 10))}
             </Menu>
@@ -506,9 +432,9 @@ class ListaPreguntas extends Component {
         </Segment>
 
         <Segment style={{ overflow: "auto", maxHeight: 500 }}>
-          <Header textAlign="center">Información General</Header>
+          <Header textAlign="center">Segundo Momento</Header>
           <Menu vertical fluid>
-            {this.renderMenu(this.props.preguntas.slice(0, 10))}
+            {this.renderMenu(this.props.preguntas.slice(52))}
           </Menu>
         </Segment>
       </Segment.Group>

@@ -244,7 +244,8 @@ export const updateRespuestaString = new ValidatedMethod({
   name: "updateRespuestaString",
   validate: new SimpleSchema({
     id: { type: String, regEx: SimpleSchema.RegEx.Id },
-    rtatexto: { type: String }
+    rtatexto: { type: String },
+    especifique: { type: String }
     //activo: { type: Boolean }
   }).validator(),
   run(one) {
@@ -252,10 +253,48 @@ export const updateRespuestaString = new ValidatedMethod({
       { _id: one.id },
       {
         $set: {
-          rtatexto: one.rtatexto
+          rtatexto: one.rtatexto,
+          especifique: one.especifique
           //activo: one.activo
         }
       }
+    );
+  }
+});
+
+export const deleteILE = new ValidatedMethod({
+  name: "deleteILE",
+  validate: new SimpleSchema({
+    contactoid: { type: String, regEx: SimpleSchema.RegEx.Id }
+  }).validator(),
+  run(one) {
+    //console.log("one.contactoid ", one.contactoid);
+    return ContactoPregunta.update(
+      { contactoid: one.contactoid, orden: { $gte: 520 } },
+      {
+        $set: {
+          activo: false
+        }
+      },
+      { multi: true }
+    );
+  }
+});
+
+export const deleteFEM = new ValidatedMethod({
+  name: "deleteFEM",
+  validate: new SimpleSchema({
+    contactoid: { type: String, regEx: SimpleSchema.RegEx.Id }
+  }).validator(),
+  run(one) {
+    return ContactoPregunta.update(
+      { contactoid: one.contactoid, orden: { $gte: 520 } },
+      {
+        $set: {
+          activo: false
+        }
+      },
+      { multi: true }
     );
   }
 });

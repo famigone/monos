@@ -29,7 +29,8 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
         "Al momento de la solicitud de ILE/IVE: ¿Está acompañadx presencialmente por alguien?",
       estado: false,
       tipo: "B",
-      habilitado: false
+      habilitado: true,
+      activo: true
     };
     ContactoPregunta.insert(pregunta);
 
@@ -42,7 +43,8 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       texto: "Concurrió a",
       estado: false,
       tipo: "C",
-      habilitado: false
+      habilitado: true,
+      activo: true
     };
     ContactoPregunta.insert(pregunta);
 
@@ -52,10 +54,11 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       codigo: "540",
       orden: 540,
       contactoid: contactoid,
-      texto: "Accedió a un aborto:",
+      texto: "Accedió a un aborto",
       estado: false,
       tipo: "C",
-      habilitado: false
+      habilitado: true,
+      activo: true
     };
     ContactoPregunta.insert(pregunta);
 
@@ -68,7 +71,8 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       texto: "¿Firmó el consentimiento informado?",
       estado: false,
       tipo: "C",
-      habilitado: false
+      habilitado: true,
+      activo: true
     };
     ContactoPregunta.insert(pregunta);
 
@@ -81,7 +85,8 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       texto: "Semanas de gestación al momento del uso",
       estado: false,
       tipo: "C",
-      habilitado: false
+      habilitado: true,
+      activo: true
     };
     ContactoPregunta.insert(pregunta);
 
@@ -94,7 +99,8 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       texto: "¿Lx internaron para acceder al aborto?",
       estado: false,
       tipo: "B",
-      habilitado: false
+      habilitado: true,
+      activo: true
     };
     ContactoPregunta.insert(pregunta);
 
@@ -107,7 +113,8 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       texto: "Método utilizado para abortar/ interrumpir el embarazo",
       estado: false,
       tipo: "C",
-      habilitado: false
+      habilitado: true,
+      activo: true
     };
     ContactoPregunta.insert(pregunta);
 
@@ -121,7 +128,8 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
         "¿Consideramos que recibió indicaciones del uso de la medicación según el protocolo de la OMS?",
       estado: false,
       tipo: "C",
-      habilitado: false
+      habilitado: true,
+      activo: true
     };
     ContactoPregunta.insert(pregunta);
 
@@ -131,10 +139,11 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       codigo: "600",
       orden: 600,
       contactoid: contactoid,
-      texto: "",
+      texto: "¿Considera que recibió la información que necesitaba?",
       estado: false,
-      tipo: "",
-      habilitado: false
+      tipo: "C",
+      habilitado: true,
+      activo: true
     };
     ContactoPregunta.insert(pregunta);
 
@@ -144,36 +153,25 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       codigo: "610",
       orden: 610,
       contactoid: contactoid,
-      texto: "",
-      estado: false,
-      tipo: "",
-      habilitado: false
-    };
-    ContactoPregunta.insert(pregunta);
-
-    var pregunta = {
-      momento: 2,
-      seccion: "Interrupción Legal e Interrupción Voluntaria del Embarazo",
-      codigo: "620",
-      orden: 620,
-      contactoid: contactoid,
-      texto: "¿Considera que recibió la información que necesitaba?",
-      estado: false,
-      tipo: "C",
-      habilitado: false
-    };
-    ContactoPregunta.insert(pregunta);
-
-    var pregunta = {
-      momento: 2,
-      seccion: "Interrupción Legal e Interrupción Voluntaria del Embarazo",
-      codigo: "620",
-      orden: 620,
-      contactoid: contactoid,
       texto: "¿Se sintió escuchadx?",
       estado: false,
       tipo: "C",
-      habilitado: false
+      habilitado: true,
+      activo: true
+    };
+    ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 2,
+      seccion: "Interrupción Legal e Interrupción Voluntaria del Embarazo",
+      codigo: "620",
+      orden: 620,
+      contactoid: contactoid,
+      texto: "¿Cómo se sintió tratadx?",
+      estado: false,
+      tipo: "C",
+      habilitado: true,
+      activo: true
     };
     ContactoPregunta.insert(pregunta);
 
@@ -183,10 +181,11 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       codigo: "630",
       orden: 630,
       contactoid: contactoid,
-      texto: "¿Cómo se sintió tratadx?",
+      texto: "¿Abortó?",
       estado: false,
       tipo: "C",
-      habilitado: false
+      habilitado: true,
+      activo: true
     };
     ContactoPregunta.insert(pregunta);
 
@@ -196,10 +195,11 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       codigo: "640",
       orden: 640,
       contactoid: contactoid,
-      texto: "¿Abortó?",
+      texto: "¿Accedió al aborto de manera gratuita?",
       estado: false,
-      tipo: "C",
-      habilitado: false
+      tipo: "B",
+      habilitado: true,
+      activo: true
     };
     ContactoPregunta.insert(pregunta);
 
@@ -209,10 +209,11 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       codigo: "650",
       orden: 650,
       contactoid: contactoid,
-      texto: "¿Accedió al aborto de manera gratuita?",
+      texto: "¿Concurrió/se realizó control médico post-aborto? ",
       estado: false,
-      tipo: "B",
-      habilitado: false
+      tipo: "C",
+      habilitado: true,
+      activo: true
     };
     ContactoPregunta.insert(pregunta);
 
@@ -222,10 +223,11 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       codigo: "660",
       orden: 660,
       contactoid: contactoid,
-      texto: "¿Concurrió/se realizó control médico post-aborto? ",
+      texto: "¿Culminó el proceso con método anticonceptivo?",
       estado: false,
       tipo: "C",
-      habilitado: false
+      habilitado: true,
+      activo: true
     };
     ContactoPregunta.insert(pregunta);
 
@@ -235,23 +237,11 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       codigo: "670",
       orden: 670,
       contactoid: contactoid,
-      texto: "¿Culminó el proceso con método anticonceptivo?",
-      estado: false,
-      tipo: "C",
-      habilitado: false
-    };
-    ContactoPregunta.insert(pregunta);
-
-    var pregunta = {
-      momento: 2,
-      seccion: "Interrupción Legal e Interrupción Voluntaria del Embarazo",
-      codigo: "680",
-      orden: 680,
-      contactoid: contactoid,
       texto: "¿Cuál?",
       estado: false,
       tipo: "C",
-      habilitado: false
+      habilitado: true,
+      activo: true
     };
     ContactoPregunta.insert(pregunta);
 

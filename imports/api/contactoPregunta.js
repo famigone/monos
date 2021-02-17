@@ -35,6 +35,10 @@ ContactoPregunta.schema = new SimpleSchema({
   },
   habilitado: {
     type: Boolean
+  },
+  activo: {
+    type: Boolean,
+    optional: true
   }
 });
 
