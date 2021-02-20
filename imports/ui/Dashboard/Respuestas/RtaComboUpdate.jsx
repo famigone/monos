@@ -42,8 +42,30 @@ export default class RtaComboUpdate extends Component {
   state = {
     valor: this.props.rta.rtatexto,
     otro: this.props.rta.especifique,
-    hidden: true
+    hidden: true,
+    termino: this.setTermino()
   };
+  setTermino() {
+    var parar =
+      (this.props.rta.rtatexto == "No vuelve a comunicarse" &&
+        this.props.pregunta.codigo == 650 &&
+        this.props.pregunta.seccion ==
+          "Interrupción Legal e Interrupción Voluntaria del Embarazo") ||
+      (this.props.rta.rtatexto == "No" &&
+        this.props.pregunta.codigo == 660 &&
+        this.props.pregunta.seccion ==
+          "Interrupción Legal e Interrupción Voluntaria del Embarazo") ||
+      (this.props.rta.rtatexto == "Sin dato" &&
+        this.props.pregunta.codigo == 660 &&
+        this.props.pregunta.seccion ==
+          "Interrupción Legal e Interrupción Voluntaria del Embarazo") ||
+      (this.props.pregunta.codigo == 830 &&
+        this.props.pregunta.seccion ==
+          "Acompañamiento Aborto Libre y Feminista");
+    //console.log("termino: ", rta);
+    return parar;
+  }
+
   handleOnChange = (e, data) => {
     //console.log(data);
     this.setState({
@@ -87,6 +109,28 @@ export default class RtaComboUpdate extends Component {
 
   renderForm() {
     var options = [];
+    options[450] = [
+      {
+        key: 1,
+        text: "NO",
+        value: "NO"
+      },
+      {
+        key: 2,
+        text: "Sí - Sistema público",
+        value: "Sí - Sistema público"
+      },
+      {
+        key: 3,
+        text: "Sí - Sistema privado",
+        value: "Sí - Sistema privado"
+      },
+      {
+        key: 4,
+        text: "Consultorio salud integral (Red ECOS, Casa Fusa, etc)",
+        value: "Consultorio salud integral (Red ECOS, Casa Fusa, etc)"
+      }
+    ];
     options[530] = [
       {
         key: 1,
@@ -138,7 +182,307 @@ export default class RtaComboUpdate extends Component {
         value: "No sabe"
       }
     ];
+    options[700] = [
+      {
+        key: 1,
+        text: "No",
+        value: "No"
+      },
+      {
+        key: 2,
+        text: "Sí, sólo por socorristas",
+        value: "Sí, sólo por socorristas"
+      },
+      {
+        key: 3,
+        text: "Sí, por otras personas",
+        value: "Sí, por otras personas"
+      }
+    ];
+    options[710] = [
+      {
+        key: 1,
+        text: "No",
+        value: "No"
+      },
+      {
+        key: 2,
+        text: "Sí",
+        value: "Sí"
+      },
+      {
+        key: 3,
+        text: "No puede asegurarlo",
+        value: "No puede asegurarlo"
+      }
+    ];
+    options[760] = [
+      {
+        key: 1,
+        text: "No",
+        value: "No"
+      },
+      {
+        key: 2,
+        text: "Sí: telefónicamente",
+        value: "Sí: telefónicamente"
+      },
+      {
+        key: 3,
+        text: "Sí: in-situ",
+        value: "Sí: in-situ"
+      }
+    ];
+    options[790] = [
+      {
+        key: 1,
+        text: "Muy bien",
+        value: "Muy bien"
+      },
+      {
+        key: 2,
+        text: "Bien",
+        value: "Bien"
+      },
+      {
+        key: 3,
+        text: "Regular",
+        value: "Regular"
+      },
+      {
+        key: 4,
+        text: "Mal",
+        value: "Mal"
+      }
+    ];
+    options[800] = [
+      {
+        key: 1,
+        text: "No",
+        value: "No"
+      },
+      {
+        key: 2,
+        text: "Sí",
+        value: "Sí"
+      },
+      {
+        key: 3,
+        text: "No vuelve a comunicarse",
+        value: "No vuelve a comunicarse"
+      }
+    ];
+    options[810] = [
+      {
+        key: 1,
+        text: "No",
+        value: "No"
+      },
+      {
+        key: 2,
+        text: "Sí",
+        value: "Sí"
+      },
+      {
+        key: 3,
+        text: "Sin dato",
+        value: "Sin dato"
+      }
+    ];
+    options[820] = [
+      {
+        key: 1,
+        text: "Preservativo",
+        value: "Preservativo"
+      },
+      {
+        key: 2,
+        text: "Anticonceptivo oral",
+        value: "Anticonceptivo oral"
+      },
+      {
+        key: 3,
+        text: "DIU",
+        value: "DIU"
+      },
+      {
+        key: 4,
+        text: "Inyectable mensual/trimestral",
+        value: "Inyectable mensual/trimestral"
+      },
+      {
+        key: 5,
+        text: "Parches",
+        value: "Parches"
+      },
+      {
+        key: 6,
+        text: "Implantes",
+        value: "Implantes"
+      },
+      {
+        key: 7,
+        text: "Ligadura tubaria",
+        value: "Ligadura tubaria"
+      },
+      {
+        key: 8,
+        text: "Vasectomía",
+        value: "Vasectomía"
+      },
+      {
+        key: 9,
+        text: "Otro",
+        value: "Otro"
+      }
+    ];
 
+    options[830] = [
+      {
+        key: 1,
+        text: "No",
+        value: "No"
+      },
+      {
+        key: 2,
+        text: "Sí, sin necesidad de intervención quirúrgica",
+        value: "Sí, sin necesidad de intervención quirúrgica"
+      },
+      {
+        key: 2,
+        text: "Sí, con intervención quirúrgica AMEU",
+        value: "Sí, con intervención quirúrgica AMEU"
+      },
+      {
+        key: 2,
+        text: "Sí, con intervención quirúrgica Legrado",
+        value: "Sí, con intervención quirúrgica Legrado"
+      }
+    ];
+    options[690] = [
+      {
+        key: 1,
+        text: "Misoprostol",
+        value: "Misoprostol"
+      },
+      {
+        key: 2,
+        text: "Mifepristona y Misoprostol",
+        value: "Mifepristona y Misoprostol"
+      }
+    ];
+    options[680] = [
+      {
+        key: 1,
+        text: "4",
+        value: "4"
+      },
+      {
+        key: 2,
+        text: "5",
+        value: "5"
+      },
+      {
+        key: 3,
+        text: "6",
+        value: "6"
+      },
+      {
+        key: 4,
+        text: "7",
+        value: "7"
+      },
+      {
+        key: 5,
+        text: "8",
+        value: "8"
+      },
+      {
+        key: 6,
+        text: "9",
+        value: "9"
+      },
+      {
+        key: 7,
+        text: "10",
+        value: "10"
+      },
+      {
+        key: 8,
+        text: "11",
+        value: "11"
+      },
+      {
+        key: 9,
+        text: "12",
+        value: "12"
+      },
+      {
+        key: 10,
+        text: "13",
+        value: "13"
+      },
+      {
+        key: 11,
+        text: "14",
+        value: "14"
+      },
+      {
+        key: 12,
+        text: "15",
+        value: "15"
+      },
+      {
+        key: 13,
+        text: "16",
+        value: "16"
+      },
+      {
+        key: 14,
+        text: "17",
+        value: "17"
+      },
+      {
+        key: 15,
+        text: "18",
+        value: "18"
+      },
+      {
+        key: 16,
+        text: "19",
+        value: "19"
+      },
+      {
+        key: 17,
+        text: "20",
+        value: "20"
+      },
+      {
+        key: 18,
+        text: "21",
+        value: "21"
+      },
+      {
+        key: 19,
+        text: "22",
+        value: "22"
+      },
+      {
+        key: 20,
+        text: "23",
+        value: "23"
+      },
+      {
+        key: 21,
+        text: "24",
+        value: "24"
+      },
+      {
+        key: 22,
+        text: "25 o más",
+        value: "24 o más"
+      }
+    ];
     options[560] = [
       {
         key: 1,
@@ -430,6 +774,7 @@ export default class RtaComboUpdate extends Component {
       }
     ];
 
+    //autopercepción del género
     options[10] = [
       {
         key: 1,
@@ -1236,7 +1581,7 @@ export default class RtaComboUpdate extends Component {
         value: "24"
       },
       {
-        key: 21,
+        key: 22,
         text: "25 o más",
         value: "24 o más"
       }
@@ -1436,6 +1781,12 @@ export default class RtaComboUpdate extends Component {
           <Message.Header>
             <Icon name="heart outline" />
             Respuesta modificada con éxito.
+          </Message.Header>
+        </Message>
+        <Message color={"purple"} floating hidden={!this.state.termino}>
+          <Message.Header>
+            <Icon name="heart outline" />
+            Carga finalizada.
           </Message.Header>
         </Message>
       </div>

@@ -66,7 +66,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "Autopercepción de género",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -80,7 +80,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "Fecha de consulta",
       estado: false,
       tipo: "F",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -94,7 +94,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "País de nacimiento",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -108,7 +108,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "Provincia de Residencia",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -122,7 +122,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "Zona",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -136,7 +136,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "Edad",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -150,7 +150,7 @@ export const insertPregNena = new ValidatedMethod({
       estado: false,
       texto: "Forma de encuentro",
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -164,7 +164,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "Tipo de encuentro",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -178,7 +178,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Tiene alguna condición de discapacidad/diversidad funcional?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -192,7 +192,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Requiere ajustes en el acompañamiento?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -207,7 +207,7 @@ export const insertPregNena = new ValidatedMethod({
         "¿Te contactaste en otra ocasión con esta colectiva? (por el motivo que fuera)",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -221,7 +221,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Cómo llegaste a esta colectiva?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -236,7 +236,7 @@ export const insertPregNena = new ValidatedMethod({
         "Desde que te enteraste que estás embarazadx hasta que te comunicaste con esta colectiva, ¿hubo algo que te demoró en conectarnos?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -250,7 +250,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Sabías que se podía hacer un aborto con pastillas?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -264,7 +264,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Quién/es saben que estás embarazadx?",
       estado: false,
       tipo: "M",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -278,7 +278,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Quién/es saben de tu decisión de abortar?",
       estado: false,
       tipo: "M",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -292,7 +292,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Quiénes te acompañan en esta decisión?",
       estado: false,
       tipo: "M",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -306,7 +306,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Vas a la escuela?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -319,8 +319,8 @@ export const insertPregNena = new ValidatedMethod({
       contactoid: contactoid,
       texto: "Mayor nivel de instrucción alcanzado",
       estado: false,
-      tipo: "B",
-      habilitado: true,
+      tipo: "C",
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -335,7 +335,7 @@ export const insertPregNena = new ValidatedMethod({
         "¿Recibiste información sobre Métodos Anticonceptivos y de cuidados?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -348,7 +348,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Recibiste información sobre el ciclo menstrual?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -363,7 +363,7 @@ export const insertPregNena = new ValidatedMethod({
         "¿Recibiste información sobre el Derecho a la atención en el sistema de salud desde los 13 años sin compañía de unx adultx?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -377,7 +377,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Recibiste información sobre Derechos lgbtttiqnb+?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -392,7 +392,7 @@ export const insertPregNena = new ValidatedMethod({
         "¿Recibiste información sobre el consentimiento en las relaciones sexuales?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -406,7 +406,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Recibiste información sobre violencias por motivos de género?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -420,7 +420,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Recibiste información sobre aborto con medicamentos?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -434,7 +434,7 @@ export const insertPregNena = new ValidatedMethod({
         "¿Recibiste información sobre el derecho a la interrupción legal del embarazo?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -448,7 +448,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Dónde recibiste la mayor parte de esta información?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -461,7 +461,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Participas de organizaciones comunitarias / estás organizadx?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -476,7 +476,7 @@ export const insertPregNena = new ValidatedMethod({
         "¿Estás a cargo del cuidado de personas de tu familia cotidianamente, en un número importante de horas?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -489,7 +489,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Hacés algún tipo de trabajo fuera de tu casa?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -504,7 +504,7 @@ export const insertPregNena = new ValidatedMethod({
         "¿Recibís algún tipo de pago por los trabajos que haces (de cuidados o fuera de tu casa)?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -518,7 +518,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Sos creyente en alguna religión o en Dios?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -531,7 +531,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Alguna vez sufriste violencias machistas?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -545,7 +545,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Tenés cobertura médica/obra social?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -559,7 +559,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Realizaste alguna vez una consulta por su salud sexual?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -572,7 +572,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Te dieron información sobre métodos anticonceptivos?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -585,7 +585,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Tuviste embarazos anteriores?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -599,7 +599,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Tenés hijxs?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -613,7 +613,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Tenés abortos provocados?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -627,7 +627,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "Edad gestacional (expresada en semanas)",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -640,8 +640,8 @@ export const insertPregNena = new ValidatedMethod({
       contactoid: contactoid,
       texto: "¿Vos querías tener esa relación sexual?",
       estado: false,
-      tipo: "C",
-      habilitado: true,
+      tipo: "B",
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -655,7 +655,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Usaste algún método anticonceptivo?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -669,7 +669,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Hiciste algo para interrumpir este embarazo?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -683,8 +683,8 @@ export const insertPregNena = new ValidatedMethod({
       texto:
         "¿Realizaste alguna consulta en el sistema de salud por tu embarazo actual? ",
       estado: false,
-      tipo: "B",
-      habilitado: true,
+      tipo: "C",
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -698,7 +698,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Alguien te acompañó?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -712,7 +712,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Considerás que recibiste la información que necesitabas?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -726,7 +726,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Te sentiste escuchadx? ",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -740,7 +740,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "¿Cómo te sentiste tratadx?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -755,7 +755,7 @@ export const insertPregNena = new ValidatedMethod({
         "¿Recibiste información sobre cómo acceder a tu derecho a una ILE/IVE?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -768,7 +768,7 @@ export const insertPregNena = new ValidatedMethod({
       texto: "Síntesis/ cierre DEL PRIMER MOMENTO",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);

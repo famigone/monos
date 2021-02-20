@@ -43,7 +43,7 @@ export default class RtaBoolean extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("debe mostrar valor: " + this.state.valor);
+    //  console.log("debe mostrar valor: " + this.state.valor);
     // Find the text field via the React ref
     if (!(this.state.valor === null)) {
       const one = {
@@ -69,7 +69,7 @@ export default class RtaBoolean extends Component {
             }
           });
           // seteamos el nuevo Actual
-          this.props.cambiarActual(this.props.pregunta.codigo);
+          this.props.cambiarActual(this.props.pregunta.codigo, one.rtatexto);
         }
       });
     }
@@ -77,9 +77,21 @@ export default class RtaBoolean extends Component {
     //  ReactDOM.findDOMNode(this.refs.inputRespuesta).value = "";
   }
   renderForm() {
-    console.log("debe mostrar valor: " + this.state.valor);
+    //console.log("debe mostrar valor: " + this.state.valor);
     return (
       <div>
+        <Container textAlign="right">
+          <Label color="teal">
+            <Icon name="time" />
+            {this.props.pregunta.momento == 1
+              ? "PRIMER MOMENTO"
+              : "SEGUNDO MOMENTO"}
+          </Label>
+          <Label color="teal">
+            <Icon name="check circle" />
+            {this.props.pregunta.seccion}
+          </Label>
+        </Container>
         <Header as="h2" dividing>
           <Icon name="question circle outline" />
           <Header.Content>

@@ -29,7 +29,7 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
         "Al momento de la solicitud de ILE/IVE: ¿Está acompañadx presencialmente por alguien?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -43,7 +43,7 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       texto: "Concurrió a",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -57,7 +57,7 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       texto: "Accedió a un aborto",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -71,7 +71,7 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       texto: "¿Firmó el consentimiento informado?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -85,7 +85,7 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       texto: "Semanas de gestación al momento del uso",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -99,7 +99,7 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       texto: "¿Lx internaron para acceder al aborto?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -113,7 +113,7 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       texto: "Método utilizado para abortar/ interrumpir el embarazo",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -128,7 +128,7 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
         "¿Consideramos que recibió indicaciones del uso de la medicación según el protocolo de la OMS?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -142,7 +142,7 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       texto: "¿Considera que recibió la información que necesitaba?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -156,7 +156,7 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       texto: "¿Se sintió escuchadx?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -170,7 +170,7 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       texto: "¿Cómo se sintió tratadx?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -184,7 +184,7 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       texto: "¿Abortó?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -198,7 +198,7 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       texto: "¿Accedió al aborto de manera gratuita?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -209,10 +209,10 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       codigo: "650",
       orden: 650,
       contactoid: contactoid,
-      texto: "¿Concurrió/se realizó control médico post-aborto? ",
+      texto: "¿Concurrió/se realizó control médico post-aborto?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -226,7 +226,7 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       texto: "¿Culminó el proceso con método anticonceptivo?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -240,7 +240,7 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       texto: "¿Cuál?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);

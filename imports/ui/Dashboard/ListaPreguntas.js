@@ -31,7 +31,8 @@ import RtaMultipleUpdate from "./Respuestas/RtaMultipleUpdate.jsx";
 import RtaComboUpdate from "./Respuestas/RtaComboUpdate.jsx";
 import Rta510 from "./Respuestas/Rta510.jsx";
 import Rta510Update from "./Respuestas/Rta510Update.jsx";
-
+import Rta2doIle630 from "./Respuestas/Rta2doIle630.jsx";
+import Rta2doIle630Update from "./Respuestas/Rta2doIle630Update.jsx";
 import Respuesta from "/imports/api/respuesta.js";
 import Contacto from "/imports/api/contacto.js";
 import { withTracker } from "meteor/react-meteor-data";
@@ -42,12 +43,47 @@ class ListaPreguntas extends Component {
     return this.props.children;
   }
 
-  ruteadorPreguntas(actual) {
+  ruteadorPreguntas(actual, rtatexto) {
     //RECIBO CÓDIGO ORIGEN Y RETORNO CÓDIGO DESTINO
+
     var rta;
     switch (actual) {
       case 10:
         rta = 20;
+        break;
+      case 360:
+        if (rtatexto == "NO") rta = 380;
+        else rta = actual + 10;
+        break;
+      case 420:
+        if (rtatexto == "NO") rta = 440;
+        else rta = actual + 10;
+        break;
+      case 450:
+        if (rtatexto == "NO") rta = 510;
+        else rta = actual + 10;
+        break;
+      case 510:
+        if (rtatexto == "Decide solicitar ILE/IVE") rta = 520;
+        if (rtatexto == "Resuelve Aborto libre y feminista") rta = 680;
+        else rta = actual + 10;
+        break;
+      case 720:
+        if (rtatexto == "SI") rta = 760;
+        else rta = actual + 10;
+        break;
+      case 760:
+        if (rtatexto == "No") rta = 800;
+        else rta = actual + 10;
+        break;
+      case 810:
+        if (rtatexto == "No" || rtatexto == "Sin dato") rta = 830;
+        else rta = actual + 10;
+        break;
+      case 630:
+        if (rtatexto == "No: La acompañamos con Aborto Libre y Feminista")
+          rta = 680;
+        else rta = actual + 10;
         break;
       default:
         rta = actual + 10;
@@ -58,10 +94,17 @@ class ListaPreguntas extends Component {
   posicionCodigo(codigo) {
     var i = 0;
     var pos = 0;
+    //si es la última del primer momento, que salte a la 520
+    //if (codigo == 510) pos = this.props.preguntas.length;
+    //else
+    //console.log("codigo: ", codigo);
+    //console.log("length: ", this.props.preguntas.length);
     this.props.preguntas.forEach(pregunta => {
       if (pregunta.codigo == codigo) pos = i;
       i += 1;
     });
+
+    //console.log("pos: ", pos);
     return pos;
   }
 
@@ -92,11 +135,16 @@ class ListaPreguntas extends Component {
     };
     //this.actualizarREP = this.actualizarREP.bind(this);
   }
-  onUpdateActual = orden => {
-    console.log("orden: ", orden);
+  onUpdateActual = (orden, rtatexto) => {
+    //console.log("contactoid: ", this.props.contactoid);
+    //console.log("orden: ", orden);
+    //console.log("rtatexto: ", rtatexto);
     //////////////////////////////////////////
-    var sgteCodigo = this.ruteadorPreguntas(Number(orden));
+    var sgteCodigo = this.ruteadorPreguntas(Number(orden), rtatexto);
+    //console.log("sgteCodigo", sgteCodigo);
     var sgtePos = this.posicionCodigo(sgteCodigo);
+    //console.log("sgtePos", sgtePos);
+    //console.log("arreglo de preguntas: ", this.props.preguntas);
     const tree = { id: this.props.preguntas[sgtePos]._id };
     //////////////////////////////////////////
 
@@ -134,6 +182,23 @@ class ListaPreguntas extends Component {
         />
       ) : (
         <Rta510 pregunta={laPregunta} cambiarActual={this.onUpdateActual} />
+      );
+    else if (
+      laPregunta.codigo == "630" &&
+      laPregunta.momento == 2 &&
+      laPregunta.seccion ==
+        "Interrupción Legal e Interrupción Voluntaria del Embarazo"
+    )
+      return laPregunta.estado ? (
+        <Rta2doIle630Update
+          pregunta={laPregunta}
+          rta={this.obtenerRtaActual()}
+        />
+      ) : (
+        <Rta2doIle630
+          pregunta={laPregunta}
+          cambiarActual={this.onUpdateActual}
+        />
       );
     else if (laPregunta.codigo == "5")
       return laPregunta.estado ? (
@@ -351,7 +416,7 @@ class ListaPreguntas extends Component {
           active={menuActivo === pregunta.texto}
           onClick={this.handleItemClick}
           //cambiar para habilitar
-          //disabled={!pregunta.habilitado}
+          disabled={!pregunta.habilitado}
         >
           <Label circular color={pregunta.estado ? "purple" : "teal"} />
           {pregunta.texto}

@@ -7,6 +7,28 @@ import { Meteor } from "meteor/meteor";
 //import { Mongo } from "meteor/mongo";
 //import { aggregate } from "me teor/sakulstra:aggregate";
 
+export const deletePregNenaSegundoFem = new ValidatedMethod({
+  name: "deletePregNenaSegundoFem",
+  validate: new SimpleSchema({
+    contactoid: { type: String, regEx: SimpleSchema.RegEx.Id }
+  }).validator(),
+  run(one) {
+    //console.log("one.contactoid ", one.contactoid);
+    return ContactoPregunta.update(
+      {
+        contactoid: one.contactoid,
+        seccion: "Acompañamiento Aborto Libre y Feminista"
+      },
+      {
+        $set: {
+          activo: false
+        }
+      },
+      { multi: true }
+    );
+  }
+});
+
 export const insertPregNenaSegundoFem = new ValidatedMethod({
   name: "insertPregNenaSegundoFem",
   validate: new SimpleSchema({
@@ -22,13 +44,13 @@ export const insertPregNenaSegundoFem = new ValidatedMethod({
     var pregunta = {
       momento: 2,
       seccion: "Acompañamiento Aborto Libre y Feminista",
-      codigo: "520",
-      orden: 520,
+      codigo: "680",
+      orden: 680,
       contactoid: contactoid,
       texto: "Semanas de gestación al momento del uso",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -36,13 +58,13 @@ export const insertPregNenaSegundoFem = new ValidatedMethod({
     var pregunta = {
       momento: 2,
       seccion: "Acompañamiento Aborto Libre y Feminista",
-      codigo: "530",
-      orden: 530,
+      codigo: "690",
+      orden: 690,
       contactoid: contactoid,
       texto: "Medicamento utilizado",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -50,14 +72,14 @@ export const insertPregNenaSegundoFem = new ValidatedMethod({
     var pregunta = {
       momento: 2,
       seccion: "Acompañamiento Aborto Libre y Feminista",
-      codigo: "540",
-      orden: 540,
+      codigo: "700",
+      orden: 700,
       contactoid: contactoid,
       texto:
         "¿Estás acompañadx al momento del uso de la medicación por alguien que sabe que estás abortando?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -65,13 +87,28 @@ export const insertPregNenaSegundoFem = new ValidatedMethod({
     var pregunta = {
       momento: 2,
       seccion: "Acompañamiento Aborto Libre y Feminista",
-      codigo: "550",
-      orden: 550,
+      codigo: "710",
+      orden: 710,
       contactoid: contactoid,
-      texto: "Sobre la expulsión",
+      texto: "Expulsa saco gestacional en el 1er trimestre",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
+      activo: true
+    };
+
+    ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 2,
+      seccion: "Acompañamiento Aborto Libre y Feminista",
+      codigo: "720",
+      orden: 720,
+      contactoid: contactoid,
+      texto: "Expulsa en bloque en el segundo trismetre",
+      estado: false,
+      tipo: "B",
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -79,14 +116,56 @@ export const insertPregNenaSegundoFem = new ValidatedMethod({
     var pregunta = {
       momento: 2,
       seccion: "Acompañamiento Aborto Libre y Feminista",
-      codigo: "560",
-      orden: 560,
+      codigo: "730",
+      orden: 730,
+      contactoid: contactoid,
+      texto: "Rompe bolsa en el segundo trismetre",
+      estado: false,
+      tipo: "B",
+      habilitado: false,
+      activo: true
+    };
+    ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 2,
+      seccion: "Acompañamiento Aborto Libre y Feminista",
+      codigo: "740",
+      orden: 740,
+      contactoid: contactoid,
+      texto: "Expulsa el feto en el segundo trismetre",
+      estado: false,
+      tipo: "B",
+      habilitado: false,
+      activo: true
+    };
+    ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 2,
+      seccion: "Acompañamiento Aborto Libre y Feminista",
+      codigo: "750",
+      orden: 750,
+      contactoid: contactoid,
+      texto: "Expulsa placenta en el segundo trismetre",
+      estado: false,
+      tipo: "B",
+      habilitado: false,
+      activo: true
+    };
+    ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 2,
+      seccion: "Acompañamiento Aborto Libre y Feminista",
+      codigo: "760",
+      orden: 760,
       contactoid: contactoid,
       texto:
         "¿Se comunica con su acompañante de la colectiva durante el uso de la medicación?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -94,14 +173,14 @@ export const insertPregNenaSegundoFem = new ValidatedMethod({
     var pregunta = {
       momento: 2,
       seccion: "Acompañamiento Aborto Libre y Feminista",
-      codigo: "570",
-      orden: 570,
+      codigo: "770",
+      orden: 770,
       contactoid: contactoid,
       texto:
         "¿Concurrió a guardia médica dentro de las 72 hs del uso de la medicación? ",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -109,13 +188,13 @@ export const insertPregNenaSegundoFem = new ValidatedMethod({
     var pregunta = {
       momento: 2,
       seccion: "Acompañamiento Aborto Libre y Feminista",
-      codigo: "580",
-      orden: 580,
+      codigo: "780",
+      orden: 780,
       contactoid: contactoid,
       texto: "¿Le contó al personal de salud que usó medicación?",
       estado: false,
       tipo: "B",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -123,13 +202,13 @@ export const insertPregNenaSegundoFem = new ValidatedMethod({
     var pregunta = {
       momento: 2,
       seccion: "Acompañamiento Aborto Libre y Feminista",
-      codigo: "590",
-      orden: 590,
+      codigo: "790",
+      orden: 790,
       contactoid: contactoid,
       texto: "¿Cómo fue en tratadx en la guardia médica?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -137,27 +216,13 @@ export const insertPregNenaSegundoFem = new ValidatedMethod({
     var pregunta = {
       momento: 2,
       seccion: "Acompañamiento Aborto Libre y Feminista",
-      codigo: "600",
-      orden: 600,
-      contactoid: contactoid,
-      texto: "¿Cómo fue en tratadx en la guardia médica?",
-      estado: false,
-      tipo: "C",
-      habilitado: true,
-      activo: true
-    };
-    ContactoPregunta.insert(pregunta);
-
-    var pregunta = {
-      momento: 2,
-      seccion: "Acompañamiento Aborto Libre y Feminista",
-      codigo: "610",
-      orden: 610,
+      codigo: "800",
+      orden: 800,
       contactoid: contactoid,
       texto: "¿Concurrió a control médico post-aborto?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -165,13 +230,13 @@ export const insertPregNenaSegundoFem = new ValidatedMethod({
     var pregunta = {
       momento: 2,
       seccion: "Acompañamiento Aborto Libre y Feminista",
-      codigo: "620",
-      orden: 620,
+      codigo: "810",
+      orden: 810,
       contactoid: contactoid,
       texto: "¿Culminó el proceso con método anticonceptivo?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -179,13 +244,13 @@ export const insertPregNenaSegundoFem = new ValidatedMethod({
     var pregunta = {
       momento: 2,
       seccion: "Acompañamiento Aborto Libre y Feminista",
-      codigo: "630",
-      orden: 630,
+      codigo: "820",
+      orden: 820,
       contactoid: contactoid,
       texto: "¿Cuál?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
@@ -193,13 +258,13 @@ export const insertPregNenaSegundoFem = new ValidatedMethod({
     var pregunta = {
       momento: 2,
       seccion: "Acompañamiento Aborto Libre y Feminista",
-      codigo: "640",
-      orden: 640,
+      codigo: "830",
+      orden: 830,
       contactoid: contactoid,
       texto: "¿Abortó?",
       estado: false,
       tipo: "C",
-      habilitado: true,
+      habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);

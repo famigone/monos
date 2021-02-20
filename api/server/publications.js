@@ -63,7 +63,8 @@ Meteor.publish("contactopregunta", function(contactoid, contactopreguntaid) {
   //return ContactoPregunta.find();
   return ContactoPregunta.find({
     contactoid: contactoid,
-    contactopreguntaid: contactopreguntaid
+    contactopreguntaid: contactopreguntaid,
+    activo: true
   });
 });
 

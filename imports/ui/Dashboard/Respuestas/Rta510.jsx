@@ -74,13 +74,15 @@ export default class Rta510 extends Component {
               console.log(err);
             } else {
               if (this.state.valor == "Decide solicitar ILE/IVE") {
-                this.props.cambiarActual(this.props.pregunta.codigo);
                 this.crearSegundoMomentoIle();
               } else if (
                 this.state.valor == "Resuelve Aborto libre y feminista"
               ) {
-                this.props.cambiarActual(this.props.pregunta.codigo);
                 this.crearSegundoMomentoFem();
+                this.props.cambiarActual(
+                  this.props.pregunta.codigo,
+                  this.state.valor
+                );
               } else if (
                 this.state.valor == "No vuelve a conectarse" ||
                 this.state.valor == "Decide continuar su embarazo" ||
@@ -101,6 +103,8 @@ export default class Rta510 extends Component {
     insertPregNenaSegundoILE.call(one, (err, res) => {
       if (err) {
         console.log(err);
+      } else {
+        this.props.cambiarActual(this.props.pregunta.codigo, this.state.valor);
       }
     });
   }
@@ -111,6 +115,8 @@ export default class Rta510 extends Component {
     insertPregNenaSegundoFem.call(one, (err, res) => {
       if (err) {
         console.log(err);
+      } else {
+        this.props.cambiarActual(this.props.pregunta.codigo, this.state.valor);
       }
     });
   }

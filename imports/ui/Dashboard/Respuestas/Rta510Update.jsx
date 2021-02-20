@@ -44,7 +44,11 @@ import {
 //const App = () => (
 
 export default class Rta510 extends Component {
-  state = { valor: "", hidden: true };
+  state = {
+    valor: this.props.rta.rtatexto,
+    hidden: true,
+    termino: this.setTermino()
+  };
 
   handleOnChange = (e, data) => {
     this.setState({
@@ -52,6 +56,20 @@ export default class Rta510 extends Component {
     });
   };
 
+  setTermino() {
+    var parar =
+      (this.props.rta.rtatexto == "No vuelve a conectarse" &&
+        this.props.pregunta.codigo == 510 &&
+        this.props.pregunta.seccion == "Embarazo actual") ||
+      (this.props.rta.rtatexto == "Decide continuar su embarazo" &&
+        this.props.pregunta.codigo == 510 &&
+        this.props.pregunta.seccion == "Embarazo actual") ||
+      (this.props.rta.rtatexto == "Aborto espontáneo" &&
+        this.props.pregunta.codigo == 510 &&
+        this.props.pregunta.seccion == "Embarazo actual");
+    //console.log("termino: ", rta);
+    return parar;
+  }
   handleSubmit(event) {
     event.preventDefault();
 
@@ -200,6 +218,7 @@ export default class Rta510 extends Component {
                 placeholder="Seleccionar"
                 search
                 selection
+                value={this.state.valor}
                 onChange={this.handleOnChange}
                 options={options[0]}
               />
@@ -209,14 +228,14 @@ export default class Rta510 extends Component {
             Siguiente
           </Button>
         </Form>
-        <Message floating hidden={this.state.hidden}>
+        <Message floating color="purple" hidden={!this.state.termino}>
           <Message.Header>
             <Icon name="heart outline" /> Carga concluída.
           </Message.Header>
         </Message>
-        <Message floating hidden={this.state.hiddenUpdate}>
+        <Message floating hidden={this.state.hidden}>
           <Message.Header>
-            <Icon name="heart outline" />
+            <Icon name="heart outline" color="violet" />
             Respuesta modificada con éxito.
           </Message.Header>
         </Message>
