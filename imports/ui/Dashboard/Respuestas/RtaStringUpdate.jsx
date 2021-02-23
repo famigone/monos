@@ -68,7 +68,8 @@ export default class RtaStringUpdate extends Component {
 
     const one = {
       id: this.props.rta._id,
-      rtatexto: this.state.value
+      rtatexto: this.state.value,
+      especifique: ""
       //  activo: this.props.rta.activo
     };
     // Call the Method
@@ -114,7 +115,7 @@ export default class RtaStringUpdate extends Component {
             Guardar
           </Button>
         </Form>
-        <Message floating hidden={this.state.hidden}>
+        <Message color={"violet"} floating hidden={this.state.hidden}>
           <Message.Header>
             <Icon name="heart outline" />
             Respuesta modificada con éxito.

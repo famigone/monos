@@ -103,7 +103,7 @@ export default class RtaStringUpdate extends Component {
             Guardar
           </Button>
         </Form>
-        <Message floating hidden={this.state.hidden}>
+        <Message color={"violet"} floating hidden={this.state.hidden}>
           <Message.Header>
             <Icon name="heart outline" />
             Respuesta modificada con éxito.

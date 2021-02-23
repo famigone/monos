@@ -8,6 +8,7 @@ import Consultas from "./consultas.jsx";
 import ReactDOM from "react-dom";
 import DatePicker from "react-datepicker";
 import NuevaPregunta from "./NuevaPregunta.jsx";
+import MostrarProtocola from "./MostrarProtocola.jsx";
 import "react-datepicker/dist/react-datepicker.css";
 import { deleteContacto } from "/api/methods.js";
 import {
@@ -260,7 +261,7 @@ class ListadoConsultas extends Component {
                 </Message.Header>
               </Message>
               {this.state.consultaid && this.state.hidden ? (
-                <NuevaPregunta id={this.state.consultaid} orden={0} />
+                <MostrarProtocola id={this.state.consultaid} />
               ) : null}
             </Segment>
           </Grid.Column>

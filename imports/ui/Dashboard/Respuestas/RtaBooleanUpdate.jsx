@@ -122,10 +122,10 @@ export default class RtaBooleanUpdate extends Component {
           </Form.Field>
 
           <Button color="purple" type="submit">
-            Siguiente
+            Guardar
           </Button>
         </Form>
-        <Message floating hidden={this.state.hidden}>
+        <Message color={"violet"} floating hidden={this.state.hidden}>
           <Message.Header>
             <Icon name="heart outline" />
             Respuesta modificada con éxito.

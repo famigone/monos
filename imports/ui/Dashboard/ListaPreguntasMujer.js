@@ -29,8 +29,8 @@ import RtaCombo from "./Respuestas/RtaCombo.jsx";
 import RtaMultiple from "./Respuestas/RtaMultiple.jsx";
 import RtaMultipleUpdate from "./Respuestas/RtaMultipleUpdate.jsx";
 import RtaComboUpdate from "./Respuestas/RtaComboUpdate.jsx";
-import Rta510 from "./Respuestas/Rta510.jsx";
-import Rta510Update from "./Respuestas/Rta510Update.jsx";
+import RtaFinPrimerMomento from "./Respuestas/RtaFinPrimerMomento.jsx";
+import RtaFinPrimerMomentoUpdate from "./Respuestas/RtaFinPrimerMomentoUpdate.jsx";
 import Rta2doIle630 from "./Respuestas/Rta2doIle630.jsx";
 import Rta2doIle630Update from "./Respuestas/Rta2doIle630Update.jsx";
 import Respuesta from "/imports/api/respuesta.js";
@@ -63,9 +63,27 @@ class ListaPreguntasMujer extends Component {
         if (rtatexto == "NO") rta = 510;
         else rta = actual + 10;
         break;
+      //trabajo remunerado
+      case 1220:
+        if (
+          rtatexto == "No y no estoy buscando" ||
+          rtatexto == "No y estoy buscando"
+        )
+          rta = 1240;
+        else rta = actual + 10;
+        break;
+      //fin 1er momento
       case 1420:
         if (rtatexto == "Decide solicitar ILE/IVE") rta = 520;
         else if (rtatexto == "Resuelve Aborto libre y feminista") rta = 680;
+        else rta = actual + 10;
+        break;
+      case 1330:
+        if (rtatexto == "NO") rta = 1350;
+        else rta = actual + 10;
+        break;
+      case 1360:
+        if (rtatexto == "NO") rta = 1420;
         else rta = actual + 10;
         break;
       case 720:
@@ -173,15 +191,19 @@ class ListaPreguntasMujer extends Component {
   routerCombos() {
     const laPregunta = this.props.preguntas[this.state.activeItem];
     //console.log("RATATATATAA ", laPregunta.contactoid);
+    console.log("laPregunta.estado ", laPregunta.estado);
     if (laPregunta.codigo == "1420")
       return laPregunta.estado ? (
-        <Rta510Update
+        <RtaFinPrimerMomentoUpdate
           pregunta={laPregunta}
           rta={this.obtenerRtaActual()}
           cambiarActual={this.onUpdateActual}
         />
       ) : (
-        <Rta510 pregunta={laPregunta} cambiarActual={this.onUpdateActual} />
+        <RtaFinPrimerMomento
+          pregunta={laPregunta}
+          cambiarActual={this.onUpdateActual}
+        />
       );
     else {
       return laPregunta.estado ? (

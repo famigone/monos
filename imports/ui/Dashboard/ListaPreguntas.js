@@ -29,8 +29,8 @@ import RtaCombo from "./Respuestas/RtaCombo.jsx";
 import RtaMultiple from "./Respuestas/RtaMultiple.jsx";
 import RtaMultipleUpdate from "./Respuestas/RtaMultipleUpdate.jsx";
 import RtaComboUpdate from "./Respuestas/RtaComboUpdate.jsx";
-import Rta510 from "./Respuestas/Rta510.jsx";
-import Rta510Update from "./Respuestas/Rta510Update.jsx";
+import RtaFinPrimerMomento from "./Respuestas/RtaFinPrimerMomento.jsx";
+import RtaFinPrimerMomentoUpdate from "./Respuestas/RtaFinPrimerMomentoUpdate.jsx";
 import Rta2doIle630 from "./Respuestas/Rta2doIle630.jsx";
 import Rta2doIle630Update from "./Respuestas/Rta2doIle630Update.jsx";
 import Respuesta from "/imports/api/respuesta.js";
@@ -175,13 +175,16 @@ class ListaPreguntas extends Component {
     //console.log("RATATATATAA ", laPregunta.codigo);
     if (laPregunta.codigo == "510")
       return laPregunta.estado ? (
-        <Rta510Update
+        <RtaFinPrimerMomentoUpdate
           pregunta={laPregunta}
           rta={this.obtenerRtaActual()}
           cambiarActual={this.onUpdateActual}
         />
       ) : (
-        <Rta510 pregunta={laPregunta} cambiarActual={this.onUpdateActual} />
+        <RtaFinPrimerMomento
+          pregunta={laPregunta}
+          cambiarActual={this.onUpdateActual}
+        />
       );
     else if (
       laPregunta.codigo == "630" &&
