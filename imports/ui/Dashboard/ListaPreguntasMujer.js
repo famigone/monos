@@ -38,7 +38,7 @@ import Contacto from "/imports/api/contacto.js";
 import { withTracker } from "meteor/react-meteor-data";
 import LoaderExampleText from "/imports/ui/Dashboard/LoaderExampleText.js";
 import { updateContactoPreguntaSgte } from "/api/methods.js";
-class ListaPreguntas extends Component {
+class ListaPreguntasMujer extends Component {
   getContentView() {
     return this.props.children;
   }
@@ -63,9 +63,9 @@ class ListaPreguntas extends Component {
         if (rtatexto == "NO") rta = 510;
         else rta = actual + 10;
         break;
-      case 510:
+      case 1420:
         if (rtatexto == "Decide solicitar ILE/IVE") rta = 520;
-        if (rtatexto == "Resuelve Aborto libre y feminista") rta = 680;
+        else if (rtatexto == "Resuelve Aborto libre y feminista") rta = 680;
         else rta = actual + 10;
         break;
       case 720:
@@ -136,7 +136,7 @@ class ListaPreguntas extends Component {
     //this.actualizarREP = this.actualizarREP.bind(this);
   }
   onUpdateActual = (orden, rtatexto) => {
-    //console.log("contactoid: ", this.props.contactoid);
+    //console.log("contactoid: ", this.props.id);
     //console.log("orden: ", orden);
     //console.log("rtatexto: ", rtatexto);
     //////////////////////////////////////////
@@ -172,8 +172,8 @@ class ListaPreguntas extends Component {
 
   routerCombos() {
     const laPregunta = this.props.preguntas[this.state.activeItem];
-    //console.log("RATATATATAA ", laPregunta.codigo);
-    if (laPregunta.codigo == "510")
+    //console.log("RATATATATAA ", laPregunta.contactoid);
+    if (laPregunta.codigo == "1420")
       return laPregunta.estado ? (
         <Rta510Update
           pregunta={laPregunta}
@@ -182,23 +182,6 @@ class ListaPreguntas extends Component {
         />
       ) : (
         <Rta510 pregunta={laPregunta} cambiarActual={this.onUpdateActual} />
-      );
-    else if (
-      laPregunta.codigo == "630" &&
-      laPregunta.momento == 2 &&
-      laPregunta.seccion ==
-        "Interrupción Legal e Interrupción Voluntaria del Embarazo"
-    )
-      return laPregunta.estado ? (
-        <Rta2doIle630Update
-          pregunta={laPregunta}
-          rta={this.obtenerRtaActual()}
-        />
-      ) : (
-        <Rta2doIle630
-          pregunta={laPregunta}
-          cambiarActual={this.onUpdateActual}
-        />
       );
     else {
       return laPregunta.estado ? (
@@ -333,9 +316,10 @@ class ListaPreguntas extends Component {
               {this.props.contacto.autonumerico}
             </Statistic.Value>
             <br />
-            <br />
 
-            <Statistic.Label>{"NIÑECES Y ADOLESCENCIAS"}</Statistic.Label>
+            <h2>
+              <Statistic.Label>{"+18"}</Statistic.Label>
+            </h2>
           </Statistic>
         </center>
       </Segment>
@@ -394,24 +378,24 @@ class ListaPreguntas extends Component {
 
             <Header textAlign="center">Escolaridad y Activismos</Header>
             <Menu vertical fluid>
-              {this.renderMenu(this.props.preguntas.slice(18, 30))}
+              {this.renderMenu(this.props.preguntas.slice(18, 21))}
             </Menu>
 
             <Header textAlign="center">Aspectos de su vida cotidiana</Header>
             <Menu vertical fluid>
-              {this.renderMenu(this.props.preguntas.slice(30, 35))}
+              {this.renderMenu(this.props.preguntas.slice(21, 27))}
             </Menu>
 
             <Header textAlign="center">
               Información ginecológica previa a este embarazo
             </Header>
             <Menu vertical fluid>
-              {this.renderMenu(this.props.preguntas.slice(35, 41))}
+              {this.renderMenu(this.props.preguntas.slice(27, 31))}
             </Menu>
 
             <Header textAlign="center">Embarazo actual</Header>
             <Menu vertical fluid>
-              {this.renderMenu(this.props.preguntas.slice(41, 51))}
+              {this.renderMenu(this.props.preguntas.slice(31, 42))}
             </Menu>
           </Segment>
         </Segment.Group>
@@ -436,7 +420,7 @@ class ListaPreguntas extends Component {
         <Segment style={{ overflow: "auto", maxHeight: 500 }}>
           <Header textAlign="center">Segundo Momento</Header>
           <Menu vertical fluid>
-            {this.renderMenu(this.props.preguntas.slice(51))}
+            {this.renderMenu(this.props.preguntas.slice(42))}
           </Menu>
         </Segment>
       </Segment.Group>
@@ -486,4 +470,4 @@ export default withTracker(({ preguntas, id }) => {
     isLoading: loading,
     contacto: Contacto.findOne(id)
   };
-})(ListaPreguntas);
+})(ListaPreguntasMujer);

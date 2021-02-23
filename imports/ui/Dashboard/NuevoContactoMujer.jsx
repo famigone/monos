@@ -6,10 +6,10 @@ import { Contacto } from "/imports/api/contacto.js";
 import ReactDOM from "react-dom";
 import SidebarExampleSidebar from "./SidebarExampleSidebar.js";
 import ListaPreguntas from "./ListaPreguntas.js";
-import NuevaPregunta from "./NuevaPregunta.jsx";
+import NuevaPreguntaMujer from "./NuevaPreguntaMujer.jsx";
 import "react-s-alert/dist/s-alert-default.css";
 import { insertContactoPreguntaBase } from "/api/methods.js";
-import { insertPregNena } from "/api/insertPreguntasMujer.js";
+import { insertPregMujer } from "/api/insertPreguntasMujer.js";
 export default class NuevoContactoMujer extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +25,6 @@ export default class NuevoContactoMujer extends Component {
       }
     });
 
-    return <NuevaPregunta id={cabeceraId} />;
+    return <NuevaPreguntaMujer id={cabeceraId} />;
   }
 }

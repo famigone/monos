@@ -24,7 +24,7 @@ import {
 
 //const App = () => (
 
-class NuevaPregunta extends Component {
+class NuevaPreguntaMujer extends Component {
   getContentView() {
     return this.props.children;
   }
@@ -36,7 +36,10 @@ class NuevaPregunta extends Component {
 
     return (
       <div>
-        <ListaPreguntas preguntas={this.props.preguntas} id={this.props.id} />
+        <ListaPreguntasMujer
+          preguntas={this.props.preguntas}
+          id={this.props.id}
+        />
       </div>
     );
   }
@@ -52,4 +55,4 @@ export default withTracker(({ id }) => {
     id: id,
     isLoading: loading
   };
-})(NuevaPregunta);
+})(NuevaPreguntaMujer);
