@@ -43,7 +43,7 @@ export default class RtaBooleanUpdate extends Component {
     this.state = { valor: this.props.rta.rtatexto, hidden: true };
   }
   handleChange = (e, { value }) => {
-    console.log(value);
+    //console.log(value);
     this.setState({ valor: value });
   };
   handleSubmit(event) {
@@ -121,7 +121,7 @@ export default class RtaBooleanUpdate extends Component {
             />
           </Form.Field>
 
-          <Button color="purple" type="submit">
+          <Button color="teal" type="submit">
             Guardar
           </Button>
         </Form>

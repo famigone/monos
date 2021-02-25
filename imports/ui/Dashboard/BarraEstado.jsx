@@ -67,6 +67,16 @@ export default class MenuExampleSecondary extends Component {
           <Menu.Item
             name="users"
             as={Link}
+            to="/reglas"
+            active={activeItem === "map"}
+            onClick={this.handleItemMap}
+          >
+            <Icon name="random" />
+          </Menu.Item>
+
+          <Menu.Item
+            name="users"
+            as={Link}
             to="/usuarios"
             active={activeItem === "map"}
             onClick={this.handleItemMap}

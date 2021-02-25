@@ -191,7 +191,7 @@ class ListaPreguntasMujer extends Component {
   routerCombos() {
     const laPregunta = this.props.preguntas[this.state.activeItem];
     //console.log("RATATATATAA ", laPregunta.contactoid);
-    console.log("laPregunta.estado ", laPregunta.estado);
+    //  console.log("laPregunta.estado ", laPregunta.estado);
     if (laPregunta.codigo == "1420")
       return laPregunta.estado ? (
         <RtaFinPrimerMomentoUpdate
@@ -210,10 +210,15 @@ class ListaPreguntasMujer extends Component {
         <RtaComboUpdate
           pregunta={laPregunta}
           cambiarActual={this.onUpdateActual}
+          respuestas={this.props.respuestas}
           rta={this.obtenerRtaActual()}
         />
       ) : (
-        <RtaCombo pregunta={laPregunta} cambiarActual={this.onUpdateActual} />
+        <RtaCombo
+          pregunta={laPregunta}
+          cambiarActual={this.onUpdateActual}
+          respuestas={this.props.respuestas}
+        />
       );
     }
   }
@@ -490,6 +495,7 @@ export default withTracker(({ preguntas, id }) => {
   return {
     preguntas: preguntas,
     isLoading: loading,
-    contacto: Contacto.findOne(id)
+    contacto: Contacto.findOne(id),
+    respuestas: Respuesta.find().fetch()
   };
 })(ListaPreguntasMujer);

@@ -5,6 +5,7 @@ import ContactoPregunta from "/imports/api/contactoPregunta.js";
 import ReactDOM from "react-dom";
 
 import { options } from "./combo";
+import { validar } from "./validar";
 import LoaderExampleText from "/imports/ui/Dashboard/LoaderExampleText.js";
 import "react-s-alert/dist/s-alert-default.css";
 import { insertRespuesta, updateContactoPregunta } from "/api/methods.js";
@@ -39,7 +40,7 @@ import {
 //const App = () => (
 
 export default class RtaCombo extends Component {
-  state = { valor: "", termino: false };
+  state = { valor: "", termino: false, validar: false };
 
   handleOnChange = (e, data) => {
     //console.log(data.value);
@@ -66,7 +67,16 @@ export default class RtaCombo extends Component {
       //  activo: true
     };
 
-    if (!(this.state.valor === "")) {
+    //if (!validar(this.props.))
+    let valido = validar(
+      this.props.respuestas,
+      this.props.pregunta.codigo,
+      this.state.valor
+    );
+
+    if (!valido) this.setState({ validar: true });
+    else this.setState({ validar: false });
+    if (!(this.state.valor === "") && valido) {
       // Call the Method
       //insertLocacion.validate(one);
       insertRespuesta.call(one, (err, res) => {
@@ -166,6 +176,12 @@ export default class RtaCombo extends Component {
             <Message.Header>
               <Icon name="heart outline" />
               Carga finalizada.
+            </Message.Header>
+          </Message>
+          <Message color="pink" floating hidden={!this.state.validar}>
+            <Message.Header>
+              <Icon size="huge" name="meh outline" />
+              Esa respuesta no es válida.
             </Message.Header>
           </Message>
         </Form>

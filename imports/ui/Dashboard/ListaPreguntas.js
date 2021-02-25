@@ -208,10 +208,15 @@ class ListaPreguntas extends Component {
         <RtaComboUpdate
           pregunta={laPregunta}
           cambiarActual={this.onUpdateActual}
+          respuestas={this.props.respuestas}
           rta={this.obtenerRtaActual()}
         />
       ) : (
-        <RtaCombo pregunta={laPregunta} cambiarActual={this.onUpdateActual} />
+        <RtaCombo
+          pregunta={laPregunta}
+          cambiarActual={this.onUpdateActual}
+          respuestas={this.props.respuestas}
+        />
       );
     }
   }
@@ -487,6 +492,7 @@ export default withTracker(({ preguntas, id }) => {
   return {
     preguntas: preguntas,
     isLoading: loading,
-    contacto: Contacto.findOne(id)
+    contacto: Contacto.findOne(id),
+    respuestas: Respuesta.find().fetch()
   };
 })(ListaPreguntas);

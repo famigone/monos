@@ -2,6 +2,7 @@
 import { ValidatedMethod } from "meteor/mdg:validated-method";
 import ContactoPregunta from "/imports/api/contactoPregunta.js";
 import Respuesta from "/imports/api/respuesta.js";
+import Regla from "/imports/api/regla.js";
 import { Accounts } from "meteor/accounts-base";
 import { Meteor } from "meteor/meteor";
 //import { Mongo } from "meteor/mongo";
@@ -237,6 +238,71 @@ export const insertPregunta = new ValidatedMethod({
   run(one) {
     one.activo = true;
     Pregunta.insert(one);
+  }
+});
+
+export const insertRegla = new ValidatedMethod({
+  name: "regla.insert",
+  validate: new SimpleSchema({
+    tipoOrigen: {
+      type: String
+    },
+    condicion: {
+      type: Number
+    },
+    textoPreguntaOrigen: { type: String },
+    textoPreguntaDestino: { type: String },
+    codigoPreguntaOrigen: {
+      type: String
+    }, //idContacto
+    rtaOrigen: { type: String },
+
+    tipoDestino: {
+      type: String
+    },
+    codigoPreguntaDestino: {
+      type: String
+    }, //idContacto
+    rtaDestino: { type: String },
+
+    activo: {
+      type: Boolean
+    }, //borrado lógico
+    createdBy: {
+      type: String,
+      optional: true,
+      autoValue: function() {
+        return this.userId;
+      }
+    },
+    createdAt: {
+      type: Date,
+      optional: true,
+      autoValue: function() {
+        return new Date();
+      }
+    }
+  }).validator(),
+  run(one) {
+    one.activo = true;
+    Regla.insert(one);
+  }
+});
+export const deleteRegla = new ValidatedMethod({
+  name: "deleteRegla",
+  validate: new SimpleSchema({
+    id: { type: String, regEx: SimpleSchema.RegEx.Id }
+  }).validator(),
+  run(one) {
+    //console.log("one.contactoid ", one.contactoid);
+    return Regla.update(
+      { _id: one.id },
+      {
+        $set: {
+          activo: false
+        }
+      }
+    );
   }
 });
 

@@ -20,6 +20,8 @@ import PrivateRoute from "./PrivateRoute.jsx";
 import NuevoContacto from "../../ui/Dashboard/NuevoContacto.jsx";
 import NuevoContactoMujer from "../../ui/Dashboard/NuevoContactoMujer.jsx";
 import ListadoConsultas from "../../ui/Dashboard/listadoConsultas.jsx";
+import ReglasHome from "../../ui/Dashboard/ReglasHome.jsx";
+
 import AbmUsuarios from "../../ui/Dashboard/abmUsuarios.jsx";
 import NuevaPregunta from "../../ui/Dashboard/NuevaPregunta.jsx";
 import Analisis from "../../ui/Dashboard/Analisis.jsx";
@@ -60,6 +62,7 @@ export const Ruteador = () => (
         <Route exact path="/analisis" component={Analisis} />
         <Route exact path="/usuarios" component={AbmUsuarios} />
         <Route exact path="/cabecerafuncional" component={CabeceraFuncional} />
+        <Route exact path="/reglas" component={ReglasHome} />
       </App>
     </Switch>
   </Router>

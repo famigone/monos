@@ -57,7 +57,7 @@ class Consultas extends Component {
 
   renderTable() {
     return (
-      <Table celled>
+      <Table fixed celled>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>

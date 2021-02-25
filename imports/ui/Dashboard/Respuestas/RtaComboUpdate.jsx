@@ -4,6 +4,7 @@ import PropTypes from "prop-types"; // ES6
 import ContactoPregunta from "/imports/api/contactoPregunta.js";
 import ReactDOM from "react-dom";
 import { options } from "./combo";
+import { validar } from "./validar";
 import LoaderExampleText from "/imports/ui/Dashboard/LoaderExampleText.js";
 import "react-s-alert/dist/s-alert-default.css";
 import { updateRespuestaString, updateContactoPregunta } from "/api/methods.js";
@@ -43,7 +44,8 @@ export default class RtaComboUpdate extends Component {
     valor: this.props.rta.rtatexto,
     otro: this.props.rta.especifique,
     hidden: true,
-    termino: this.setTermino()
+    termino: this.setTermino(),
+    validar: false
   };
   setTermino() {
     var parar =
@@ -95,15 +97,26 @@ export default class RtaComboUpdate extends Component {
     };
     // Call the Method
     //insertLocacion.validate(one);
-    updateRespuestaString.call(one, (err, res) => {
-      if (err) {
-        console.log(err);
-      } else {
-        this.setState({
-          hidden: false
-        });
-      }
-    });
+    let valido = validar(
+      this.props.respuestas,
+      this.props.pregunta.codigo,
+      this.state.valor
+    );
+
+    if (!valido) {
+      this.setState({ validar: true });
+    } else this.setState({ validar: false });
+    if (valido) {
+      updateRespuestaString.call(one, (err, res) => {
+        if (err) {
+          console.log(err);
+        } else {
+          this.setState({
+            hidden: false
+          });
+        }
+      });
+    }
     // Clear form
   }
 
@@ -155,7 +168,7 @@ export default class RtaComboUpdate extends Component {
               </Form.Field>
             ) : null}
           </Form.Group>
-          <Button color="purple" type="submit">
+          <Button color="teal" type="submit">
             Guardar
           </Button>
         </Form>
@@ -171,12 +184,18 @@ export default class RtaComboUpdate extends Component {
             Carga finalizada.
           </Message.Header>
         </Message>
+        <Message color="pink" floating hidden={!this.state.validar}>
+          <Message.Header>
+            <Icon size="huge" name="meh outline" />
+            Esa respuesta no es válida.
+          </Message.Header>
+        </Message>
       </div>
     );
   }
 
   render() {
-    console.log(this.props.pregunta.contactoid);
+    //console.log(this.props.pregunta.contactoid);
     return this.renderForm();
   }
 }

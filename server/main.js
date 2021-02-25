@@ -5,12 +5,12 @@ import "/api/insertPreguntasMujer.js";
 import "/api/insertPreguntasNena.js";
 import "/api/insertPreguntasNenaSegundoFem.js";
 import "/api/insertPreguntasNenaSegundoILE.js";
-
 import "/api/server/publications.js";
 import "../imports/api/pregunta.js";
 import "../imports/api/contacto.js";
 import "../imports/api/contactoPregunta.js";
 import "../imports/api/respuesta.js";
+import "../imports/api/regla.js";
 
 Meteor.startup(() => {
   //let server = Meteor.settings.mqttHost;
