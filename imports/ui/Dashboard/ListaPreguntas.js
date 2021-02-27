@@ -115,9 +115,9 @@ class ListaPreguntas extends Component {
       menuActivo: this.props.preguntas[pos].texto,
       tipo: this.props.preguntas[pos].tipo
     });
-    console.log("item actual: ", this.props.preguntas[pos].texto);
-    console.log("tipo actual: ", this.props.preguntas[pos].tipo);
-    console.log("estado: ", this.props.preguntas[pos].estado);
+    //  console.log("item actual: ", this.props.preguntas[pos].texto);
+    //  console.log("tipo actual: ", this.props.preguntas[pos].tipo);
+    //  console.log("estado: ", this.props.preguntas[pos].estado);
 
     //this.onUpdateActual(name);
   };
@@ -175,7 +175,7 @@ class ListaPreguntas extends Component {
 
   routerCombos() {
     const laPregunta = this.props.preguntas[this.state.activeItem];
-    console.log("entro en routerCombos ", laPregunta.codigo);
+    //console.log("entro en routerCombos ", laPregunta.codigo);
     if (laPregunta.codigo == "510")
       return laPregunta.estado ? (
         <RtaFinPrimerMomentoUpdate

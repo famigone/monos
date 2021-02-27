@@ -120,19 +120,20 @@ export default class RtaMultiple extends Component {
           this.refs.inputRespuesta
         ).value.trim();
       //como es múltiple
+      let mensaje = validar(
+        this.props.respuestas,
+        this.props.pregunta.codigo,
+        this.state.valor,
+        this.props.reglas,
+        this.props.pregunta.tipo
+      );
+      valido = mensaje == "";
 
       this.state.valor.forEach(rta => {
-        let mensaje = validar(
-          this.props.respuestas,
-          this.props.pregunta.codigo,
-          this.state.valor,
-          this.props.reglas
-        );
-        valido = mensaje == "";
-        console.log("VALIDOOO ", valido);
-        if (!valido) this.setState({ hiddeValidar: false });
+        if (!valido)
+          this.setState({ hiddeValidar: false, mensajeError: mensaje });
         else {
-          this.setState({ hiddeValidar: true, mensajeError: mensaje });
+          this.setState({ hiddeValidar: true });
           var one = {
             contactoid: this.props.pregunta.contactoid,
             contactopreguntaid: this.props.pregunta._id,
@@ -141,7 +142,7 @@ export default class RtaMultiple extends Component {
             especifique: inputRespuesta
             //  activo: true
           };
-          console.log("INSERTO UN MÚLTIPLE");
+          //  console.log("INSERTO UN MÚLTIPLE");
           insertRespuesta.call(one, (err, res) => {
             if (err) {
               console.log(err);

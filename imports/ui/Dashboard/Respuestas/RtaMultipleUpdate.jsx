@@ -156,7 +156,7 @@ export default class RtaMultipleUpdate extends Component {
                 search
                 selection
                 multiple
-                value={this.state.valor}
+                value={this.armarCadena()}
                 onChange={this.handleOnChange}
                 options={options[this.props.pregunta.orden]}
               />

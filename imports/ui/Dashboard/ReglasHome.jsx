@@ -164,7 +164,7 @@ class ReglasHome extends Component {
 
   handlePreguntaDestino = (e, data) => {
     e.persist();
-
+    //  console.log(e.target.textContent);
     this.setState({
       seleccionRespuestaDestino: options[data.value],
       codigoPreguntaDestino: data.value,

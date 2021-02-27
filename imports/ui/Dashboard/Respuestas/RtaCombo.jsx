@@ -81,7 +81,8 @@ export default class RtaCombo extends Component {
       this.props.respuestas,
       this.props.pregunta.codigo,
       this.state.valor,
-      this.props.reglas
+      this.props.reglas,
+      this.props.pregunta.tipo
     );
 
     var valido = mensaje == "";

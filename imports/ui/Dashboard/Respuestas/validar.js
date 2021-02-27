@@ -1,8 +1,9 @@
-export function validar(respuestas, codigoPreguntaDestino, rta, reglas) {
+export function validar(respuestas, codigoPreguntaDestino, rta, reglas, tipo) {
   console.log("respuestas ", respuestas);
   console.log("codigoPreguntaDestino ", codigoPreguntaDestino);
   console.log("rta ", rta);
   console.log("reglas ", reglas);
+
   var valido = true;
 
   //obtengo todas las reglas que correspondan a la pregunta actual.
@@ -29,16 +30,29 @@ export function validar(respuestas, codigoPreguntaDestino, rta, reglas) {
       switch (reglaActual.condicion) {
         //igual a
         case 1:
-          valido = rta == reglaActual.rtaDestino;
+          if (tipo !== "M") valido = cumpleCombo(rta, reglaActual.rtaDestino);
+          else valido = cumpleMultiple(rta, reglaActual.rtaDestino);
+          //console.log("cumple concecuente: ", valido);
+          break;
         //distinto de
         case 2:
-          valido = rta !== reglaActual.rtaDestino;
+          //valido = rta !== reglaActual.rtaDestino;
+          if (tipo !== "M") valido = !cumpleCombo(rta, reglaActual.rtaDestino);
+          else valido = !cumpleMultiple(rta, reglaActual.rtaDestino);
+
+          console.log("rta : ", rta);
+          console.log("reglaActual.rtaDestino : ", reglaActual.rtaDestino);
+          break;
       }
     }
     i++;
   }
   var mensaje = "";
-  if (!valido) mensaje = reglaActual.mensaje;
+  console.log("que mierda pasa con valido: ", valido);
+  if (!valido) {
+    mensaje = reglaActual.mensaje;
+    console.log("suelta mensaje: ", reglaActual.mensaje);
+  }
   console.log("mensaje: ", mensaje);
   return mensaje;
 }
@@ -57,9 +71,17 @@ function buscarRtatexto(respuestas, codigo) {
   return respuestas[i - 1].rtatexto;
 }
 
+function cumpleCombo(rta, rtaDestino) {
+  return rta == rtaDestino;
+}
+function cumpleMultiple(rta, rtaDestino) {
+  return rta.includes(rtaDestino);
+}
 function obtenerReglas(reglas, codigoPreguntaDestino) {
   const misReglas = [];
   for (var i = 0; i < reglas.length; i++) {
+    console.log("compara ", reglas[i].codigoPreguntaDestino);
+    console.log("con ", codigoPreguntaDestino);
     if (Number(reglas[i].codigoPreguntaDestino) == codigoPreguntaDestino)
       misReglas.push(reglas[i]);
   }
