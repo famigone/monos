@@ -48,6 +48,7 @@ class Reglas extends Component {
         <Table.Cell>
           {regla.condicion == 1 ? "Igual a" : "Distinta de"}
         </Table.Cell>
+        <Table.Cell>{regla.mensaje}</Table.Cell>
       </Table.Row>
     ));
   }
@@ -59,26 +60,28 @@ class Reglas extends Component {
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>
-                <h4>TIPO ORIGEN</h4>
+                <h4>Tipo Antecedente</h4>
               </Table.HeaderCell>
               <Table.HeaderCell>
-                <h4>PREGUNTA ORIGEN</h4>
+                <h4>Pregunta Antecedente</h4>
               </Table.HeaderCell>
               <Table.HeaderCell>
-                <h4>RESPUESTA ORIGEN</h4>
+                <h4>Respuesta Antecedente</h4>
               </Table.HeaderCell>
               <Table.HeaderCell>
-                <h4>TIPO DESTINO</h4>
+                <h4>Tipo Consecuente</h4>
               </Table.HeaderCell>
               <Table.HeaderCell>
-                <h4>PREGUNTA DESTINO</h4>
+                <h4>Pregunta Consecuente</h4>
               </Table.HeaderCell>
               <Table.HeaderCell>
-                <h4>RESPUESTA DESTINO</h4>
+                <h4>Respuesta Consecuente</h4>
               </Table.HeaderCell>
-
               <Table.HeaderCell>
-                <h4>CONDICIÓN</h4>
+                <h4>Condición</h4>
+              </Table.HeaderCell>
+              <Table.HeaderCell>
+                <h4>Mensaje</h4>
               </Table.HeaderCell>
             </Table.Row>
           </Table.Header>

@@ -12,6 +12,9 @@ Regla.schema = new SimpleSchema({
   condicion: {
     type: Number
   },
+  mensaje: {
+    type: String
+  },
   codigoPreguntaOrigen: {
     type: String
   }, //idContacto

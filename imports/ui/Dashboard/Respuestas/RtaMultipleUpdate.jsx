@@ -44,6 +44,7 @@ import {
 export default class RtaMultipleUpdate extends Component {
   constructor(props) {
     super(props);
+    console.log("entrooooooooooo de nuevo");
     console.log(this.props.rtas);
     this.state = {
       hiddenFin: true,
@@ -57,6 +58,7 @@ export default class RtaMultipleUpdate extends Component {
     this.props.rtas.forEach(rta => {
       cad.push(rta.rtatexto);
     });
+    console.log("Armo cadena: ", cad);
     return cad;
   }
 

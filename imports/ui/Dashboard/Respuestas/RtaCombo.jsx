@@ -40,7 +40,16 @@ import {
 //const App = () => (
 
 export default class RtaCombo extends Component {
-  state = { valor: "", termino: false, validar: false };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      valor: "",
+      termino: false,
+      hiddeValidar: true,
+      mensajeError: ""
+    };
+  }
 
   handleOnChange = (e, data) => {
     //console.log(data.value);
@@ -68,14 +77,17 @@ export default class RtaCombo extends Component {
     };
 
     //if (!validar(this.props.))
-    let valido = validar(
+    let mensaje = validar(
       this.props.respuestas,
       this.props.pregunta.codigo,
-      this.state.valor
+      this.state.valor,
+      this.props.reglas
     );
 
-    if (!valido) this.setState({ validar: true });
-    else this.setState({ validar: false });
+    var valido = mensaje == "";
+    if (valido) this.setState({ hiddeValidar: true });
+    else this.setState({ hiddeValidar: false, mensajeError: mensaje });
+    //console.log("validooooooooo essss: ", valido);
     if (!(this.state.valor === "") && valido) {
       // Call the Method
       //insertLocacion.validate(one);
@@ -178,10 +190,10 @@ export default class RtaCombo extends Component {
               Carga finalizada.
             </Message.Header>
           </Message>
-          <Message color="pink" floating hidden={!this.state.validar}>
+          <Message color="pink" floating hidden={this.state.hiddeValidar}>
             <Message.Header>
               <Icon size="huge" name="meh outline" />
-              Esa respuesta no es válida.
+              {this.state.mensajeError}
             </Message.Header>
           </Message>
         </Form>

@@ -30,6 +30,7 @@ import {
   Menu,
   Confirm,
   Table,
+  TextArea,
   Message,
   Segment,
   List,
@@ -75,7 +76,8 @@ class ReglasHome extends Component {
       TextoPreguntaOrigen: "",
       TextoPreguntaDestino: "",
       codigoPreguntaDestino: "",
-      codigoPreguntaOrigen: ""
+      codigoPreguntaOrigen: "",
+      Mensaje: ""
     };
   }
 
@@ -92,7 +94,7 @@ class ReglasHome extends Component {
 
     const one = {
       tipoOrigen: this.state.TipoOrigen,
-      codigoPreguntaOrigen: String(this.state.codigoPreguntaDestino),
+      codigoPreguntaOrigen: String(this.state.codigoPreguntaOrigen),
       rtaOrigen: this.state.RespuestaOrigen,
       tipoDestino: this.state.TipoDestino,
       codigoPreguntaDestino: String(this.state.codigoPreguntaDestino),
@@ -100,15 +102,16 @@ class ReglasHome extends Component {
       condicion: this.state.Condicion,
       activo: true,
       textoPreguntaOrigen: this.state.TextoPreguntaOrigen,
-      textoPreguntaDestino: this.state.TextoPreguntaDestino
+      textoPreguntaDestino: this.state.TextoPreguntaDestino,
+      mensaje: this.state.Mensaje
     };
-    console.log(one);
+    //console.log(one);
     //  if (one.TipoOrigen !== ""){
     insertRegla.call(one, (err, res) => {
       if (err) {
         console.log(err);
       } else {
-        console.log("insertoooooo");
+        //  console.log("insertoooooo");
       }
     });
   }
@@ -177,6 +180,11 @@ class ReglasHome extends Component {
   };
   handleRespuestaDestino = (e, data) => {
     this.setState({ RespuestaDestino: data.value });
+  };
+  handleMensaje = (e, data) => {
+    //  console.log(data.value);
+    this.setState({ Mensaje: data.value });
+    //  console.log(this.state.Mensaje);
   };
   eliminar() {
     const one = { id: this.state.reglaid };
@@ -315,13 +323,19 @@ class ReglasHome extends Component {
             <Header.Subheader>Debe ser</Header.Subheader>
           </Header.Content>
         </Header>
-        <Form.Group align={"center"}>
+        <Form.Group widths="equal">
           <Form.Field>
             <Dropdown
               placeholder="Condición"
               selection
               onChange={this.handleCondicion}
               options={this.getCondicion()}
+            />
+          </Form.Field>
+          <Form.Field>
+            <TextArea
+              placeholder="Mensaje de validación"
+              onChange={this.handleMensaje}
             />
           </Form.Field>
         </Form.Group>

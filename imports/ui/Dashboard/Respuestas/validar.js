@@ -1,28 +1,46 @@
-export function validar(respuestas, pregunta, rta) {
+export function validar(respuestas, codigoPreguntaDestino, rta, reglas) {
   console.log("respuestas ", respuestas);
-  console.log("pregunta ", pregunta);
+  console.log("codigoPreguntaDestino ", codigoPreguntaDestino);
   console.log("rta ", rta);
-  var valido = false;
-  switch (Number(pregunta)) {
-    case 120:
-      valido =
-        buscarRtatexto(respuestas, 110) == "NO" &&
-        rta == "Fue acompañadx en un aborto anterior";
-      break;
-    case 340:
-      valido =
-        buscarRtatexto(respuestas, 130) ==
-          "Sí: Porque estoy en situación de violencia" && rta == "No";
-      break;
-    case 160:
-      valido =
-        buscarRtatexto(respuestas, 150) == "Nadie sabe" &&
-        rta !== "Nadie me acompaña";
-      break;
-    default:
-      break;
+  console.log("reglas ", reglas);
+  var valido = true;
+
+  //obtengo todas las reglas que correspondan a la pregunta actual.
+  const misReglas = obtenerReglas(reglas, codigoPreguntaDestino);
+  console.log("mis reglas filtradas: ", misReglas);
+  var i = 0;
+  var reglaActual;
+  //itero sobre las reglas de la pregunta actual y valido que se cumplan todas
+  while (i < misReglas.length && valido) {
+    reglaActual = misReglas[i];
+    console.log("reglaActual: ", reglaActual);
+
+    //obtengo la respuesta que dió en la pregunta Antecedente
+    rtaAntecedente = buscarRtatexto(
+      respuestas,
+      reglaActual.codigoPreguntaOrigen
+    );
+    console.log("rtaAntecedente: ", rtaAntecedente);
+    //determino si la rta está alcanzada por la regla
+    var cumpleAntecedente = rtaAntecedente == reglaActual.rtaOrigen;
+    console.log("cumpleAntecedente: ", cumpleAntecedente);
+    //si cumple antecedente, debe cumplir consecuente
+    if (cumpleAntecedente) {
+      switch (reglaActual.condicion) {
+        //igual a
+        case 1:
+          valido = rta == reglaActual.rtaDestino;
+        //distinto de
+        case 2:
+          valido = rta !== reglaActual.rtaDestino;
+      }
+    }
+    i++;
   }
-  return !valido;
+  var mensaje = "";
+  if (!valido) mensaje = reglaActual.mensaje;
+  console.log("mensaje: ", mensaje);
+  return mensaje;
 }
 
 function buscarRtatexto(respuestas, codigo) {
@@ -31,10 +49,19 @@ function buscarRtatexto(respuestas, codigo) {
   while (i < respuestas.length && !parar) {
     //console.log("i: ", i);
     //console.log("Number(respuestas[i].codigo)", Number(respuestas[i].codigo));
-    parar = Number(respuestas[i].codigo) == codigo;
+    parar = respuestas[i].codigo == codigo;
     i++;
   }
   //console.log("i ", i);
   //console.log("respuestas[i].rtatexto ", respuestas[i - 1].rtatexto);
   return respuestas[i - 1].rtatexto;
+}
+
+function obtenerReglas(reglas, codigoPreguntaDestino) {
+  const misReglas = [];
+  for (var i = 0; i < reglas.length; i++) {
+    if (Number(reglas[i].codigoPreguntaDestino) == codigoPreguntaDestino)
+      misReglas.push(reglas[i]);
+  }
+  return misReglas;
 }

@@ -115,7 +115,10 @@ class ListaPreguntas extends Component {
       menuActivo: this.props.preguntas[pos].texto,
       tipo: this.props.preguntas[pos].tipo
     });
-    //  console.log("itema actual: ", this.props.preguntas[pos].texto);
+    console.log("item actual: ", this.props.preguntas[pos].texto);
+    console.log("tipo actual: ", this.props.preguntas[pos].tipo);
+    console.log("estado: ", this.props.preguntas[pos].estado);
+
     //this.onUpdateActual(name);
   };
   constructor(props) {
@@ -172,7 +175,7 @@ class ListaPreguntas extends Component {
 
   routerCombos() {
     const laPregunta = this.props.preguntas[this.state.activeItem];
-    //console.log("RATATATATAA ", laPregunta.codigo);
+    console.log("entro en routerCombos ", laPregunta.codigo);
     if (laPregunta.codigo == "510")
       return laPregunta.estado ? (
         <RtaFinPrimerMomentoUpdate
@@ -210,12 +213,14 @@ class ListaPreguntas extends Component {
           cambiarActual={this.onUpdateActual}
           respuestas={this.props.respuestas}
           rta={this.obtenerRtaActual()}
+          reglas={this.props.reglas}
         />
       ) : (
         <RtaCombo
           pregunta={laPregunta}
           cambiarActual={this.onUpdateActual}
           respuestas={this.props.respuestas}
+          reglas={this.props.reglas}
         />
       );
     }
@@ -232,7 +237,6 @@ class ListaPreguntas extends Component {
   obtenerRtas() {
     //console.log("itema activo " + this.state.activeItem);
     //console.log(Respuestas.findOne({ codigo: String(this.state.activeItem) }));
-    //console.log("codigo que pincha: " + String(this.state.activeItem));
     return Respuesta.find({
       //contactoid: this.props.id,
       codigo: String(this.props.preguntas[this.state.activeItem].codigo),
@@ -301,11 +305,15 @@ class ListaPreguntas extends Component {
             pregunta={laPregunta}
             cambiarActual={this.onUpdateActual}
             rtas={this.obtenerRtas()}
+            reglas={this.props.reglas}
+            respuestas={this.props.respuestas}
           />
         ) : (
           <RtaMultiple
             pregunta={laPregunta}
             cambiarActual={this.onUpdateActual}
+            reglas={this.props.reglas}
+            respuestas={this.props.respuestas}
           />
         );
         break;
@@ -317,11 +325,13 @@ class ListaPreguntas extends Component {
             pregunta={laPregunta}
             cambiarActual={this.onUpdateActual}
             rta={this.obtenerRtaActual()}
+            reglas={this.props.reglas}
           />
         ) : (
           <RtaBoolean
             pregunta={laPregunta}
             cambiarActual={this.onUpdateActual}
+            reglas={this.props.reglas}
           />
         );
         break;
@@ -485,7 +495,8 @@ export default withTracker(({ preguntas, id }) => {
   const handles = [
     //Meteor.subscribe("contactopregunta", id),
     Meteor.subscribe("respuestaOne", id),
-    Meteor.subscribe("contactoOne", id)
+    Meteor.subscribe("contactoOne", id),
+    Meteor.subscribe("reglas")
   ];
   //  console.log("contactoid:" + id);
   const loading = handles.some(handle => !handle.ready());
@@ -493,6 +504,7 @@ export default withTracker(({ preguntas, id }) => {
     preguntas: preguntas,
     isLoading: loading,
     contacto: Contacto.findOne(id),
-    respuestas: Respuesta.find().fetch()
+    respuestas: Respuesta.find().fetch(),
+    reglas: Regla.find().fetch()
   };
 })(ListaPreguntas);

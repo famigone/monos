@@ -10,6 +10,7 @@ export var options = [];
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
+
 options[1400] = [
   {
     key: 1,
@@ -3079,5 +3080,541 @@ options[170] = [
     key: 14,
     text: "Otrxs",
     value: "Otrxs"
+  }
+];
+
+//////////////////////////////////
+// acá ponemos todas las respuestas buleanas para las reglas...
+// necesito un desplegable en las reglas, y como boolean no tiene desplegable
+// armo uno a cada Boolean////////
+/////////////////////////////////
+
+options[90] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[100] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[110] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[140] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[180] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[290] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[300] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[310] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[330] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[350] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[360] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[370] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[380] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[390] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[420] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[440] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[460] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[500] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[1080] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[1090] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[1100] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[1130] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[1140] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[1180] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[1200] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[1240] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[1260] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[1280] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[1290] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[1300] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[1330] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[1350] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[1370] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[1410] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+
+options[520] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[570] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[590] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[640] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[720] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[730] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[740] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[750] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[770] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
+  }
+];
+options[780] = [
+  {
+    key: 1,
+    text: "SI",
+    value: "SI"
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: "NO"
   }
 ];

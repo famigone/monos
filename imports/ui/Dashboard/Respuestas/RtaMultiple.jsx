@@ -4,6 +4,7 @@ import PropTypes from "prop-types"; // ES6
 import ContactoPregunta from "/imports/api/contactoPregunta.js";
 import ReactDOM from "react-dom";
 import { options } from "./comboMultiple";
+import { validar } from "./validar";
 import LoaderExampleText from "/imports/ui/Dashboard/LoaderExampleText.js";
 import "react-s-alert/dist/s-alert-default.css";
 import { insertRespuesta, updateContactoPregunta } from "/api/methods.js";
@@ -38,7 +39,7 @@ import {
 //const App = () => (
 
 export default class RtaMultiple extends Component {
-  state = { valor: "" };
+  state = { valor: "", hiddeValidar: true, mensajeError: "" };
 
   renderForm() {
     return (
@@ -84,6 +85,12 @@ export default class RtaMultiple extends Component {
               </Form.Field>
             ) : null}
           </Form.Group>
+          <Message color="pink" floating hidden={this.state.hiddeValidar}>
+            <Message.Header>
+              <Icon size="huge" name="meh outline" />
+              {this.state.mensajeError}
+            </Message.Header>
+          </Message>
           <Button color="teal" type="submit">
             Siguiente
           </Button>
@@ -105,7 +112,7 @@ export default class RtaMultiple extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-
+    var valido = true;
     if (!(this.state.valor === "")) {
       var inputRespuesta;
       if (this.state.valor === "Otros")
@@ -115,22 +122,35 @@ export default class RtaMultiple extends Component {
       //como es múltiple
 
       this.state.valor.forEach(rta => {
-        var one = {
-          contactoid: this.props.pregunta.contactoid,
-          contactopreguntaid: this.props.pregunta._id,
-          codigo: this.props.pregunta.codigo,
-          rtatexto: rta,
-          especifique: inputRespuesta
-          //  activo: true
-        };
-        insertRespuesta.call(one, (err, res) => {
-          if (err) {
-            console.log(err);
-          }
-        });
+        let mensaje = validar(
+          this.props.respuestas,
+          this.props.pregunta.codigo,
+          this.state.valor,
+          this.props.reglas
+        );
+        valido = mensaje == "";
+        console.log("VALIDOOO ", valido);
+        if (!valido) this.setState({ hiddeValidar: false });
+        else {
+          this.setState({ hiddeValidar: true, mensajeError: mensaje });
+          var one = {
+            contactoid: this.props.pregunta.contactoid,
+            contactopreguntaid: this.props.pregunta._id,
+            codigo: this.props.pregunta.codigo,
+            rtatexto: rta,
+            especifique: inputRespuesta
+            //  activo: true
+          };
+          console.log("INSERTO UN MÚLTIPLE");
+          insertRespuesta.call(one, (err, res) => {
+            if (err) {
+              console.log(err);
+            }
+          });
+        }
       });
 
-      if (!(this.state.valor === "")) {
+      if (!(this.state.valor === "") && valido) {
         const two = { id: this.props.pregunta._id };
         updateContactoPregunta.call(two, (err, res) => {
           if (err) {

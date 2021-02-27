@@ -43,9 +43,11 @@ export default class RtaComboUpdate extends Component {
   state = {
     valor: this.props.rta.rtatexto,
     otro: this.props.rta.especifique,
-    hidden: true,
+    hiddeValidar: true,
+    mensajeError: "",
     termino: this.setTermino(),
-    validar: false
+    validar: false,
+    hidden: true
   };
   setTermino() {
     var parar =
@@ -95,17 +97,22 @@ export default class RtaComboUpdate extends Component {
       //activo: this.props.rta.activo
       //  activo: true
     };
-    // Call the Method
-    //insertLocacion.validate(one);
-    let valido = validar(
+
+    let mensaje = validar(
       this.props.respuestas,
       this.props.pregunta.codigo,
-      this.state.valor
+      this.state.valor,
+      this.props.reglas
     );
 
-    if (!valido) {
+    var valido = mensaje == "";
+    if (valido) this.setState({ hiddeValidar: true });
+    else this.setState({ hiddeValidar: false, mensajeError: mensaje }); //
+    //console.log("validooooooooo essss: ", valido);
+    if (valido) {
       this.setState({ validar: true });
     } else this.setState({ validar: false });
+    var valido = true;
     if (valido) {
       updateRespuestaString.call(one, (err, res) => {
         if (err) {
@@ -121,6 +128,8 @@ export default class RtaComboUpdate extends Component {
   }
 
   renderForm() {
+    //  console.log("dentro update: ", this.state.valor);
+    //  console.log("opciones ", options[Number(this.props.pregunta.codigo)]);
     return (
       <div>
         <Container textAlign="right">
@@ -152,7 +161,7 @@ export default class RtaComboUpdate extends Component {
                 placeholder="Seleccionar"
                 search
                 selection
-                value={this.state.valor}
+                value={this.props.rta.rtatexto}
                 onChange={this.handleOnChange}
                 options={options[Number(this.props.pregunta.codigo)]}
               />
@@ -162,7 +171,7 @@ export default class RtaComboUpdate extends Component {
                 <input
                   ref="inputRespuesta"
                   placeholder="Especifique"
-                  value={this.state.otro}
+                  value={this.props.rta.especifique}
                   onChange={this.handleOnChangeOtro}
                 />
               </Form.Field>
@@ -184,10 +193,10 @@ export default class RtaComboUpdate extends Component {
             Carga finalizada.
           </Message.Header>
         </Message>
-        <Message color="pink" floating hidden={!this.state.validar}>
+        <Message color="pink" floating hidden={this.state.hiddeValidar}>
           <Message.Header>
             <Icon size="huge" name="meh outline" />
-            Esa respuesta no es válida.
+            {this.state.mensajeError}
           </Message.Header>
         </Message>
       </div>

@@ -250,6 +250,9 @@ export const insertRegla = new ValidatedMethod({
     condicion: {
       type: Number
     },
+    mensaje: {
+      type: String
+    },
     textoPreguntaOrigen: { type: String },
     textoPreguntaDestino: { type: String },
     codigoPreguntaOrigen: {
