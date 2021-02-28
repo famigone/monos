@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types"; // ES6
 import ContactoPregunta from "/imports/api/contactoPregunta.js";
 import ReactDOM from "react-dom";
-
+import { validar } from "./validar";
 import LoaderExampleText from "/imports/ui/Dashboard/LoaderExampleText.js";
 import "react-s-alert/dist/s-alert-default.css";
 import { insertRespuesta, updateContactoPregunta } from "/api/methods.js";
@@ -38,7 +38,11 @@ import {
 //const App = () => (
 
 export default class RtaBoolean extends Component {
-  state = { valor: null };
+  state = {
+    valor: null,
+    hiddeValidar: true,
+    mensajeError: ""
+  };
   handleChange = (e, { value }) => this.setState({ valor: value });
 
   handleSubmit(event) {
@@ -53,25 +57,38 @@ export default class RtaBoolean extends Component {
         rtatexto: this.state.valor
         //  activo: true
       };
+      let mensaje = validar(
+        this.props.respuestas,
+        this.props.pregunta.codigo,
+        this.state.valor,
+        this.props.reglas,
+        this.props.pregunta.tipo
+      );
+      var valido = mensaje == "";
+      if (valido) this.setState({ hiddeValidar: true });
+      else this.setState({ hiddeValidar: false, mensajeError: mensaje });
+
       // Call the Method
       //insertLocacion.validate(one);
-      insertRespuesta.call(one, (err, res) => {
-        if (err) {
-          console.log(err);
-        } else {
-          this.setState({ valor: null });
-          //marcar la contactoPregunta como contestada
-          const two = { id: this.props.pregunta._id };
-          updateContactoPregunta.call(two, (err, res) => {
-            if (err) {
-              console.log(err);
-            } else {
-            }
-          });
-          // seteamos el nuevo Actual
-          this.props.cambiarActual(this.props.pregunta.codigo, one.rtatexto);
-        }
-      });
+      if (valido) {
+        insertRespuesta.call(one, (err, res) => {
+          if (err) {
+            console.log(err);
+          } else {
+            this.setState({ valor: null });
+            //marcar la contactoPregunta como contestada
+            const two = { id: this.props.pregunta._id };
+            updateContactoPregunta.call(two, (err, res) => {
+              if (err) {
+                console.log(err);
+              } else {
+              }
+            });
+            // seteamos el nuevo Actual
+            this.props.cambiarActual(this.props.pregunta.codigo, one.rtatexto);
+          }
+        });
+      }
     }
     // Clear form
     //  ReactDOM.findDOMNode(this.refs.inputRespuesta).value = "";
@@ -123,7 +140,12 @@ export default class RtaBoolean extends Component {
               onChange={this.handleChange}
             />
           </Form.Field>
-
+          <Message color="pink" floating hidden={this.state.hiddeValidar}>
+            <Message.Header>
+              <Icon size="huge" name="meh outline" />
+              {this.state.mensajeError}
+            </Message.Header>
+          </Message>
           <Button color="purple" type="submit">
             Siguiente
           </Button>

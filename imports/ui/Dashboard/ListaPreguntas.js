@@ -115,9 +115,18 @@ class ListaPreguntas extends Component {
       menuActivo: this.props.preguntas[pos].texto,
       tipo: this.props.preguntas[pos].tipo
     });
-    //  console.log("item actual: ", this.props.preguntas[pos].texto);
-    //  console.log("tipo actual: ", this.props.preguntas[pos].tipo);
-    //  console.log("estado: ", this.props.preguntas[pos].estado);
+    console.log(
+      "estado ListaPregunta item actual: ",
+      this.props.preguntas[pos].texto
+    );
+    console.log(
+      "estado ListaPregunta tipo actual: ",
+      this.props.preguntas[pos].tipo
+    );
+    console.log(
+      "estado update ListaPregunta: ",
+      this.props.preguntas[pos].estado
+    );
 
     //this.onUpdateActual(name);
   };
@@ -207,6 +216,8 @@ class ListaPreguntas extends Component {
         />
       );
     else {
+      var nono = this.obtenerRtaActual();
+      console.log("rta desde afuera: ", nono);
       return laPregunta.estado ? (
         <RtaComboUpdate
           pregunta={laPregunta}
@@ -326,12 +337,14 @@ class ListaPreguntas extends Component {
             cambiarActual={this.onUpdateActual}
             rta={this.obtenerRtaActual()}
             reglas={this.props.reglas}
+            respuestas={this.props.respuestas}
           />
         ) : (
           <RtaBoolean
             pregunta={laPregunta}
             cambiarActual={this.onUpdateActual}
             reglas={this.props.reglas}
+            respuestas={this.props.respuestas}
           />
         );
         break;

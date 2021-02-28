@@ -44,8 +44,8 @@ import {
 export default class RtaMultipleUpdate extends Component {
   constructor(props) {
     super(props);
-    console.log("entrooooooooooo de nuevo");
-    console.log(this.props.rtas);
+    //  console.log("entrooooooooooo de nuevo");
+    //  console.log(this.props.rtas);
     this.state = {
       hiddenFin: true,
       valor: this.armarCadena()
@@ -53,6 +53,16 @@ export default class RtaMultipleUpdate extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.rtas !== prevProps.rtas)
+      this.setState({ valor: this.armarCadena() });
+  }
+
+  //  componentDidUpdate(prevProps) {
+  //    return this.props.rtas !== prevProps.rtas;
+  //  }
+
   armarCadena() {
     var cad = [];
     this.props.rtas.forEach(rta => {
@@ -156,7 +166,7 @@ export default class RtaMultipleUpdate extends Component {
                 search
                 selection
                 multiple
-                value={this.armarCadena()}
+                value={this.state.valor}
                 onChange={this.handleOnChange}
                 options={options[this.props.pregunta.orden]}
               />

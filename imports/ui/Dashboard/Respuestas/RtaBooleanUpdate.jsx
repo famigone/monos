@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types"; // ES6
 import ContactoPregunta from "/imports/api/contactoPregunta.js";
 import ReactDOM from "react-dom";
-
+import { validar } from "./validar";
 import LoaderExampleText from "/imports/ui/Dashboard/LoaderExampleText.js";
 import "react-s-alert/dist/s-alert-default.css";
 import { updateRespuestaString, updateContactoPregunta } from "/api/methods.js";
@@ -40,7 +40,12 @@ import {
 export default class RtaBooleanUpdate extends Component {
   constructor(props) {
     super(props);
-    this.state = { valor: this.props.rta.rtatexto, hidden: true };
+    this.state = {
+      valor: this.props.rta.rtatexto,
+      hidden: true,
+      hiddeValidar: true,
+      mensajeError: ""
+    };
   }
   handleChange = (e, { value }) => {
     //console.log(value);
@@ -59,18 +64,33 @@ export default class RtaBooleanUpdate extends Component {
     };
     // Call the Method
     //insertLocacion.validate(one);
-    updateRespuestaString.call(one, (err, res) => {
-      if (err) {
-        console.log(err);
-      } else {
-        this.setState({
-          hidden: false
-          //  valor: null
-        });
-      }
-    });
-    // Clear form
-    //  ReactDOM.findDOMNode(this.refs.inputRespuesta).value = "";
+    let mensaje = validar(
+      this.props.respuestas,
+      this.props.pregunta.codigo,
+      this.state.valor,
+      this.props.reglas,
+      this.props.pregunta.tipo
+    );
+    var valido = mensaje == "";
+    if (valido) this.setState({ hiddeValidar: true });
+    else this.setState({ hiddeValidar: false, mensajeError: mensaje });
+
+    // Call the Method
+    //insertLocacion.validate(one);
+    if (valido) {
+      updateRespuestaString.call(one, (err, res) => {
+        if (err) {
+          console.log(err);
+        } else {
+          this.setState({
+            hidden: false
+            //  valor: null
+          });
+        }
+      });
+      // Clear form
+      //  ReactDOM.findDOMNode(this.refs.inputRespuesta).value = "";
+    }
   }
   renderForm() {
     //  console.log("prop: " + this.props.rta.rtatexto);
@@ -129,6 +149,12 @@ export default class RtaBooleanUpdate extends Component {
           <Message.Header>
             <Icon name="heart outline" />
             Respuesta modificada con éxito.
+          </Message.Header>
+        </Message>
+        <Message color="pink" floating hidden={this.state.hiddeValidar}>
+          <Message.Header>
+            <Icon size="huge" name="meh outline" />
+            {this.state.mensajeError}
           </Message.Header>
         </Message>
       </div>

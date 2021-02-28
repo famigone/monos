@@ -1,30 +1,30 @@
 export function validar(respuestas, codigoPreguntaDestino, rta, reglas, tipo) {
-  console.log("respuestas ", respuestas);
-  console.log("codigoPreguntaDestino ", codigoPreguntaDestino);
-  console.log("rta ", rta);
-  console.log("reglas ", reglas);
+  //  console.log("respuestas ", respuestas);
+  //  console.log("codigoPreguntaDestino ", codigoPreguntaDestino);
+  //  console.log("rta ", rta);
+  //  console.log("reglas ", reglas);
 
   var valido = true;
 
   //obtengo todas las reglas que correspondan a la pregunta actual.
   const misReglas = obtenerReglas(reglas, codigoPreguntaDestino);
-  console.log("mis reglas filtradas: ", misReglas);
+  //  console.log("mis reglas filtradas: ", misReglas);
   var i = 0;
   var reglaActual;
   //itero sobre las reglas de la pregunta actual y valido que se cumplan todas
   while (i < misReglas.length && valido) {
     reglaActual = misReglas[i];
-    console.log("reglaActual: ", reglaActual);
+    //  console.log("reglaActual: ", reglaActual);
 
     //obtengo la respuesta que dió en la pregunta Antecedente
     rtaAntecedente = buscarRtatexto(
       respuestas,
       reglaActual.codigoPreguntaOrigen
     );
-    console.log("rtaAntecedente: ", rtaAntecedente);
+    //  console.log("rtaAntecedente: ", rtaAntecedente);
     //determino si la rta está alcanzada por la regla
     var cumpleAntecedente = rtaAntecedente == reglaActual.rtaOrigen;
-    console.log("cumpleAntecedente: ", cumpleAntecedente);
+    //    console.log("cumpleAntecedente: ", cumpleAntecedente);
     //si cumple antecedente, debe cumplir consecuente
     if (cumpleAntecedente) {
       switch (reglaActual.condicion) {
@@ -40,20 +40,20 @@ export function validar(respuestas, codigoPreguntaDestino, rta, reglas, tipo) {
           if (tipo !== "M") valido = !cumpleCombo(rta, reglaActual.rtaDestino);
           else valido = !cumpleMultiple(rta, reglaActual.rtaDestino);
 
-          console.log("rta : ", rta);
-          console.log("reglaActual.rtaDestino : ", reglaActual.rtaDestino);
+          //      console.log("rta : ", rta);
+          //      console.log("reglaActual.rtaDestino : ", reglaActual.rtaDestino);
           break;
       }
     }
     i++;
   }
   var mensaje = "";
-  console.log("que mierda pasa con valido: ", valido);
+  //  console.log("que mierda pasa con valido: ", valido);
   if (!valido) {
     mensaje = reglaActual.mensaje;
-    console.log("suelta mensaje: ", reglaActual.mensaje);
+    ///  console.log("suelta mensaje: ", reglaActual.mensaje);
   }
-  console.log("mensaje: ", mensaje);
+  //  console.log("mensaje: ", mensaje);
   return mensaje;
 }
 
@@ -80,8 +80,8 @@ function cumpleMultiple(rta, rtaDestino) {
 function obtenerReglas(reglas, codigoPreguntaDestino) {
   const misReglas = [];
   for (var i = 0; i < reglas.length; i++) {
-    console.log("compara ", reglas[i].codigoPreguntaDestino);
-    console.log("con ", codigoPreguntaDestino);
+    //  console.log("compara ", reglas[i].codigoPreguntaDestino);
+    //  console.log("con ", codigoPreguntaDestino);
     if (Number(reglas[i].codigoPreguntaDestino) == codigoPreguntaDestino)
       misReglas.push(reglas[i]);
   }

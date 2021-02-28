@@ -40,15 +40,25 @@ import {
 
 export default class RtaComboUpdate extends Component {
   //state = { valor: this.props.rta.rtatexto, hidden: true };
-  state = {
-    valor: this.props.rta.rtatexto,
-    otro: this.props.rta.especifique,
-    hiddeValidar: true,
-    mensajeError: "",
-    termino: this.setTermino(),
-    validar: false,
-    hidden: true
-  };
+  constructor(props) {
+    super(props);
+    console.log("props desde adentro: ", this.props.rta.rtatexto);
+    this.state = {
+      valor: this.props.rta.rtatexto,
+      otro: this.props.rta.especifique,
+      hiddeValidar: true,
+      mensajeError: "",
+      termino: this.setTermino(),
+      validar: false,
+      hidden: true
+    };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.rta.rtatexto !== prevProps.rta.rtatexto)
+      this.setState({ valor: this.props.rta.rtatexto });
+  }
+
   setTermino() {
     var parar =
       (this.props.rta.rtatexto == "No vuelve a comunicarse" &&
@@ -81,6 +91,7 @@ export default class RtaComboUpdate extends Component {
       otro: event.target.value
     });
   };
+
   handleSubmit(event) {
     event.preventDefault();
 
@@ -162,7 +173,7 @@ export default class RtaComboUpdate extends Component {
                 placeholder="Seleccionar"
                 search
                 selection
-                value={this.props.rta.rtatexto}
+                value={this.state.valor}
                 onChange={this.handleOnChange}
                 options={options[Number(this.props.pregunta.codigo)]}
               />
