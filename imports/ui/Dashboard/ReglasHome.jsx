@@ -126,11 +126,11 @@ class ReglasHome extends Component {
       case "+18":
         this.setState({ seleccionPreguntaOrigen: preguntas[1] });
         break;
-      case "Primer Momento":
-        this.setState({ seleccionPreguntaOrigen: preguntas[0] });
+      case "Segundo Momento ILE":
+        this.setState({ seleccionPreguntaOrigen: preguntas[2] });
         break;
-      case "Segundo Momento":
-        this.setState({ seleccionPreguntaOrigen: preguntas[0] });
+      case "Segundo Momento FEM":
+        this.setState({ seleccionPreguntaOrigen: preguntas[3] });
         break;
     }
   };
@@ -144,11 +144,11 @@ class ReglasHome extends Component {
       case "+18":
         this.setState({ seleccionPreguntaDestino: preguntas[1] });
         break;
-      case "Primer Momento":
-        this.setState({ seleccionPreguntaDestino: preguntas[0] });
+      case "Segundo Momento ILE":
+        this.setState({ seleccionPreguntaDestino: preguntas[2] });
         break;
-      case "Segundo Momento":
-        this.setState({ seleccionPreguntaDestino: preguntas[0] });
+      case "Segundo Momento FEM":
+        this.setState({ seleccionPreguntaDestino: preguntas[3] });
         break;
     }
   };
@@ -218,13 +218,13 @@ class ReglasHome extends Component {
       },
       {
         key: 3,
-        text: "Primer Momento",
-        value: "Primer Momento"
+        text: "Segundo Momento ILE",
+        value: "Segundo Momento ILE"
       },
       {
         key: 4,
-        text: "Segundo Momento",
-        value: "Segundo Momento"
+        text: "Segundo Momento FEM",
+        value: "Segundo Momento FEM"
       }
     ];
   }
@@ -406,6 +406,7 @@ class ReglasHome extends Component {
           </Grid.Column>
           <Grid.Column width={1} />
         </Grid>
+        <hr />
       </div>
     );
   }

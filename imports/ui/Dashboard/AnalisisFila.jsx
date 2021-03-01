@@ -49,25 +49,29 @@ export default class AnalisisFila extends Component {
 
   componentDidUpdate(prevProps) {
     if (
+      prevProps.codigo !== this.props.codigo ||
       prevProps.fechaDesde !== this.props.fechaDesde ||
       prevProps.fechaHasta !== this.props.fechaHasta ||
       prevProps.usuarioid !== this.props.usuarioid
     ) {
       this.setState({
+        codigo: this.props.codigo,
         fechaDesde: this.props.fechaDesde,
         fechaHasta: this.props.fechaHasta,
         usuarioid: this.props.usuarioid
         //  username: this.props.username
       });
       const one = {
-        codigo: this.props.codigo,
+        codigo: String(this.props.codigo),
         rta: this.props.opcion,
         fechaDesde: this.props.fechaDesde,
         fechaHasta: this.props.fechaHasta,
         usuarioid: this.props.usuarioid
         //username: this.props.username
       };
+      console.log(one);
       const rta = analisis.call(one, (err, res) => {
+        console.log("respuesta en cliente: ", res);
         this.setState({
           loaded: true,
           opcion: res

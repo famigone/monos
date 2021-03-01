@@ -39,16 +39,17 @@ export default class AnalisisTarjeta extends Component {
   }
 
   calcularFilas() {
-    return this.props.lista.map(pregunta => (
-      <AnalisisFila
-        codigo={pregunta.codigo}
-        opcion={pregunta.respuesta}
-        fechaDesde={this.props.desde}
-        fechaHasta={this.props.hasta}
-        usuarioid={this.props.usuarioid}
-        username={this.props.username}
-      />
-    ));
+    if (this.props.lista)
+      return this.props.lista.map(rta => (
+        <AnalisisFila
+          codigo={this.props.codigo}
+          opcion={rta.text}
+          fechaDesde={this.props.desde}
+          fechaHasta={this.props.hasta}
+          usuarioid={this.props.usuarioid}
+          username={this.props.username}
+        />
+      ));
   }
   render() {
     return (
