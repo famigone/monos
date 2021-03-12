@@ -85,6 +85,24 @@ class ListaPreguntas extends Component {
           rta = 680;
         else rta = actual + 10;
         break;
+      case 700:
+        if (Number(rtatexto) >= 12) rta = 720;
+        else rta = actual + 10;
+        break;
+      case 710:
+        rta = 760;
+        break;
+      case 580:
+        if (
+          rtatexto ==
+            "Procedimiento inicial con medicamentos para culminar con: LEGRADO" ||
+          rtatexto ==
+            "Procedimiento inicial con medicamentos para culminar con: AMEU"
+        )
+          rta = 600;
+        else rta = actual + 10;
+        break;
+
       default:
         rta = actual + 10;
     }
@@ -217,7 +235,7 @@ class ListaPreguntas extends Component {
       );
     else {
       var nono = this.obtenerRtaActual();
-      console.log("rta desde afuera: ", nono);
+      //console.log("rta desde afuera: ", nono);
       return laPregunta.estado ? (
         <RtaComboUpdate
           pregunta={laPregunta}

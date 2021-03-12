@@ -42,7 +42,7 @@ export default class RtaComboUpdate extends Component {
   //state = { valor: this.props.rta.rtatexto, hidden: true };
   constructor(props) {
     super(props);
-    console.log("props desde adentro: ", this.props.rta.rtatexto);
+    //  console.log("props desde adentro: ", this.props.rta.rtatexto);
     this.state = {
       valor: this.props.rta.rtatexto,
       otro: this.props.rta.especifique,

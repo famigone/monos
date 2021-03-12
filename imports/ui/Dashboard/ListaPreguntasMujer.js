@@ -74,6 +74,16 @@ class ListaPreguntasMujer extends Component {
       case 710:
         rta = 760;
         break;
+      case 580:
+        if (
+          rtatexto ==
+            "Procedimiento inicial con medicamentos para culminar con: LEGRADO" ||
+          rtatexto ==
+            "Procedimiento inicial con medicamentos para culminar con: AMEU"
+        )
+          rta = 600;
+        else rta = actual + 10;
+        break;
       case 1200:
         rta = 1220;
         break;

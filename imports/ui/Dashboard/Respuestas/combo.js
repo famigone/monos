@@ -1219,8 +1219,8 @@ options[830] = [
   },
   {
     key: 2,
-    text: "Sí, con intervención quirúrgica Legrado",
-    value: "Sí, con intervención quirúrgica Legrado"
+    text: "Sí, con intervención quirúrgica LEGRADO",
+    value: "Sí, con intervención quirúrgica LEGRADO"
   }
 ];
 options[680] = [
@@ -1467,8 +1467,8 @@ options[580] = [
   },
   {
     key: 2,
-    text: "Procedimiento instrumental / quirúrgico: Legrado",
-    value: "Procedimiento instrumental / quirúrgico: Legrado"
+    text: "Procedimiento instrumental / quirúrgico: LEGRADO",
+    value: "Procedimiento instrumental / quirúrgico: LEGRADO"
   },
   {
     key: 3,
@@ -2233,8 +2233,8 @@ options[320] = [
   },
   {
     key: 3,
-    text: "No Trabaja",
-    value: "No Trabaja"
+    text: "No corresponde contestar",
+    value: "No corresponde contestar"
   }
 ];
 

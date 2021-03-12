@@ -202,7 +202,7 @@ class Analisis extends Component {
               />
             </Form.Field>
             <Form.Field>
-              <label>Usuaria </label>
+              <label>Grupa </label>
               {Meteor.user().username === "admin" ? (
                 <Dropdown
                   placeholder="Seleccionar"

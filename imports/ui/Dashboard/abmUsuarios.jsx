@@ -79,7 +79,7 @@ class AbmUsuarios extends Component {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>
-              <h4>Usuaria</h4>
+              <h4>GRUPA</h4>
             </Table.HeaderCell>
           </Table.Row>
         </Table.Header>
@@ -93,16 +93,13 @@ class AbmUsuarios extends Component {
       <Segment raised>
         <Header as="h2" dividing>
           <Icon name="address book outline" />
-          <Header.Content>Listado de Usuarias</Header.Content>
+          <Header.Content>Listado de Grupas</Header.Content>
         </Header>
 
         <Form onSubmit={this.handleSubmit.bind(this)}>
           <Form.Group widths="equal">
             <Form.Field>
-              <input
-                ref="inputUsuario"
-                placeholder="ingrese un nombre de usuaria"
-              />
+              <input ref="inputUsuario" placeholder="Nombre de la GRUPA" />
             </Form.Field>
 
             <Form.Field>
@@ -124,14 +121,14 @@ class AbmUsuarios extends Component {
     return (
       <Grid>
         <Grid.Row>
-          <Grid.Column width={4}></Grid.Column>
+          <Grid.Column width={4} />
           <Grid.Column width={8}>
             <div>
               {this.renderForm()}
               {this.renderTable()}
             </div>
           </Grid.Column>
-          <Grid.Column width={4}></Grid.Column>
+          <Grid.Column width={4} />
         </Grid.Row>
       </Grid>
     );
