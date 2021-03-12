@@ -110,6 +110,8 @@ export default class RtaCombo extends Component {
           //console.log("this.state.valor ", this.state.valor);
           var parar =
             (this.state.valor == "No vuelve a comunicarse" &&
+              this.props.pregunta.codigo == 800) ||
+            (this.state.valor == "No vuelve a comunicarse" &&
               this.props.pregunta.codigo == 650 &&
               this.props.pregunta.seccion ==
                 "Interrupción Legal e Interrupción Voluntaria del Embarazo") ||

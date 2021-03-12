@@ -48,22 +48,29 @@ export const Ruteador = () => (
   <Router history={browserHistory}>
     <Switch>
       <Route exact path="/login" component={LoginForm} />
-
-      <App>
-        <Route exact path="/nuevocontacto/" component={NuevoContacto} />
-        <Route
-          exact
-          path="/nuevocontactomujer/"
-          component={NuevoContactoMujer}
-        />
-        <Route exact path="/listadoconsultas/" component={ListadoConsultas} />
-        <Route exact path="/nuevapregunta/:id" children={<NuevaPregunta />} />
-        <Route exact path="/nuevapregunta" component={NuevaPregunta} />
-        <Route exact path="/analisis" component={Analisis} />
-        <Route exact path="/usuarios" component={AbmUsuarios} />
-        <Route exact path="/cabecerafuncional" component={CabeceraFuncional} />
-        <Route exact path="/reglas" component={ReglasHome} />
-      </App>
+      <PrivateRoute>
+        <App>
+          <Route exact path="/nuevocontacto/" component={NuevoContacto} />
+          <Route
+            exact
+            path="/nuevocontactomujer/"
+            component={NuevoContactoMujer}
+          />
+          <Route exact path="/listadoconsultas/" component={ListadoConsultas} />
+          <Route exact path="/nuevapregunta/:id" children={<NuevaPregunta />} />
+          <Route exact path="/nuevapregunta" component={NuevaPregunta} />
+          <Route exact path="/analisis" component={Analisis} />
+          <Route exact path="/usuarios" component={AbmUsuarios} />
+          <Route
+            exact
+            path="/cabecerafuncional"
+            component={CabeceraFuncional}
+          />
+          <Route exact path="/reglas" component={ReglasHome} />
+        </App>
+      </PrivateRoute>
+      {requireAuth ? <Redirect to="/login" /> : <App />}
+      <Route exact path="/login" component={LoginForm} />
     </Switch>
   </Router>
 );

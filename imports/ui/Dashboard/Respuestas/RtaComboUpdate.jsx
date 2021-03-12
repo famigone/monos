@@ -62,6 +62,8 @@ export default class RtaComboUpdate extends Component {
   setTermino() {
     var parar =
       (this.props.rta.rtatexto == "No vuelve a comunicarse" &&
+        this.props.pregunta.codigo == 800) ||
+      (this.props.rta.rtatexto == "No vuelve a comunicarse" &&
         this.props.pregunta.codigo == 650 &&
         this.props.pregunta.seccion ==
           "Interrupción Legal e Interrupción Voluntaria del Embarazo") ||

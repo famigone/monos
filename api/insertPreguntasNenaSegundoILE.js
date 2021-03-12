@@ -28,7 +28,7 @@ export const insertPregNenaSegundoILE = new ValidatedMethod({
       texto:
         "Al momento de la solicitud de ILE/IVE: ¿Está acompañadx presencialmente por alguien?",
       estado: false,
-      tipo: "B",
+      tipo: "C",
       habilitado: false,
       activo: true
     };

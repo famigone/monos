@@ -57,6 +57,7 @@ export const insertPregNena = new ValidatedMethod({
     // console.log("TATATATA", contactoid);
     //C: choices, F: fecha, L: libre, B: boolean
     //pregunta0
+
     var pregunta = {
       momento: 1,
       seccion: "Información General",
@@ -235,7 +236,7 @@ export const insertPregNena = new ValidatedMethod({
       texto:
         "Desde que te enteraste que estás embarazadx hasta que te comunicaste con esta colectiva, ¿hubo algo que te demoró en conectarnos?",
       estado: false,
-      tipo: "C",
+      tipo: "M",
       habilitado: false,
       activo: true
     };

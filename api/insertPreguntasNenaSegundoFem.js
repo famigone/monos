@@ -47,7 +47,7 @@ export const insertPregNenaSegundoFem = new ValidatedMethod({
       codigo: "680",
       orden: 680,
       contactoid: contactoid,
-      texto: "Semanas de gestación al momento del uso",
+      texto: "Medicamento utilizado",
       estado: false,
       tipo: "C",
       habilitado: false,
@@ -61,7 +61,8 @@ export const insertPregNenaSegundoFem = new ValidatedMethod({
       codigo: "690",
       orden: 690,
       contactoid: contactoid,
-      texto: "Medicamento utilizado",
+      texto:
+        "¿Estás acompañadx al momento del uso de la medicación por alguien que sabe que estás abortando?",
       estado: false,
       tipo: "C",
       habilitado: false,
@@ -75,8 +76,7 @@ export const insertPregNenaSegundoFem = new ValidatedMethod({
       codigo: "700",
       orden: 700,
       contactoid: contactoid,
-      texto:
-        "¿Estás acompañadx al momento del uso de la medicación por alguien que sabe que estás abortando?",
+      texto: "Semanas de gestación al momento del uso",
       estado: false,
       tipo: "C",
       habilitado: false,

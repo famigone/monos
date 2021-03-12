@@ -50,7 +50,7 @@ export default class MenuExampleSecondary extends Component {
           to="/nuevocontactomujer"
           onClick={this.handleItemClick}
         >
-          <Icon name="female" />
+          <Icon name="male" />
         </Menu.Item>
 
         <Menu.Menu position="right">

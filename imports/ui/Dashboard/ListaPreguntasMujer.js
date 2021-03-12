@@ -63,6 +63,20 @@ class ListaPreguntasMujer extends Component {
         if (rtatexto == "NO") rta = 510;
         else rta = actual + 10;
         break;
+      case 770:
+        if (rtatexto == "NO") rta = 800;
+        else rta = actual + 10;
+        break;
+      case 700:
+        if (Number(rtatexto) >= 12) rta = 720;
+        else rta = actual + 10;
+        break;
+      case 710:
+        rta = 760;
+        break;
+      case 1200:
+        rta = 1220;
+        break;
       //trabajo remunerado
       case 1220:
         if (
@@ -201,6 +215,23 @@ class ListaPreguntasMujer extends Component {
         />
       ) : (
         <RtaFinPrimerMomento
+          pregunta={laPregunta}
+          cambiarActual={this.onUpdateActual}
+        />
+      );
+    else if (
+      laPregunta.codigo == "630" &&
+      laPregunta.momento == 2 &&
+      laPregunta.seccion ==
+        "Interrupción Legal e Interrupción Voluntaria del Embarazo"
+    )
+      return laPregunta.estado ? (
+        <Rta2doIle630Update
+          pregunta={laPregunta}
+          rta={this.obtenerRtaActual()}
+        />
+      ) : (
+        <Rta2doIle630
           pregunta={laPregunta}
           cambiarActual={this.onUpdateActual}
         />

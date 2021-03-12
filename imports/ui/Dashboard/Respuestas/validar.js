@@ -79,11 +79,13 @@ function cumpleMultiple(rta, rtaDestino) {
 }
 function obtenerReglas(reglas, codigoPreguntaDestino) {
   const misReglas = [];
-  for (var i = 0; i < reglas.length; i++) {
-    //  console.log("compara ", reglas[i].codigoPreguntaDestino);
-    //  console.log("con ", codigoPreguntaDestino);
-    if (Number(reglas[i].codigoPreguntaDestino) == codigoPreguntaDestino)
-      misReglas.push(reglas[i]);
+  if (reglas) {
+    for (var i = 0; i < reglas.length; i++) {
+      //  console.log("compara ", reglas[i].codigoPreguntaDestino);
+      //  console.log("con ", codigoPreguntaDestino);
+      if (Number(reglas[i].codigoPreguntaDestino) == codigoPreguntaDestino)
+        misReglas.push(reglas[i]);
+    }
   }
   return misReglas;
 }

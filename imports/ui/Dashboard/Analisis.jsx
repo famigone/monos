@@ -75,38 +75,6 @@ class Analisis extends Component {
     //console.log(options);
     return options;
   };
-  codigoPregunta(codigo) {
-    switch (codigo.codigo) {
-      case "2":
-        return "Motivo";
-      case "5":
-        return "Cómo te identificas?";
-      case "8":
-        return "Zona";
-      case "13":
-        return "Hijxs";
-      case "15":
-        return "¿Con quién convive?";
-      case "16":
-        return "¿Le contó a alguien de su entorno que quiere abortar?";
-      case "17":
-        return "¿Cómo consiguió nuestro número o contacto?";
-      case "18":
-        return "Método de comprobación de embarazo";
-      case "19":
-        return "¿Sabe la edad gestacional?";
-      case "20":
-        return "¿Cuánto tiempo pasó desde que decidió abortar hasta que logró encontrar nuestro número?";
-      case "21":
-        return "¿Hubo algo que le atrasó en llamar a esta línea?";
-      case "23":
-        return "INDICACIÓN:";
-      case "22":
-        return "¿Abortó antes?";
-      case "24":
-        return "Hora de la llamada";
-    }
-  }
 
   handleChangeDesde = date => {
     this.setState({
@@ -187,8 +155,7 @@ class Analisis extends Component {
           <Header.Content>
             Totales
             <Header.Subheader>
-              Primero debes filtrar un rango de fechas para ver resultados{" "}
-              <Icon name="info circle" />
+              Seleccionar una pregunta y luego establecer el rango de fechas
             </Header.Subheader>
           </Header.Content>
         </Header>
@@ -257,9 +224,6 @@ class Analisis extends Component {
               )}
             </Form.Field>
           </Form.Group>
-          <Button color="teal" type="submit">
-            Analizar
-          </Button>
         </Form>
       </Segment>
     );

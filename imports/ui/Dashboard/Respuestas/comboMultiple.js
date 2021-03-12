@@ -1,4 +1,118 @@
 export var options = [];
+
+options[130] = [
+  {
+    key: 1,
+    text: "No",
+    value: "No"
+  },
+  {
+    key: 2,
+    text: "Sí: Porque no estaba segurx si quería abortar",
+    value: "Sí: Porque no estaba segurx si quería abortar"
+  },
+  {
+    key: 3,
+    text: "Sí: Porque no sabía dónde encontrar información sobre cómo abortar",
+    value: "Sí: Porque no sabía dónde encontrar información sobre cómo abortar"
+  },
+  {
+    key: 4,
+    text: "Sí: Porque no tenía / no tengo apoyo de nadie",
+    value: "Sí: Porque no tenía / no tengo apoyo de nadie"
+  },
+  {
+    key: 5,
+    text:
+      "Sí: Porque tenía miedo (porque no conozco la colectiva, no sabía qué iba a pasar, con quién me iba a encontrar, no sabía si me iban a denunciar)",
+    value:
+      "Sí: Porque tenía miedo (porque no conozco la colectiva, no sabía qué iba a pasar, con quién me iba a encontrar, no sabía si me iban a denunciar)"
+  },
+  {
+    key: 6,
+    text: "Sí: Porque estoy en situación de violencia ",
+    value: "Sí: Porque estoy en situación de violencia "
+  },
+  {
+    key: 7,
+    text: "Sí: Porque me controlan el celular",
+    value: "Sí: Porque me controlan el celular"
+  },
+  {
+    key: 8,
+    text: "Sí: Porque no tengo celular propio",
+    value: "Sí: Porque no tengo celular propio"
+  },
+  {
+    key: 9,
+    text:
+      "Sí: Porque no sabía cómo decirle a mi madre/padre/adultx de confianza",
+    value:
+      "Sí: Porque no sabía cómo decirle a mi madre/padre/adultx de confianza"
+  },
+  {
+    key: 10,
+    text: "Otro",
+    value: "Otro"
+  }
+];
+options[1120] = [
+  {
+    key: 1,
+    text: "No",
+    value: "No"
+  },
+  {
+    key: 2,
+    text: "Sí: Porque no estaba segurx si quería abortar",
+    value: "Sí: Porque no estaba segurx si quería abortar"
+  },
+  {
+    key: 3,
+    text: "Sí: Porque no sabía dónde encontrar información sobre cómo abortar",
+    value: "Sí: Porque no sabía dónde encontrar información sobre cómo abortar"
+  },
+  {
+    key: 4,
+    text: "Sí: Porque no tenía / no tengo apoyo de nadie",
+    value: "Sí: Porque no tenía / no tengo apoyo de nadie"
+  },
+  {
+    key: 5,
+    text:
+      "Sí: Porque tenía miedo (porque no conozco la colectiva, no sabía qué iba a pasar, con quién me iba a encontrar, no sabía si me iban a denunciar)",
+    value:
+      "Sí: Porque tenía miedo (porque no conozco la colectiva, no sabía qué iba a pasar, con quién me iba a encontrar, no sabía si me iban a denunciar)"
+  },
+  {
+    key: 6,
+    text: "Sí: Porque estoy en situación de violencia ",
+    value: "Sí: Porque estoy en situación de violencia "
+  },
+  {
+    key: 7,
+    text: "Sí: Porque me controlan el celular",
+    value: "Sí: Porque me controlan el celular"
+  },
+  {
+    key: 8,
+    text: "Sí: Porque no tengo celular propio",
+    value: "Sí: Porque no tengo celular propio"
+  },
+  {
+    key: 9,
+    text:
+      "Sí: Porque no sabía cómo decirle a mi madre/padre/adultx de confianza",
+    value:
+      "Sí: Porque no sabía cómo decirle a mi madre/padre/adultx de confianza"
+  },
+  {
+    key: 10,
+    text: "Otro",
+    value: "Otro"
+  }
+];
+
 options[1150] = [
   {
     key: 1,

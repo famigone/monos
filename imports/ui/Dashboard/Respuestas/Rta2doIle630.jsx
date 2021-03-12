@@ -86,28 +86,9 @@ export default class Rta2doIle630 extends Component {
           //this.props.cambiarActual(String(this.props.pregunta.orden + 1));
           //console.log("this.state.valor ", this.state.valor);
           var parar =
-            (this.state.valor == "No vuelve a comunicarse" &&
-              this.props.pregunta.codigo == 650 &&
-              this.props.pregunta.seccion ==
-                "Interrupción Legal e Interrupción Voluntaria del Embarazo") ||
-            (this.state.valor == "No" &&
-              this.props.pregunta.codigo == 660 &&
-              this.props.pregunta.seccion ==
-                "Interrupción Legal e Interrupción Voluntaria del Embarazo") ||
-            (this.state.valor == "Sin dato" &&
-              this.props.pregunta.codigo == 660 &&
-              this.props.pregunta.seccion ==
-                "Interrupción Legal e Interrupción Voluntaria del Embarazo") ||
-            (this.props.pregunta.codigo == 830 &&
-              this.props.pregunta.seccion ==
-                "Acompañamiento Aborto Libre y Feminista") ||
             (this.props.pregunta.codigo == 630 &&
-              this.props.pregunta.seccion ==
-                "Interrupción Legal e Interrupción Voluntaria del Embarazo" &&
               this.state.valor == "No: Decide continuar el embarazo") ||
             (this.props.pregunta.codigo == 630 &&
-              this.props.pregunta.seccion ==
-                "Interrupción Legal e Interrupción Voluntaria del Embarazo" &&
               this.state.valor ==
                 "No: Nos cuenta que va a buscar otra solución");
 
@@ -118,8 +99,6 @@ export default class Rta2doIle630 extends Component {
           //del 2do momento FEM
           if (
             this.props.pregunta.codigo == 630 &&
-            this.props.pregunta.seccion ==
-              "Interrupción Legal e Interrupción Voluntaria del Embarazo" &&
             this.state.valor ==
               "No: La acompañamos con Aborto Libre y Feminista"
           ) {

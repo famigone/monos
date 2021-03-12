@@ -69,9 +69,9 @@ export default class AnalisisFila extends Component {
         usuarioid: this.props.usuarioid
         //username: this.props.username
       };
-      console.log(one);
+      //console.log(one);
       const rta = analisis.call(one, (err, res) => {
-        console.log("respuesta en cliente: ", res);
+        //console.log("respuesta en cliente: ", res);
         this.setState({
           loaded: true,
           opcion: res

@@ -100,7 +100,7 @@ export default class LoginForm extends Component {
                 </Button>
               </Segment>
             </Form>
-            <Message>Socorristas en Red - Plataforma de Protocolas</Message>
+            <Message>Socorristas en Red - Protocolas</Message>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row />

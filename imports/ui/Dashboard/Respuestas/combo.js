@@ -11,6 +11,29 @@ export var options = [];
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 
+options[520] = [
+  {
+    key: 1,
+    text: "No",
+    value: "No"
+  },
+  {
+    key: 2,
+    text: "Sí, sólo por socorristas",
+    value: "Sí, sólo por socorristas"
+  },
+  {
+    key: 3,
+    text: "Sí, por otras personas",
+    value: "Sí, por otras personas"
+  },
+  {
+    key: 4,
+    text: "Sí, por socorristas y otra/s persona/s",
+    value: "Sí, por socorristas y otra/s persona/s"
+  }
+];
+
 options[1400] = [
   {
     key: 1,
@@ -119,8 +142,8 @@ options[1340] = [
   },
   {
     key: 5,
-    text: "No usé/ no pude usar: Deseo concepcional",
-    value: "No usé/ no pude usar: Deseo concepcional"
+    text: "No usé/ no pude usar: Quería quedar embarazadx",
+    value: "No usé/ no pude usar: Quería quedar embarazadx"
   },
   {
     key: 6,
@@ -520,62 +543,6 @@ options[1110] = [
   }
 ];
 
-options[1120] = [
-  {
-    key: 1,
-    text: "No",
-    value: "No"
-  },
-  {
-    key: 2,
-    text: "Sí: Porque no estaba segurx si quería abortar",
-    value: "Sí: Porque no estaba segurx si quería abortar"
-  },
-  {
-    key: 3,
-    text: "Sí: Porque no sabía dónde encontrar información sobre cómo abortar",
-    value: "Sí: Porque no sabía dónde encontrar información sobre cómo abortar"
-  },
-  {
-    key: 4,
-    text: "Sí: Porque no tenía / no tengo apoyo de nadie",
-    value: "Sí: Porque no tenía / no tengo apoyo de nadie"
-  },
-  {
-    key: 5,
-    text:
-      "Sí: Porque tenía miedo (porque no conozco la colectiva, no sabía qué iba a pasar, con quién me iba a encontrar, no sabía si me iban a denunciar)",
-    value:
-      "Sí: Porque tenía miedo (porque no conozco la colectiva, no sabía qué iba a pasar, con quién me iba a encontrar, no sabía si me iban a denunciar)"
-  },
-  {
-    key: 6,
-    text: "Sí: Porque estoy en situación de violencia ",
-    value: "Sí: Porque estoy en situación de violencia "
-  },
-  {
-    key: 7,
-    text: "Sí: Porque me controlan el celular",
-    value: "Sí: Porque me controlan el celular"
-  },
-  {
-    key: 8,
-    text: "Sí: Porque no tengo celular propio",
-    value: "Sí: Porque no tengo celular propio"
-  },
-  {
-    key: 9,
-    text:
-      "Sí: Porque no sabía cómo decirle a mi madre/padre/adultx de confianza",
-    value:
-      "Sí: Porque no sabía cómo decirle a mi madre/padre/adultx de confianza"
-  },
-  {
-    key: 10,
-    text: "Otro",
-    value: "Otro"
-  }
-];
 options[1070] = [
   {
     key: 1,
@@ -844,126 +811,131 @@ options[1020] = [
   },
   {
     key: 11,
-    text: "Otro",
-    value: "Otro"
+    text: "otro",
+    value: "otro"
   }
 ];
 
 options[1030] = [
   {
     key: 1,
-    text: "Tierra del Fuego",
-    value: "Tierra del Fuego"
-  },
-  {
-    key: 2,
-    text: "Santa Cruz",
-    value: "Santa Cruz"
-  },
-  {
-    key: 3,
-    text: "Chubut",
-    value: "Chubut"
-  },
-  {
-    key: 4,
-    text: "Neuquén",
-    value: "Neuquén"
-  },
-  {
-    key: 5,
-    text: "Rio Negro",
-    value: "Rio Negro"
-  },
-  {
-    key: 6,
-    text: "La Pampa",
-    value: "La Pampa"
-  },
-  {
-    key: 7,
-    text: "Mendoza",
-    value: "Mendoza"
-  },
-  {
-    key: 8,
-    text: "San Juan",
-    value: "San Juan"
-  },
-  {
-    key: 9,
-    text: "San Luis",
-    value: "San Luis"
-  },
-  {
-    key: 10,
-    text: "Córdoba",
-    value: "Córdoba"
-  },
-  {
-    key: 11,
-    text: "Santa Fe",
-    value: "Santa Fe"
-  },
-  {
-    key: 12,
     text: "Buenos Aires",
     value: "Buenos Aires"
   },
   {
-    key: 13,
-    text: "Entre Ríos",
-    value: "Entre Ríos"
-  },
-  {
-    key: 14,
-    text: "Misiones",
-    value: "Misiones"
-  },
-  {
-    key: 15,
-    text: "Corrientes",
-    value: "Corrientes"
-  },
-  {
-    key: 16,
-    text: "Santiago del Estero",
-    value: "Santiago del Estero"
-  },
-  {
-    key: 17,
-    text: "Formosa",
-    value: "Formosa"
-  },
-  {
-    key: 18,
+    key: 2,
     text: "Catamarca",
     value: "Catamarca"
   },
   {
-    key: 19,
-    text: "Salta",
-    value: "Salta"
-  },
-  {
-    key: 20,
-    text: "Tucumán",
-    value: "Tucumán"
-  },
-  {
-    key: 21,
+    key: 3,
     text: "Chaco",
     value: "Chaco"
   },
   {
-    key: 22,
+    key: 4,
+    text: "Chubut",
+    value: "Chubut"
+  },
+  {
+    key: 5,
+    text: "Córdoba",
+    value: "Córdoba"
+  },
+  {
+    key: 6,
+    text: "Corrientes",
+    value: "Corrientes"
+  },
+  {
+    key: 7,
+    text: "Entre Ríos",
+    value: "Entre Ríos"
+  },
+  {
+    key: 8,
+    text: "Formosa",
+    value: "Formosa"
+  },
+  {
+    key: 9,
+    text: "Jujuy",
+    value: "Jujuy"
+  },
+  {
+    key: 10,
+    text: "La Pampa",
+    value: "La Pampa"
+  },
+  {
+    key: 11,
     text: "La Rioja",
     value: "La Rioja"
   },
   {
+    key: 12,
+    text: "Mendoza",
+    value: "Mendoza"
+  },
+  {
+    key: 13,
+    text: "Misiones",
+    value: "Misiones"
+  },
+  {
+    key: 14,
+    text: "Neuquén",
+    value: "Neuquén"
+  },
+  {
+    key: 15,
+    text: "Rio Negro",
+    value: "Rio Negro"
+  },
+  {
+    key: 16,
+    text: "Salta",
+    value: "Salta"
+  },
+  {
+    key: 17,
+    text: "San Juan",
+    value: "San Juan"
+  },
+  {
+    key: 18,
+    text: "San Luis",
+    value: "San Luis"
+  },
+  {
+    key: 19,
+    text: "Santa Cruz",
+    value: "Santa Cruz"
+  },
+  {
+    key: 20,
+    text: "Santa Fe",
+    value: "Santa Fe"
+  },
+  {
+    key: 21,
+    text: "Santiago del Estero",
+    value: "Santiago del Estero"
+  },
+  {
+    key: 22,
+    text: "Tierra del Fuego, Antártida e Isla del Atlántico Sur",
+    value: "Tierra del Fuego, Antártida e Isla del Atlántico Sur"
+  },
+  {
     key: 23,
-    text: "Jujuy",
-    value: "Jujuy"
+    text: "Tucumán",
+    value: "Tucumán"
+  },
+  {
+    key: 24,
+    text: "Otra",
+    value: "Otra"
   }
 ];
 //zona
@@ -1069,7 +1041,7 @@ options[550] = [
     value: "No sabe"
   }
 ];
-options[700] = [
+options[690] = [
   {
     key: 1,
     text: "No",
@@ -1251,7 +1223,7 @@ options[830] = [
     value: "Sí, con intervención quirúrgica Legrado"
   }
 ];
-options[690] = [
+options[680] = [
   {
     key: 1,
     text: "Misoprostol",
@@ -1263,7 +1235,7 @@ options[690] = [
     value: "Mifepristona y Misoprostol"
   }
 ];
-options[680] = [
+options[700] = [
   {
     key: 1,
     text: "4",
@@ -1515,13 +1487,13 @@ options[580] = [
   },
   {
     key: 6,
-    text: "Procedimiento inicial con medicamentos para culminar con: ",
-    value: "Procedimiento inicial con medicamentos para culminar con: "
+    text: "Procedimiento inicial con medicamentos para culminar con: LEGRADO",
+    value: "Procedimiento inicial con medicamentos para culminar con: LEGRADO"
   },
   {
     key: 7,
     text: "Procedimiento inicial con medicamentos para culminar con: AMEU",
-    value: "Procedimiento inicial con medicamentos para culminar con: LEGRADO"
+    value: "Procedimiento inicial con medicamentos para culminar con: AMEU"
   }
 ];
 options[600] = [
@@ -1761,126 +1733,131 @@ options[30] = [
   },
   {
     key: 11,
-    text: "Otro",
-    value: "Otro"
+    text: "otro",
+    value: "otro"
   }
 ];
 
 options[40] = [
   {
     key: 1,
-    text: "Tierra del Fuego",
-    value: "Tierra del Fuego"
-  },
-  {
-    key: 2,
-    text: "Santa Cruz",
-    value: "Santa Cruz"
-  },
-  {
-    key: 3,
-    text: "Chubut",
-    value: "Chubut"
-  },
-  {
-    key: 4,
-    text: "Neuquén",
-    value: "Neuquén"
-  },
-  {
-    key: 5,
-    text: "Rio Negro",
-    value: "Rio Negro"
-  },
-  {
-    key: 6,
-    text: "La Pampa",
-    value: "La Pampa"
-  },
-  {
-    key: 7,
-    text: "Mendoza",
-    value: "Mendoza"
-  },
-  {
-    key: 8,
-    text: "San Juan",
-    value: "San Juan"
-  },
-  {
-    key: 9,
-    text: "San Luis",
-    value: "San Luis"
-  },
-  {
-    key: 10,
-    text: "Córdoba",
-    value: "Córdoba"
-  },
-  {
-    key: 11,
-    text: "Santa Fe",
-    value: "Santa Fe"
-  },
-  {
-    key: 12,
     text: "Buenos Aires",
     value: "Buenos Aires"
   },
   {
-    key: 13,
-    text: "Entre Ríos",
-    value: "Entre Ríos"
-  },
-  {
-    key: 14,
-    text: "Misiones",
-    value: "Misiones"
-  },
-  {
-    key: 15,
-    text: "Corrientes",
-    value: "Corrientes"
-  },
-  {
-    key: 16,
-    text: "Santiago del Estero",
-    value: "Santiago del Estero"
-  },
-  {
-    key: 17,
-    text: "Formosa",
-    value: "Formosa"
-  },
-  {
-    key: 18,
+    key: 2,
     text: "Catamarca",
     value: "Catamarca"
   },
   {
-    key: 19,
-    text: "Salta",
-    value: "Salta"
-  },
-  {
-    key: 20,
-    text: "Tucumán",
-    value: "Tucumán"
-  },
-  {
-    key: 21,
+    key: 3,
     text: "Chaco",
     value: "Chaco"
   },
   {
-    key: 22,
+    key: 4,
+    text: "Chubut",
+    value: "Chubut"
+  },
+  {
+    key: 5,
+    text: "Córdoba",
+    value: "Córdoba"
+  },
+  {
+    key: 6,
+    text: "Corrientes",
+    value: "Corrientes"
+  },
+  {
+    key: 7,
+    text: "Entre Ríos",
+    value: "Entre Ríos"
+  },
+  {
+    key: 8,
+    text: "Formosa",
+    value: "Formosa"
+  },
+  {
+    key: 9,
+    text: "Jujuy",
+    value: "Jujuy"
+  },
+  {
+    key: 10,
+    text: "La Pampa",
+    value: "La Pampa"
+  },
+  {
+    key: 11,
     text: "La Rioja",
     value: "La Rioja"
   },
   {
+    key: 12,
+    text: "Mendoza",
+    value: "Mendoza"
+  },
+  {
+    key: 13,
+    text: "Misiones",
+    value: "Misiones"
+  },
+  {
+    key: 14,
+    text: "Neuquén",
+    value: "Neuquén"
+  },
+  {
+    key: 15,
+    text: "Rio Negro",
+    value: "Rio Negro"
+  },
+  {
+    key: 16,
+    text: "Salta",
+    value: "Salta"
+  },
+  {
+    key: 17,
+    text: "San Juan",
+    value: "San Juan"
+  },
+  {
+    key: 18,
+    text: "San Luis",
+    value: "San Luis"
+  },
+  {
+    key: 19,
+    text: "Santa Cruz",
+    value: "Santa Cruz"
+  },
+  {
+    key: 20,
+    text: "Santa Fe",
+    value: "Santa Fe"
+  },
+  {
+    key: 21,
+    text: "Santiago del Estero",
+    value: "Santiago del Estero"
+  },
+  {
+    key: 22,
+    text: "Tierra del Fuego, Antártida e Isla del Atlántico Sur",
+    value: "Tierra del Fuego, Antártida e Isla del Atlántico Sur"
+  },
+  {
     key: 23,
-    text: "Jujuy",
-    value: "Jujuy"
+    text: "Tucumán",
+    value: "Tucumán"
+  },
+  {
+    key: 24,
+    text: "Otra",
+    value: "Otra"
   }
 ];
 //zona
@@ -2060,62 +2037,6 @@ options[120] = [
   }
 ];
 
-options[130] = [
-  {
-    key: 1,
-    text: "No",
-    value: "No"
-  },
-  {
-    key: 2,
-    text: "Sí: Porque no estaba segurx si quería abortar",
-    value: "Sí: Porque no estaba segurx si quería abortar"
-  },
-  {
-    key: 3,
-    text: "Sí: Porque no sabía dónde encontrar información sobre cómo abortar",
-    value: "Sí: Porque no sabía dónde encontrar información sobre cómo abortar"
-  },
-  {
-    key: 4,
-    text: "Sí: Porque no tenía / no tengo apoyo de nadie",
-    value: "Sí: Porque no tenía / no tengo apoyo de nadie"
-  },
-  {
-    key: 5,
-    text:
-      "Sí: Porque tenía miedo (porque no conozco la colectiva, no sabía qué iba a pasar, con quién me iba a encontrar, no sabía si me iban a denunciar)",
-    value:
-      "Sí: Porque tenía miedo (porque no conozco la colectiva, no sabía qué iba a pasar, con quién me iba a encontrar, no sabía si me iban a denunciar)"
-  },
-  {
-    key: 6,
-    text: "Sí: Porque estoy en situación de violencia ",
-    value: "Sí: Porque estoy en situación de violencia "
-  },
-  {
-    key: 7,
-    text: "Sí: Porque me controlan el celular",
-    value: "Sí: Porque me controlan el celular"
-  },
-  {
-    key: 8,
-    text: "Sí: Porque no tengo celular propio",
-    value: "Sí: Porque no tengo celular propio"
-  },
-  {
-    key: 9,
-    text:
-      "Sí: Porque no sabía cómo decirle a mi madre/padre/adultx de confianza",
-    value:
-      "Sí: Porque no sabía cómo decirle a mi madre/padre/adultx de confianza"
-  },
-  {
-    key: 10,
-    text: "Otro",
-    value: "Otro"
-  }
-];
 options[190] = [
   {
     key: 1,
@@ -2501,8 +2422,8 @@ options[430] = [
   },
   {
     key: 5,
-    text: "No usé/ no pude usar: Deseo concepcional",
-    value: "No usé/ no pude usar: Deseo concepcional"
+    text: "No usé/ no pude usar: Quería quedar embarazadx",
+    value: "No usé/ no pude usar: Quería quedar embarazadx"
   },
   {
     key: 6,
@@ -3267,6 +3188,11 @@ options[420] = [
     key: 2,
     text: "NO",
     value: "NO"
+  },
+  {
+    key: 3,
+    text: "Prefiere no contestar",
+    value: "Prefiere no contestar"
   }
 ];
 options[440] = [
@@ -3459,6 +3385,11 @@ options[1330] = [
     key: 2,
     text: "NO",
     value: "NO"
+  },
+  {
+    key: 3,
+    text: "Prefiere no contestar",
+    value: "Prefiere no contestar"
   }
 ];
 options[1350] = [
@@ -3498,18 +3429,6 @@ options[1410] = [
   }
 ];
 
-options[520] = [
-  {
-    key: 1,
-    text: "SI",
-    value: "SI"
-  },
-  {
-    key: 2,
-    text: "NO",
-    value: "NO"
-  }
-];
 options[570] = [
   {
     key: 1,

@@ -235,7 +235,7 @@ export const insertPregMujer = new ValidatedMethod({
       texto:
         "Desde que te enteraste que estás embarazadx hasta que te comunicaste con esta colectiva, ¿hubo algo que te demoró en conectarnos?",
       estado: false,
-      tipo: "C",
+      tipo: "M",
       habilitado: false,
       activo: true
     };

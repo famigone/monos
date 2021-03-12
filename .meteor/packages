@@ -24,9 +24,9 @@ juliancwirko:postcss
 mdg:validated-method
 tunguska:reactive-aggregate
 dburles:collection-helpers
-accounts-base
+accounts-base@1.8.0
 aldeed:collection2
 aldeed:simple-schema
-session
-accounts-password
+session@1.2.0
+accounts-password@1.7.0
 momentjs:moment
