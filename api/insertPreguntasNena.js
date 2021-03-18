@@ -641,7 +641,7 @@ export const insertPregNena = new ValidatedMethod({
       contactoid: contactoid,
       texto: "¿Vos querías tener esa relación sexual?",
       estado: false,
-      tipo: "B",
+      tipo: "C",
       habilitado: false,
       activo: true
     };

@@ -410,8 +410,8 @@ options[1220] = [
 options[1190] = [
   {
     key: 1,
-    text: "Primaria incompleta ",
-    value: "Primaria incompleta "
+    text: "Primaria incompleta",
+    value: "Primaria incompleta"
   },
   {
     key: 2,
@@ -420,38 +420,44 @@ options[1190] = [
   },
   {
     key: 3,
-    text: "Secundario incompleto ",
-    value: "Secundario incompleto "
+    text: "Secundario incompleto",
+    value: "Secundario incompleto"
   },
   {
     key: 4,
-    text: "Secundario completo ",
-    value: "Secundario completo "
+    text: "Secundario completo",
+    value: "Secundario completo"
   },
   {
     key: 5,
-    text: "Terciario incompleto ",
-    value: "Terciario incompleto "
+    text: "Terciario incompleto",
+    value: "Terciario incompleto"
   },
   {
     key: 6,
-    text: "Universitario incompleto ",
-    value: "Universitario incompleto "
+    text: "Terciario completo",
+    value: "Terciario completo"
   },
+
   {
     key: 7,
-    text: "Universitario completo ",
-    value: "Universitario completo "
+    text: "Universitario incompleto",
+    value: "Universitario incompleto"
   },
   {
     key: 8,
-    text: "Posgrado incompleto ",
-    value: "Posgrado incompleto "
+    text: "Universitario completo",
+    value: "Universitario completo"
   },
   {
     key: 9,
-    text: "Posgrado completo ",
-    value: "Posgrado completo "
+    text: "Posgrado incompleto",
+    value: "Posgrado incompleto"
+  },
+  {
+    key: 10,
+    text: "Posgrado completo",
+    value: "Posgrado completo"
   }
 ];
 
@@ -2040,8 +2046,8 @@ options[120] = [
 options[190] = [
   {
     key: 1,
-    text: "Primaria incompleta ",
-    value: "Primaria incompleta "
+    text: "Primaria incompleta",
+    value: "Primaria incompleta"
   },
   {
     key: 2,
@@ -2050,18 +2056,18 @@ options[190] = [
   },
   {
     key: 3,
-    text: "Secundario incompleto ",
-    value: "Secundario incompleto "
+    text: "Secundario incompleto",
+    value: "Secundario incompleto"
   },
   {
     key: 4,
-    text: "Secundario completo ",
-    value: "Secundario completo "
+    text: "Secundario completo",
+    value: "Secundario completo"
   },
   {
     key: 5,
-    text: "Terciario / Universitario incompleto ",
-    value: "Terciario / Universitario incompleto "
+    text: "Terciario / Universitario incompleto",
+    value: "Terciario / Universitario incompleto"
   }
 ];
 

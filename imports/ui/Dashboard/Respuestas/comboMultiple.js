@@ -30,8 +30,8 @@ options[130] = [
   },
   {
     key: 6,
-    text: "Sí: Porque estoy en situación de violencia ",
-    value: "Sí: Porque estoy en situación de violencia "
+    text: "Sí: Porque estoy en situación de violencia",
+    value: "Sí: Porque estoy en situación de violencia"
   },
   {
     key: 7,
@@ -86,8 +86,8 @@ options[1120] = [
   },
   {
     key: 6,
-    text: "Sí: Porque estoy en situación de violencia ",
-    value: "Sí: Porque estoy en situación de violencia "
+    text: "Sí: Porque estoy en situación de violencia",
+    value: "Sí: Porque estoy en situación de violencia"
   },
   {
     key: 7,

@@ -42,7 +42,7 @@ export default class RtaComboUpdate extends Component {
   //state = { valor: this.props.rta.rtatexto, hidden: true };
   constructor(props) {
     super(props);
-    //  console.log("props desde adentro: ", this.props.rta.rtatexto);
+    //console.log("props desde adentro: ", this.props.rta.rtatexto);
     this.state = {
       valor: this.props.rta.rtatexto,
       otro: this.props.rta.especifique,
@@ -55,6 +55,8 @@ export default class RtaComboUpdate extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    //  console.log("estado: ", this.state.valor);
+    //  console.log("estado anterior: ", prevProps.rta.rtatexto);
     if (this.props.rta.rtatexto !== prevProps.rta.rtatexto)
       this.setState({ valor: this.props.rta.rtatexto });
   }
@@ -142,8 +144,9 @@ export default class RtaComboUpdate extends Component {
   }
 
   renderForm() {
-    //  console.log("dentro update: ", this.state.valor);
+    //console.log("RENDER: ", this.state.valor);
     //  console.log("opciones ", options[Number(this.props.pregunta.codigo)]);
+
     return (
       <div>
         <Container textAlign="right">
