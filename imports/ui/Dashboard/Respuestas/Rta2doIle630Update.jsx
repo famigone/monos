@@ -166,8 +166,8 @@ export default class Rta2doIle630Update extends Component {
       },
       {
         key: 4,
-        text: "Sí: pero no necesitó intervención quirúrgica",
-        value: "Sí: pero no necesitó intervención quirúrgica"
+        text: "Sí: y no necesitó intervención quirúrgica",
+        value: "Sí: y no necesitó intervención quirúrgica"
       },
       {
         key: 5,

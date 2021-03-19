@@ -48,7 +48,8 @@ export default class RtaMultipleUpdate extends Component {
     //  console.log(this.props.rtas);
     this.state = {
       hiddenFin: true,
-      valor: this.armarCadena()
+      valor: this.armarCadena(),
+      hiddeErrorSePaso: true
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -68,7 +69,7 @@ export default class RtaMultipleUpdate extends Component {
     this.props.rtas.forEach(rta => {
       cad.push(rta.rtatexto);
     });
-    console.log("Armo cadena: ", cad);
+    //console.log("Armo cadena: ", cad);
     return cad;
   }
 
@@ -93,41 +94,49 @@ export default class RtaMultipleUpdate extends Component {
       if (err) {
         console.log(err);
       } else {
-        console.log("sexitoo: ", ret);
+        //console.log("sexitoo: ", ret);
       }
     });
   }
   handleSubmit(event) {
     event.preventDefault();
-
-    this.eliminarAnteriores();
-    if (!(this.state.valor === "")) {
-      var inputRespuesta;
-      if (this.state.valor === "Otros")
-        inputRespuesta = ReactDOM.findDOMNode(
-          this.refs.inputRespuesta
-        ).value.trim();
-      //como es múltiple
-
-      this.state.valor.forEach(rta => {
-        var one = {
-          contactoid: this.props.pregunta.contactoid,
-          contactopreguntaid: this.props.pregunta._id,
-          codigo: this.props.pregunta.codigo,
-          rtatexto: rta,
-          especifique: inputRespuesta
-          //  activo: true
-        };
-        insertRespuesta.call(one, (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
-            this.setState({ hiddenFin: false });
-          }
-        });
-      });
+    this.setState({ hiddeErrorSePaso: true });
+    let preguntaControl =
+      this.props.pregunta.codigo == "1120" ||
+      this.props.pregunta.codigo == "130";
+    let cantRtas = this.state.valor.length > 3;
+    if (preguntaControl && cantRtas) {
+      this.setState({ hiddeErrorSePaso: false });
+    } else {
+      this.eliminarAnteriores();
       if (!(this.state.valor === "")) {
-        null;
+        var inputRespuesta;
+        if (this.state.valor === "Otros")
+          inputRespuesta = ReactDOM.findDOMNode(
+            this.refs.inputRespuesta
+          ).value.trim();
+        //como es múltiple
+
+        this.state.valor.forEach(rta => {
+          var one = {
+            contactoid: this.props.pregunta.contactoid,
+            contactopreguntaid: this.props.pregunta._id,
+            codigo: this.props.pregunta.codigo,
+            rtatexto: rta,
+            especifique: inputRespuesta
+            //  activo: true
+          };
+          insertRespuesta.call(one, (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+              this.setState({ hiddenFin: false });
+            }
+          });
+        });
+        if (!(this.state.valor === "")) {
+          null;
+        }
       }
     }
     // Clear form
@@ -184,6 +193,12 @@ export default class RtaMultipleUpdate extends Component {
             <Message.Header>
               <Icon name="heart outline" />
               Modificación realizada con éxito!
+            </Message.Header>
+          </Message>
+          <Message color="pink" floating hidden={this.state.hiddeErrorSePaso}>
+            <Message.Header>
+              <Icon size="huge" name="meh outline" />
+              "Solo podes seleccionar un máximo de tres respuestas..."
             </Message.Header>
           </Message>
         </Form>

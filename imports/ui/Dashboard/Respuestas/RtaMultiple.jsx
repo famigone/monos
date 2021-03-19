@@ -39,7 +39,12 @@ import {
 //const App = () => (
 
 export default class RtaMultiple extends Component {
-  state = { valor: "", hiddeValidar: true, mensajeError: "" };
+  state = {
+    valor: "",
+    hiddeValidar: true,
+    mensajeError: "",
+    hiddeErrorSePaso: true
+  };
 
   renderForm() {
     return (
@@ -91,6 +96,12 @@ export default class RtaMultiple extends Component {
               {this.state.mensajeError}
             </Message.Header>
           </Message>
+          <Message color="pink" floating hidden={this.state.hiddeErrorSePaso}>
+            <Message.Header>
+              <Icon size="huge" name="meh outline" />
+              "Solo podes seleccionar un máximo de tres respuestas..."
+            </Message.Header>
+          </Message>
           <Button color="teal" type="submit">
             Siguiente
           </Button>
@@ -128,44 +139,53 @@ export default class RtaMultiple extends Component {
         this.props.pregunta.tipo
       );
       valido = mensaje == "";
-
-      this.state.valor.forEach(rta => {
-        if (!valido)
-          this.setState({ hiddeValidar: false, mensajeError: mensaje });
-        else {
-          this.setState({ hiddeValidar: true });
-          var one = {
-            contactoid: this.props.pregunta.contactoid,
-            contactopreguntaid: this.props.pregunta._id,
-            codigo: this.props.pregunta.codigo,
-            rtatexto: rta,
-            especifique: inputRespuesta
-            //  activo: true
-          };
-          //  console.log("INSERTO UN MÚLTIPLE");
-          insertRespuesta.call(one, (err, res) => {
-            if (err) {
-              console.log(err);
-            }
-          });
-        }
-      });
-
-      if (!(this.state.valor === "") && valido) {
-        const two = { id: this.props.pregunta._id };
-        updateContactoPregunta.call(two, (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
+      //console.log("contamos ", this.state.valor.length);
+      //console.log("preg ", this.props.pregunta);
+      let preguntaControl =
+        this.props.pregunta.codigo == "1120" ||
+        this.props.pregunta.codigo == "130";
+      let cantRtas = this.state.valor.length > 3;
+      if (preguntaControl && cantRtas) {
+        this.setState({ hiddeErrorSePaso: false });
+      } else {
+        this.state.valor.forEach(rta => {
+          if (!valido)
+            this.setState({ hiddeValidar: false, mensajeError: mensaje });
+          else {
+            this.setState({ hiddeValidar: true });
+            var one = {
+              contactoid: this.props.pregunta.contactoid,
+              contactopreguntaid: this.props.pregunta._id,
+              codigo: this.props.pregunta.codigo,
+              rtatexto: rta,
+              especifique: inputRespuesta
+              //  activo: true
+            };
+            //  console.log("INSERTO UN MÚLTIPLE");
+            insertRespuesta.call(one, (err, res) => {
+              if (err) {
+                console.log(err);
+              }
+            });
           }
         });
-        this.props.cambiarActual(this.props.pregunta.codigo);
+
+        if (!(this.state.valor === "") && valido) {
+          const two = { id: this.props.pregunta._id };
+          updateContactoPregunta.call(two, (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+            }
+          });
+          this.props.cambiarActual(this.props.pregunta.codigo);
+        }
+        this.setState({
+          valor: []
+        });
       }
     }
     // Clear form
-    this.setState({
-      valor: []
-    });
   }
   componentDidMount() {
     this.setState({ valor: [] });

@@ -68,7 +68,7 @@ class ListaPreguntasMujer extends Component {
         else rta = actual + 10;
         break;
       case 700:
-        if (Number(rtatexto) >= 12) rta = 720;
+        if (Number(rtatexto) > 12) rta = 720;
         else rta = actual + 10;
         break;
       case 710:
@@ -76,13 +76,12 @@ class ListaPreguntasMujer extends Component {
         break;
       case 580:
         if (
+          rtatexto == "Procedimiento con medicamentos: Misoprostol" ||
           rtatexto ==
-            "Procedimiento inicial con medicamentos para culminar con: LEGRADO" ||
-          rtatexto ==
-            "Procedimiento inicial con medicamentos para culminar con: AMEU"
+            "Procedimiento con medicamentos: Mifepristona y Misoprostol"
         )
-          rta = 600;
-        else rta = actual + 10;
+          rta = actual + 10;
+        else rta = 600;
         break;
       case 1200:
         rta = 1220;
