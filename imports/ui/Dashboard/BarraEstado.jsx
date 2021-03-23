@@ -63,27 +63,28 @@ export default class MenuExampleSecondary extends Component {
           >
             <Icon name="pie chart" />
           </Menu.Item>
-
-          <Menu.Item
-            name="users"
-            as={Link}
-            to="/reglas"
-            active={activeItem === "map"}
-            onClick={this.handleItemMap}
-          >
-            <Icon name="random" />
-          </Menu.Item>
-
-          <Menu.Item
-            name="users"
-            as={Link}
-            to="/usuarios"
-            active={activeItem === "map"}
-            onClick={this.handleItemMap}
-          >
-            <Icon name="users" />
-          </Menu.Item>
-
+          {Meteor.user().username === "admin" ? (
+            <Menu.Item
+              name="users"
+              as={Link}
+              to="/reglas"
+              active={activeItem === "map"}
+              onClick={this.handleItemMap}
+            >
+              <Icon name="random" />
+            </Menu.Item>
+          ) : null}
+          {Meteor.user().username === "admin" ? (
+            <Menu.Item
+              name="users"
+              as={Link}
+              to="/usuarios"
+              active={activeItem === "map"}
+              onClick={this.handleItemMap}
+            >
+              <Icon name="users" />
+            </Menu.Item>
+          ) : null}
           <Menu.Item
             active={activeItem === "Logout"}
             as={Link}
