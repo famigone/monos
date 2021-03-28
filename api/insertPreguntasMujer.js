@@ -404,7 +404,7 @@ export const insertPregMujer = new ValidatedMethod({
       contactoid: contactoid,
       texto: "¿Sos el principal sostén económico del hogar?",
       estado: false,
-      tipo: "C",
+      tipo: "B",
       habilitado: false,
       activo: true
     };

@@ -72,12 +72,20 @@ class ListaPreguntas extends Component {
         if (rtatexto == "SI") rta = 760;
         else rta = actual + 10;
         break;
-      case 760:
-        if (rtatexto == "No") rta = 800;
+      case 770:
+        if (rtatexto == "NO") rta = 800;
         else rta = actual + 10;
         break;
       case 810:
         if (rtatexto == "No" || rtatexto == "Sin dato") rta = 830;
+        else rta = actual + 10;
+        break;
+      case 415:
+        rta = 420;
+        break;
+      case 150:
+        rtatexto = this.obtenerRtas();
+        if (rtatexto[0].rtatexto == "Nadie sabe") rta = 180;
         else rta = actual + 10;
         break;
       case 630:
@@ -459,7 +467,7 @@ class ListaPreguntas extends Component {
 
             <Header textAlign="center">Embarazo actual</Header>
             <Menu vertical fluid>
-              {this.renderMenu(this.props.preguntas.slice(41, 51))}
+              {this.renderMenu(this.props.preguntas.slice(41, 52))}
             </Menu>
           </Segment>
         </Segment.Group>
@@ -484,7 +492,7 @@ class ListaPreguntas extends Component {
         <Segment style={{ overflow: "auto", maxHeight: 500 }}>
           <Header textAlign="center">Segundo Momento</Header>
           <Menu vertical fluid>
-            {this.renderMenu(this.props.preguntas.slice(51))}
+            {this.renderMenu(this.props.preguntas.slice(52))}
           </Menu>
         </Segment>
       </Segment.Group>

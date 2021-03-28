@@ -113,8 +113,13 @@ class ListaPreguntasMujer extends Component {
         if (rtatexto == "SI") rta = 760;
         else rta = actual + 10;
         break;
-      case 760:
-        if (rtatexto == "No") rta = 800;
+      case 1150:
+        rtatexto = this.obtenerRtas();
+        if (rtatexto[0].rtatexto == "Nadie sabe") rta = actual + 30;
+        else rta = actual + 10;
+        break;
+      case 770:
+        if (rtatexto == "NO") rta = 800;
         else rta = actual + 10;
         break;
       case 810:

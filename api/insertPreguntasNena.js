@@ -636,6 +636,20 @@ export const insertPregNena = new ValidatedMethod({
     var pregunta = {
       momento: 1,
       seccion: "Embarazo actual",
+      codigo: "415",
+      orden: 415,
+      contactoid: contactoid,
+      texto: "¿Fue tu primera relación sexual?",
+      estado: false,
+      tipo: "B",
+      habilitado: false,
+      activo: true
+    };
+    ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 1,
+      seccion: "Embarazo actual",
       codigo: "420",
       orden: 420,
       contactoid: contactoid,

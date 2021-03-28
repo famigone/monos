@@ -240,7 +240,7 @@ class ListadoConsultas extends Component {
                 </Button>
                 <Confirm
                   open={this.state.open}
-                  content="¿Estás segura de que querés eliminar la llamada?"
+                  content="¿Estás segura/segure/seguro que querés eliminar esta protocola?"
                   onCancel={this.handleCancel}
                   onConfirm={this.handleConfirm}
                 />
@@ -254,10 +254,15 @@ class ListadoConsultas extends Component {
                   </Header.Subheader>
                 </Header.Content>
               </Header>
-              <Message negative floating hidden={this.state.hidden}>
+              <Message
+                negative
+                color="purple"
+                floating
+                hidden={this.state.hidden}
+              >
                 <Message.Header>
                   <Icon name="trash alternate" />
-                  Esta llamada ha sido eliminada.
+                  Esta Protocola ha sido eliminada.
                 </Message.Header>
               </Message>
               {this.state.consultaid && this.state.hidden ? (
