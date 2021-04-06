@@ -83,6 +83,9 @@ class ListaPreguntas extends Component {
       case 415:
         rta = 420;
         break;
+      case 410:
+        rta = 415;
+        break;
       case 150:
         rtatexto = this.obtenerRtas();
         if (rtatexto[0].rtatexto == "Nadie sabe") rta = 180;
@@ -409,7 +412,7 @@ class ListaPreguntas extends Component {
           active={menuActivo === pregunta.texto}
           onClick={this.handleItemClick}
           //cambiar para habilitar
-          //disabled={!pregunta.habilitado}
+          disabled={!pregunta.habilitado}
         >
           <Label circular color={pregunta.estado ? "purple" : "teal"} />
           {pregunta.texto}
