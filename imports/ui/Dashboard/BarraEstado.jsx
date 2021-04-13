@@ -78,6 +78,17 @@ export default class MenuExampleSecondary extends Component {
             <Menu.Item
               name="users"
               as={Link}
+              to="/reglasmultiples"
+              active={activeItem === "map"}
+              onClick={this.handleItemMap}
+            >
+              <Icon name="sitemap" />
+            </Menu.Item>
+          ) : null}
+          {Meteor.user().username === "admin" ? (
+            <Menu.Item
+              name="users"
+              as={Link}
               to="/usuarios"
               active={activeItem === "map"}
               onClick={this.handleItemMap}

@@ -11,6 +11,8 @@ import "../imports/api/contacto.js";
 import "../imports/api/contactoPregunta.js";
 import "../imports/api/respuesta.js";
 import "../imports/api/regla.js";
+import "../imports/api/reglaMultiple.js";
+import "../imports/api/reglaMultipleDetalle.js";
 
 Meteor.startup(() => {
   //let server = Meteor.settings.mqttHost;

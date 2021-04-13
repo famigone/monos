@@ -21,6 +21,7 @@ import NuevoContacto from "../../ui/Dashboard/NuevoContacto.jsx";
 import NuevoContactoMujer from "../../ui/Dashboard/NuevoContactoMujer.jsx";
 import ListadoConsultas from "../../ui/Dashboard/listadoConsultas.jsx";
 import ReglasHome from "../../ui/Dashboard/ReglasHome.jsx";
+import ReglasMultiplesHome from "../../ui/Dashboard/ReglasMultiplesHome.jsx";
 
 import AbmUsuarios from "../../ui/Dashboard/abmUsuarios.jsx";
 import NuevaPregunta from "../../ui/Dashboard/NuevaPregunta.jsx";
@@ -67,6 +68,11 @@ export const Ruteador = () => (
             component={CabeceraFuncional}
           />
           <Route exact path="/reglas" component={ReglasHome} />
+          <Route
+            exact
+            path="/reglasmultiples"
+            component={ReglasMultiplesHome}
+          />
         </App>
       </PrivateRoute>
       {requireAuth ? <Redirect to="/login" /> : <App />}

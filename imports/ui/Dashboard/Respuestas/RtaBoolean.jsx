@@ -6,7 +6,11 @@ import ReactDOM from "react-dom";
 import { validar } from "./validar";
 import LoaderExampleText from "/imports/ui/Dashboard/LoaderExampleText.js";
 import "react-s-alert/dist/s-alert-default.css";
-import { insertRespuesta, updateContactoPregunta } from "/api/methods.js";
+import {
+  insertRespuesta,
+  updateContactoPregunta,
+  validarReglaMultiple
+} from "/api/methods.js";
 import {
   BrowserRouter as Router,
   Switch,
@@ -64,6 +68,65 @@ export default class RtaBoolean extends Component {
         this.props.reglas,
         this.props.pregunta.tipo
       );
+
+      const preguntaActual = {
+        codigoPregunta: this.props.pregunta.codigo,
+        rta: this.state.valor,
+        contactoid: this.props.pregunta.contactoid
+      };
+      //determinar si existe regla para esta pregunta y esta rta
+      var i = 0;
+      var encontro = false;
+      var pos = -1;
+      if (this.props.reglasMultiples) {
+        //console.log(this.props.reglasMultiples);
+        while (i < this.props.reglasMultiples.length && !encontro) {
+          if (
+            this.props.reglasMultiples[i].codigoPreguntaDestino ==
+            this.props.pregunta.codigo
+          ) {
+            encontro = true;
+            pos = i;
+          }
+          i = i + 1;
+        }
+      }
+      var mensajeMultiple = "";
+      if (encontro) {
+        mensajeMultiple = validarReglaMultiple.call(
+          preguntaActual,
+          (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+              console.log("mensajeMultiple: ", mensajeMultiple);
+              var valido = mensajeMultiple == "";
+              if (valido) {
+                this.setState({ hiddeValidar: true });
+                this.proceder(valido, one);
+              } else
+                this.setState({
+                  hiddeValidar: false,
+                  mensajeError: mensaje + mensajeMultiple
+                });
+              //console.log("validooooooooo essss: ", valido);
+            }
+          }
+        );
+      } else {
+        var valido = mensaje == "";
+        //console.log(valido);
+        if (valido) {
+          this.setState({ hiddeValidar: true });
+          this.proceder(one);
+        } else
+          this.setState({
+            hiddeValidar: false,
+            mensajeError: mensaje + mensajeMultiple
+          });
+        //console.log("validooooooooo essss: ", valido);
+      }
+
       var valido = mensaje == "";
       if (valido) this.setState({ hiddeValidar: true });
       else this.setState({ hiddeValidar: false, mensajeError: mensaje });
@@ -71,27 +134,30 @@ export default class RtaBoolean extends Component {
       // Call the Method
       //insertLocacion.validate(one);
       if (valido) {
-        insertRespuesta.call(one, (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
-            this.setState({ valor: null });
-            //marcar la contactoPregunta como contestada
-            const two = { id: this.props.pregunta._id };
-            updateContactoPregunta.call(two, (err, res) => {
-              if (err) {
-                console.log(err);
-              } else {
-              }
-            });
-            // seteamos el nuevo Actual
-            this.props.cambiarActual(this.props.pregunta.codigo, one.rtatexto);
-          }
-        });
+        this.proceder(one);
       }
     }
     // Clear form
     //  ReactDOM.findDOMNode(this.refs.inputRespuesta).value = "";
+  }
+  proceder(one) {
+    insertRespuesta.call(one, (err, res) => {
+      if (err) {
+        console.log(err);
+      } else {
+        this.setState({ valor: null });
+        //marcar la contactoPregunta como contestada
+        const two = { id: this.props.pregunta._id };
+        updateContactoPregunta.call(two, (err, res) => {
+          if (err) {
+            console.log(err);
+          } else {
+          }
+        });
+        // seteamos el nuevo Actual
+        this.props.cambiarActual(this.props.pregunta.codigo, one.rtatexto);
+      }
+    });
   }
   renderForm() {
     //console.log("debe mostrar valor: " + this.state.valor);

@@ -2,6 +2,8 @@ import Pregunta from "/imports/api/pregunta.js";
 import Contacto from "/imports/api/contacto.js";
 import Respuesta from "/imports/api/respuesta.js";
 import Regla from "/imports/api/regla.js";
+import ReglaMultiple from "/imports/api/reglaMultiple.js";
+import ReglaMultipleDetalle from "/imports/api/reglaMultipleDetalle.js";
 import ContactoPregunta from "/imports/api/contactoPregunta.js";
 import { Mongo } from "meteor/mongo";
 import { ReactiveAggregate } from "meteor/tunguska:reactive-aggregate";
@@ -15,6 +17,32 @@ Meteor.publish("pregunta", function() {
 Meteor.publish("reglas", function() {
   return Regla.find(
     { activo: true },
+    { sort: { tipoOrigen: 1, codigoPreguntaOrigen: 1 } }
+  );
+});
+
+Meteor.publish("reglaMultiple", function() {
+  return ReglaMultiple.find(
+    { activo: true },
+    { sort: { tipoDestino: 1, codigoPreguntaDestino: 1 } }
+  );
+});
+
+Meteor.publish("reglaMultipleDetalle", function(reglaId) {
+  return ReglaMultipleDetalle.find(
+    {
+      activo: true,
+      reglaid: reglaId
+    },
+    { sort: { tipoOrigen: 1, codigoPreguntaOrigen: 1 } }
+  );
+});
+
+Meteor.publish("reglaMultipleDetalleTodes", function() {
+  return ReglaMultipleDetalle.find(
+    {
+      activo: true
+    },
     { sort: { tipoOrigen: 1, codigoPreguntaOrigen: 1 } }
   );
 });

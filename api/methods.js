@@ -3,6 +3,8 @@ import { ValidatedMethod } from "meteor/mdg:validated-method";
 import ContactoPregunta from "/imports/api/contactoPregunta.js";
 import Respuesta from "/imports/api/respuesta.js";
 import Regla from "/imports/api/regla.js";
+import ReglaMultiple from "/imports/api/reglaMultiple.js";
+import ReglaMultipleDetalle from "/imports/api/reglaMultipleDetalle.js";
 import { Accounts } from "meteor/accounts-base";
 import { Meteor } from "meteor/meteor";
 //import { Mongo } from "meteor/mongo";
@@ -291,6 +293,139 @@ export const insertRegla = new ValidatedMethod({
     Regla.insert(one);
   }
 });
+
+export const insertReglaMultiple = new ValidatedMethod({
+  name: "reglaMultiple.insert",
+  validate: new SimpleSchema({
+    condicion: {
+      type: Number
+    },
+    mensaje: {
+      type: String
+    },
+    textoPreguntaDestino: { type: String },
+
+    tipoDestino: {
+      type: String
+    },
+    codigoPreguntaDestino: {
+      type: String
+    }, //idContacto
+    rtaDestino: { type: String },
+
+    activo: {
+      type: Boolean
+    }, //borrado lógico
+    createdBy: {
+      type: String,
+      optional: true,
+      autoValue: function() {
+        return this.userId;
+      }
+    },
+    createdAt: {
+      type: Date,
+      optional: true,
+      autoValue: function() {
+        return new Date();
+      }
+    }
+  }).validator(),
+  run(one) {
+    one.activo = true;
+    var id = ReglaMultiple.insert(one);
+    return id;
+  }
+});
+
+export const insertReglaMultipleDetalle = new ValidatedMethod({
+  name: "reglaMultipleDetalle.insert",
+  validate: new SimpleSchema({
+    reglaid: {
+      type: String,
+      regEx: SimpleSchema.RegEx.Id
+    },
+    tipoOrigen: {
+      type: String
+    },
+    condicion: {
+      type: Number
+    },
+    codigoPreguntaOrigen: {
+      type: String
+    }, //idContacto
+    rtaOrigen: { type: String },
+
+    textoPreguntaOrigen: { type: String },
+    activo: {
+      type: Boolean
+    }, //borrado lógico
+    createdBy: {
+      type: String,
+      optional: true,
+      autoValue: function() {
+        return this.userId;
+      }
+    },
+    createdAt: {
+      type: Date,
+      optional: true,
+      autoValue: function() {
+        return new Date();
+      }
+    }
+  }).validator(),
+  run(one) {
+    one.activo = true;
+    ReglaMultipleDetalle.insert(one);
+  }
+});
+export const deleteReglaMultipleDetalle = new ValidatedMethod({
+  name: "deleteReglaMultipleDetalle",
+  validate: new SimpleSchema({
+    id: { type: String, regEx: SimpleSchema.RegEx.Id }
+  }).validator(),
+  run(one) {
+    //console.log("one.contactoid ", one.contactoid);
+    return ReglaMultipleDetalle.update(
+      { _id: one.id },
+      {
+        $set: {
+          activo: false
+        }
+      }
+    );
+  }
+});
+
+export const deleteReglaMultiple = new ValidatedMethod({
+  name: "deleteReglaMultiple",
+  validate: new SimpleSchema({
+    id: { type: String, regEx: SimpleSchema.RegEx.Id }
+  }).validator(),
+  run(one) {
+    //console.log("one.contactoid ", one.contactoid);
+    //borro los antecedentes que dependan de del consecuente
+    ReglaMultipleDetalle.update(
+      { reglaid: one.id },
+      {
+        $set: {
+          activo: false
+        }
+      }
+    );
+
+    return ReglaMultiple.update(
+      { _id: one.id },
+      {
+        $set: {
+          activo: false
+        }
+      }
+    );
+  }
+});
+
 export const deleteRegla = new ValidatedMethod({
   name: "deleteRegla",
   validate: new SimpleSchema({
@@ -462,6 +597,67 @@ export const updateRespuestaFecha = new ValidatedMethod({
         }
       }
     );
+  }
+});
+
+export const validarReglaMultiple = new ValidatedMethod({
+  name: "validarReglaMultiple",
+  validate: new SimpleSchema({
+    codigoPregunta: { type: String },
+    rta: { type: String },
+    contactoid: { type: String }
+  }).validator(),
+  run(preguntaActual) {
+    //1- obtener todas las reglas para este CÓDIGO
+    var reglasMultiples = ReglaMultiple.find({
+      codigoPreguntaDestino: preguntaActual.codigoPregunta
+    }).fetch();
+    var i = 0;
+    //bandera de antecedentes
+    var seValidanAntecedentes = true;
+    //bandera de reglas
+    var valida = true;
+    var mensajeError = "";
+    while (i < reglasMultiples.length && seValidanAntecedentes && valida) {
+      //2- para cada regla recuperar los antecedentes
+
+      var antecedentes = ReglaMultipleDetalle.find({
+        reglaid: reglasMultiples[i]._id
+      }).fetch();
+      //3- obtener cada rta de ese concecuente y determinar si se cumple las conjunciones
+      var j = 0;
+      //console.log(antecedentes);
+      if (antecedentes) {
+        while (j < antecedentes.length && seValidanAntecedentes) {
+          var laRespuesta = Respuesta.findOne({
+            contactoid: preguntaActual.contactoid,
+            codigo: antecedentes[j].codigoPreguntaOrigen
+          });
+
+          seValidanAntecedentes =
+            laRespuesta.rtatexto == antecedentes[j].rtaOrigen;
+
+          j = j + 1;
+        }
+      }
+      //4- si se cumplen, validar la rta de la pregunta actual
+
+      if (antecedentes && seValidanAntecedentes) {
+        switch (reglasMultiples[i].condicion) {
+          case 1:
+            valida = preguntaActual.rta == reglasMultiples[i].rtaDestino;
+            break;
+          case 2:
+            valida = !(preguntaActual.rta == reglasMultiples[i].rtaDestino);
+            break;
+        }
+      }
+
+      if (!valida) mensajeError = reglasMultiples[i].mensaje;
+      i = i + 1;
+    }
+
+    return mensajeError;
   }
 });
 

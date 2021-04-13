@@ -143,18 +143,18 @@ class ListaPreguntas extends Component {
       menuActivo: this.props.preguntas[pos].texto,
       tipo: this.props.preguntas[pos].tipo
     });
-    console.log(
-      "estado ListaPregunta item actual: ",
-      this.props.preguntas[pos].texto
-    );
-    console.log(
-      "estado ListaPregunta tipo actual: ",
-      this.props.preguntas[pos].tipo
-    );
-    console.log(
-      "estado update ListaPregunta: ",
-      this.props.preguntas[pos].estado
-    );
+    //  console.log(
+    //    "estado ListaPregunta item actual: ",
+    //    this.props.preguntas[pos].texto
+    //  );
+    //  console.log(
+    //    "estado ListaPregunta tipo actual: ",
+    //    this.props.preguntas[pos].tipo
+    //  );
+    //  console.log(
+    //    "estado update ListaPregunta: ",
+    //    this.props.preguntas[pos].estado
+    //  );
 
     //this.onUpdateActual(name);
   };
@@ -253,6 +253,8 @@ class ListaPreguntas extends Component {
           respuestas={this.props.respuestas}
           rta={this.obtenerRtaActual()}
           reglas={this.props.reglas}
+          reglasMultiples={this.props.reglasMultiples}
+          //reglasMultiplesDetalleTodes={this.props.reglasMultiplesDetalleTodes}
         />
       ) : (
         <RtaCombo
@@ -260,6 +262,8 @@ class ListaPreguntas extends Component {
           cambiarActual={this.onUpdateActual}
           respuestas={this.props.respuestas}
           reglas={this.props.reglas}
+          reglasMultiples={this.props.reglasMultiples}
+          //  reglasMultiplesDetalleTodes={this.props.reglasMultiplesDetalleTodes}
         />
       );
     }
@@ -345,6 +349,8 @@ class ListaPreguntas extends Component {
             cambiarActual={this.onUpdateActual}
             rtas={this.obtenerRtas()}
             reglas={this.props.reglas}
+            reglasMultiples={this.props.reglasMultiples}
+            reglasMultiplesDetalleTodes={this.props.reglasMultiplesDetalleTodes}
             respuestas={this.props.respuestas}
           />
         ) : (
@@ -352,6 +358,8 @@ class ListaPreguntas extends Component {
             pregunta={laPregunta}
             cambiarActual={this.onUpdateActual}
             reglas={this.props.reglas}
+            reglasMultiples={this.props.reglasMultiples}
+            reglasMultiplesDetalleTodes={this.props.reglasMultiplesDetalleTodes}
             respuestas={this.props.respuestas}
           />
         );
@@ -365,6 +373,7 @@ class ListaPreguntas extends Component {
             cambiarActual={this.onUpdateActual}
             rta={this.obtenerRtaActual()}
             reglas={this.props.reglas}
+            reglasMultiples={this.props.reglasMultiples}
             respuestas={this.props.respuestas}
           />
         ) : (
@@ -372,6 +381,7 @@ class ListaPreguntas extends Component {
             pregunta={laPregunta}
             cambiarActual={this.onUpdateActual}
             reglas={this.props.reglas}
+            reglasMultiples={this.props.reglasMultiples}
             respuestas={this.props.respuestas}
           />
         );
@@ -412,7 +422,7 @@ class ListaPreguntas extends Component {
           active={menuActivo === pregunta.texto}
           onClick={this.handleItemClick}
           //cambiar para habilitar
-          disabled={!pregunta.habilitado}
+          //disabled={!pregunta.habilitado}
         >
           <Label circular color={pregunta.estado ? "purple" : "teal"} />
           {pregunta.texto}
@@ -537,7 +547,9 @@ export default withTracker(({ preguntas, id }) => {
     //Meteor.subscribe("contactopregunta", id),
     Meteor.subscribe("respuestaOne", id),
     Meteor.subscribe("contactoOne", id),
-    Meteor.subscribe("reglas")
+    Meteor.subscribe("reglas"),
+    Meteor.subscribe("reglaMultiple")
+    ///Meteor.subscribe("reglaMultipleDetalleTodes")
   ];
   //  console.log("contactoid:" + id);
   const loading = handles.some(handle => !handle.ready());
@@ -546,6 +558,8 @@ export default withTracker(({ preguntas, id }) => {
     isLoading: loading,
     contacto: Contacto.findOne(id),
     respuestas: Respuesta.find().fetch(),
-    reglas: Regla.find().fetch()
+    reglas: Regla.find().fetch(),
+    reglasMultiples: ReglaMultiple.find().fetch()
+    //    reglasMultiplesDetalleTodes: ReglaMultipleDetalle.find().fetch()
   };
 })(ListaPreguntas);

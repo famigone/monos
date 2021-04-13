@@ -8,7 +8,11 @@ import { options } from "./combo";
 import { validar } from "./validar";
 import LoaderExampleText from "/imports/ui/Dashboard/LoaderExampleText.js";
 import "react-s-alert/dist/s-alert-default.css";
-import { insertRespuesta, updateContactoPregunta } from "/api/methods.js";
+import {
+  insertRespuesta,
+  updateContactoPregunta,
+  validarReglaMultiple
+} from "/api/methods.js";
 import {
   BrowserRouter as Router,
   Switch,
@@ -84,11 +88,69 @@ export default class RtaCombo extends Component {
       this.props.reglas,
       this.props.pregunta.tipo
     );
+    const preguntaActual = {
+      codigoPregunta: this.props.pregunta.codigo,
+      rta: this.state.valor,
+      contactoid: this.props.pregunta.contactoid
+    };
+    //determinar si existe regla para esta pregunta y esta rta
+    var i = 0;
+    var encontro = false;
+    var pos = -1;
+    if (this.props.reglasMultiples) {
+      //console.log(this.props.reglasMultiples);
+      while (i < this.props.reglasMultiples.length && !encontro) {
+        if (
+          this.props.reglasMultiples[i].codigoPreguntaDestino ==
+          this.props.pregunta.codigo
+        ) {
+          encontro = true;
+          pos = i;
+        }
+        i = i + 1;
+      }
+    }
+    var mensajeMultiple = "";
+    if (encontro) {
+      mensajeMultiple = validarReglaMultiple.call(
+        preguntaActual,
+        (err, res) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("mensajeMultiple: ", mensajeMultiple);
+            var valido = mensajeMultiple == "";
+            if (valido) {
+              this.setState({ hiddeValidar: true });
+              this.proceder(valido, one);
+            } else
+              this.setState({
+                hiddeValidar: false,
+                mensajeError: mensaje + mensajeMultiple
+              });
+            //console.log("validooooooooo essss: ", valido);
+          }
+        }
+      );
+    } else {
+      var valido = mensaje == "";
+      //console.log(valido);
+      if (valido) {
+        this.setState({ hiddeValidar: true });
+        this.proceder(valido, one);
+      } else
+        this.setState({
+          hiddeValidar: false,
+          mensajeError: mensaje + mensajeMultiple
+        });
+      //console.log("validooooooooo essss: ", valido);
+    }
+    //var valido = mensaje == "" && mensajeMultiple == "";
+    //console.log("valido: " + valido);
 
-    var valido = mensaje == "";
-    if (valido) this.setState({ hiddeValidar: true });
-    else this.setState({ hiddeValidar: false, mensajeError: mensaje });
-    //console.log("validooooooooo essss: ", valido);
+    // Clear form
+  }
+  proceder(valido, one) {
     if (!(this.state.valor === "") && valido) {
       // Call the Method
       //insertLocacion.validate(one);
@@ -137,9 +199,7 @@ export default class RtaCombo extends Component {
         }
       });
     }
-    // Clear form
   }
-
   renderForm() {
     //  console.log(options[this.props.pregunta.orden]);
     return (

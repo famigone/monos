@@ -5,7 +5,7 @@ import { withTracker } from "meteor/react-meteor-data";
 import LoaderExampleText from "/imports/ui/Dashboard/LoaderExampleText.js";
 import Contacto from "/imports/api/contacto.js";
 import ReactDOM from "react-dom";
-
+import { deleteReglaMultiple } from "/api/methods.js";
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,6 +15,7 @@ import {
 import {
   Icon,
   Label,
+  Confirm,
   Statistic,
   Menu,
   Table,
@@ -32,13 +33,41 @@ import {
 
 //const App = () => (
 
-class Reglas extends Component {
-  clickFila(id, fecha) {
-    this.props.handleFila(id, fecha);
+class ReglasMultiple extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      hidden: true,
+      open: false,
+      reglaId: ""
+    };
   }
+  clickFila(regla) {
+    this.setState({ reglaId: regla._id });
+    this.props.handleFila(regla);
+  }
+  show = () => this.setState({ open: true });
+  handleConfirm = () => {
+    this.setState({ open: false });
+    this.eliminar();
+  };
+  eliminar() {
+    const one = { id: this.state.reglaId };
+    deleteReglaMultiple.call(one, (err, res) => {
+      if (err) {
+        console.log(err);
+      } else {
+        this.setState({ hidden: false });
+        this.props.limpiar();
+      }
+    });
+  }
+  handleCancel = () => this.setState({ result: "cancelled", open: false });
+
   renderFila() {
     return this.props.reglas.map(regla => (
-      <Table.Row key={regla._id} onClick={() => this.clickFila(regla._id)}>
+      <Table.Row key={regla._id} onClick={() => this.clickFila(regla)}>
         <Table.Cell>{regla.tipoDestino}</Table.Cell>
         <Table.Cell>{regla.textoPreguntaDestino}</Table.Cell>
         <Table.Cell>{regla.rtaDestino}</Table.Cell>
@@ -46,6 +75,21 @@ class Reglas extends Component {
           {regla.condicion == 1 ? "Igual a" : "Distinta de"}
         </Table.Cell>
         <Table.Cell>{regla.mensaje}</Table.Cell>
+        <Table.Cell>
+          <center>
+            <Button size="mini" color="teal" onClick={this.show}>
+              Borrar
+            </Button>
+            <Confirm
+              open={this.state.open}
+              content="¿Estás segura de que querés eliminar la regla?"
+              onCancel={this.handleCancel}
+              onConfirm={this.handleConfirm}
+              cancelButton="Mejor no"
+              confirmButton="Estoy segura"
+            />
+          </center>
+        </Table.Cell>
       </Table.Row>
     ));
   }
@@ -71,6 +115,9 @@ class Reglas extends Component {
               <Table.HeaderCell>
                 <h4>Mensaje</h4>
               </Table.HeaderCell>
+              <Table.HeaderCell>
+                <h4>Acción</h4>
+              </Table.HeaderCell>
             </Table.Row>
           </Table.Header>
 
@@ -88,10 +135,10 @@ class Reglas extends Component {
 }
 
 export default withTracker(() => {
-  const handles = [Meteor.subscribe("reglas")];
+  const handles = [Meteor.subscribe("reglaMultiple")];
   const loading = handles.some(handle => !handle.ready());
   return {
-    reglas: Regla.find({}).fetch(),
+    reglas: ReglaMultiple.find({}).fetch(),
     isLoading: loading
   };
-})(Reglas);
+})(ReglasMultiple);
