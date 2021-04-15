@@ -260,7 +260,7 @@ class ListaPreguntasMujer extends Component {
           respuestas={this.props.respuestas}
           rta={this.obtenerRtaActual()}
           reglas={this.props.reglas}
-          reglasMultiples={this.props.reglasMultiples}
+          //reglasMultiples={this.props.reglasMultiples}
         />
       ) : (
         <RtaCombo
@@ -268,7 +268,7 @@ class ListaPreguntasMujer extends Component {
           cambiarActual={this.onUpdateActual}
           respuestas={this.props.respuestas}
           reglas={this.props.reglas}
-          reglasMultiples={this.props.reglasMultiples}
+          //reglasMultiples={this.props.reglasMultiples}
         />
       );
     }
@@ -371,7 +371,7 @@ class ListaPreguntasMujer extends Component {
             cambiarActual={this.onUpdateActual}
             rta={this.obtenerRtaActual()}
             reglas={this.props.reglas}
-            reglasMultiples={this.props.reglasMultiples}
+            //reglasMultiples={this.props.reglasMultiples}
             respuestas={this.props.respuestas}
           />
         ) : (
@@ -379,7 +379,7 @@ class ListaPreguntasMujer extends Component {
             pregunta={laPregunta}
             cambiarActual={this.onUpdateActual}
             reglas={this.props.reglas}
-            reglasMultiples={this.props.reglasMultiples}
+            //reglasMultiples={this.props.reglasMultiples}
             respuestas={this.props.respuestas}
           />
         );
@@ -546,9 +546,9 @@ export default withTracker(({ preguntas, id }) => {
     //Meteor.subscribe("contactopregunta", id),
     Meteor.subscribe("respuestaOne", id),
     Meteor.subscribe("contactoOne", id),
-    Meteor.subscribe("reglas"),
-    Meteor.subscribe("reglaMultiple"),
-    Meteor.subscribe("reglaMultipleDetalleTodes")
+    Meteor.subscribe("reglas")
+    //Meteor.subscribe("reglaMultiple"),
+    //Meteor.subscribe("reglaMultipleDetalleTodes")
     //  Meteor.subscribe("reglaMultipleDetalleTodes")
   ];
   //  console.log("contactoid:" + id);
@@ -558,8 +558,8 @@ export default withTracker(({ preguntas, id }) => {
     isLoading: loading,
     contacto: Contacto.findOne(id),
     respuestas: Respuesta.find().fetch(),
-    reglas: Regla.find().fetch(),
-    reglasMultiples: ReglaMultiple.find().fetch(),
-    reglasMultiplesDetalle: ReglaMultipleDetalle.find().fetch()
+    reglas: Regla.find().fetch()
+    //  reglasMultiples: ReglaMultiple.find().fetch(),
+    //  reglasMultiplesDetalle: ReglaMultipleDetalle.find().fetch()
   };
 })(ListaPreguntasMujer);

@@ -253,8 +253,8 @@ class ListaPreguntas extends Component {
           respuestas={this.props.respuestas}
           rta={this.obtenerRtaActual()}
           reglas={this.props.reglas}
-          reglasMultiples={this.props.reglasMultiples}
-          reglasMultiplesDetalleTodes={this.props.reglasMultiplesDetalleTodes}
+          //  reglasMultiples={this.props.reglasMultiples}
+          //  reglasMultiplesDetalleTodes={this.props.reglasMultiplesDetalleTodes}
         />
       ) : (
         <RtaCombo
@@ -262,7 +262,7 @@ class ListaPreguntas extends Component {
           cambiarActual={this.onUpdateActual}
           respuestas={this.props.respuestas}
           reglas={this.props.reglas}
-          reglasMultiples={this.props.reglasMultiples}
+          //  reglasMultiples={this.props.reglasMultiples}
           //  reglasMultiplesDetalleTodes={this.props.reglasMultiplesDetalleTodes}
         />
       );
@@ -349,8 +349,8 @@ class ListaPreguntas extends Component {
             cambiarActual={this.onUpdateActual}
             rtas={this.obtenerRtas()}
             reglas={this.props.reglas}
-            reglasMultiples={this.props.reglasMultiples}
-            reglasMultiplesDetalleTodes={this.props.reglasMultiplesDetalleTodes}
+            //reglasMultiples={this.props.reglasMultiples}
+            //reglasMultiplesDetalleTodes={this.props.reglasMultiplesDetalleTodes}
             respuestas={this.props.respuestas}
           />
         ) : (
@@ -358,8 +358,8 @@ class ListaPreguntas extends Component {
             pregunta={laPregunta}
             cambiarActual={this.onUpdateActual}
             reglas={this.props.reglas}
-            reglasMultiples={this.props.reglasMultiples}
-            reglasMultiplesDetalleTodes={this.props.reglasMultiplesDetalleTodes}
+            //reglasMultiples={this.props.reglasMultiples}
+            //reglasMultiplesDetalleTodes={this.props.reglasMultiplesDetalleTodes}
             respuestas={this.props.respuestas}
           />
         );
@@ -373,7 +373,7 @@ class ListaPreguntas extends Component {
             cambiarActual={this.onUpdateActual}
             rta={this.obtenerRtaActual()}
             reglas={this.props.reglas}
-            reglasMultiples={this.props.reglasMultiples}
+            //reglasMultiples={this.props.reglasMultiples}
             respuestas={this.props.respuestas}
           />
         ) : (
@@ -381,8 +381,8 @@ class ListaPreguntas extends Component {
             pregunta={laPregunta}
             cambiarActual={this.onUpdateActual}
             reglas={this.props.reglas}
-            reglasMultiples={this.props.reglasMultiples}
-            reglasMultiplesDetalle={this.props.reglasMultiplesDetalle}
+            //reglasMultiples={this.props.reglasMultiples}
+            //reglasMultiplesDetalle={this.props.reglasMultiplesDetalle}
             respuestas={this.props.respuestas}
           />
         );
@@ -548,9 +548,9 @@ export default withTracker(({ preguntas, id }) => {
     //Meteor.subscribe("contactopregunta", id),
     Meteor.subscribe("respuestaOne", id),
     Meteor.subscribe("contactoOne", id),
-    Meteor.subscribe("reglas"),
-    Meteor.subscribe("reglaMultiple"),
-    Meteor.subscribe("reglaMultipleDetalleTodes")
+    Meteor.subscribe("reglas")
+    //Meteor.subscribe("reglaMultiple"),
+    //Meteor.subscribe("reglaMultipleDetalleTodes")
   ];
   //  console.log("contactoid:" + id);
   const loading = handles.some(handle => !handle.ready());
@@ -559,8 +559,8 @@ export default withTracker(({ preguntas, id }) => {
     isLoading: loading,
     contacto: Contacto.findOne(id),
     respuestas: Respuesta.find().fetch(),
-    reglas: Regla.find().fetch(),
-    reglasMultiples: ReglaMultiple.find().fetch(),
-    reglasMultiplesDetalle: ReglaMultipleDetalle.find().fetch()
+    reglas: Regla.find().fetch()
+    //reglasMultiples: ReglaMultiple.find().fetch(),
+    //reglasMultiplesDetalle: ReglaMultipleDetalle.find().fetch()
   };
 })(ListaPreguntas);
