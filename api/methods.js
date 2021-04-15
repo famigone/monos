@@ -203,8 +203,19 @@ export const insertRespuesta = new ValidatedMethod({
     }
   }).validator(),
   run(one) {
-    one.activo = true;
-    return Respuesta.insert(one);
+    const actual = {
+      codigoPregunta: one.codigo,
+      rta: one.rtatexto,
+      contactoid: one.contactoid
+    };
+    mensaje = validarReglaMultipleX(actual);
+    if (mensaje == "") {
+      one.activo = true;
+      Respuesta.insert(one);
+      return "";
+    } else {
+      return mensaje;
+    }
   }
 });
 
@@ -449,20 +460,33 @@ export const updateRespuestaString = new ValidatedMethod({
   validate: new SimpleSchema({
     id: { type: String, regEx: SimpleSchema.RegEx.Id },
     rtatexto: { type: String },
-    especifique: { type: String }
+    especifique: { type: String },
+    codigoPregunta: { type: String },
+    contactoId: { type: String, regEx: SimpleSchema.RegEx.Id }
     //activo: { type: Boolean }
   }).validator(),
   run(one) {
-    Respuesta.update(
-      { _id: one.id },
-      {
-        $set: {
-          rtatexto: one.rtatexto,
-          especifique: one.especifique
-          //activo: one.activo
+    const actual = {
+      codigoPregunta: one.codigoPregunta,
+      rta: one.rtatexto,
+      contactoid: one.contactoId
+    };
+    mensaje = validarReglaMultipleX(actual);
+    if (mensaje == "") {
+      Respuesta.update(
+        { _id: one.id },
+        {
+          $set: {
+            rtatexto: one.rtatexto,
+            especifique: one.especifique
+            //activo: one.activo
+          }
         }
-      }
-    );
+      );
+      return "";
+    } else {
+      return mensaje;
+    }
   }
 });
 
@@ -620,19 +644,21 @@ export const validarReglaMultiple = new ValidatedMethod({
     var mensajeError = "";
     while (i < reglasMultiples.length && seValidanAntecedentes && valida) {
       //2- para cada regla recuperar los antecedentes
-
+      console.log("reglaMultiple _id", reglasMultiples[i]._id);
       var antecedentes = ReglaMultipleDetalle.find({
         reglaid: reglasMultiples[i]._id
       }).fetch();
       //3- obtener cada rta de ese concecuente y determinar si se cumple las conjunciones
       var j = 0;
-      //console.log(antecedentes);
+      //console.log("antecedentes", antecedentes);
       if (antecedentes) {
         while (j < antecedentes.length && seValidanAntecedentes) {
           var laRespuesta = Respuesta.findOne({
             contactoid: preguntaActual.contactoid,
             codigo: antecedentes[j].codigoPreguntaOrigen
           });
+          //  console.log("laRespuesta.rtatexto", laRespuesta.rtatexto);
+          //  console.log("antecedentes[j].rtaOrigen", antecedentes[j].rtaOrigen);
 
           seValidanAntecedentes =
             laRespuesta.rtatexto == antecedentes[j].rtaOrigen;
@@ -641,7 +667,7 @@ export const validarReglaMultiple = new ValidatedMethod({
         }
       }
       //4- si se cumplen, validar la rta de la pregunta actual
-
+      console.log("seValidanAntecedentes", seValidanAntecedentes);
       if (antecedentes && seValidanAntecedentes) {
         switch (reglasMultiples[i].condicion) {
           case 1:
@@ -653,10 +679,12 @@ export const validarReglaMultiple = new ValidatedMethod({
         }
       }
 
-      if (!valida) mensajeError = reglasMultiples[i].mensaje;
+      if (!valida && seValidanAntecedentes) {
+        mensajeError = reglasMultiples[i].mensaje;
+      }
       i = i + 1;
     }
-
+    console.log(" mensajeError: ", mensajeError);
     return mensajeError;
   }
 });
@@ -665,3 +693,65 @@ export const validarReglaMultiple = new ValidatedMethod({
 ///////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
+
+function validarReglaMultipleX(preguntaActual) {
+  console.log(preguntaActual);
+  //1- obtener todas las reglas para este CÓDIGO
+  var reglasMultiples = ReglaMultiple.find({
+    codigoPreguntaDestino: preguntaActual.codigoPregunta,
+    activo: true
+  }).fetch();
+  var i = 0;
+  //bandera de antecedentes
+  var seValidanAntecedentes = true;
+  //bandera de reglas
+  var valida = true;
+  var mensajeError = "";
+  console.log("reglasMultiples ", reglasMultiples.length);
+  while (i < reglasMultiples.length && seValidanAntecedentes && valida) {
+    //2- para cada regla recuperar los antecedentes
+    //console.log("reglaMultiple _id", reglasMultiples[i]._id);
+    var antecedentes = ReglaMultipleDetalle.find({
+      reglaid: reglasMultiples[i]._id,
+      activo: true
+    }).fetch();
+    //3- obtener cada rta de ese concecuente y determinar si se cumple las conjunciones
+    var j = 0;
+    console.log("antecedentesX ", antecedentes);
+    if (antecedentes) {
+      while (j < antecedentes.length && seValidanAntecedentes) {
+        var laRespuesta = Respuesta.findOne({
+          contactoid: preguntaActual.contactoid,
+          codigo: antecedentes[j].codigoPreguntaOrigen
+        });
+        //  console.log("laRespuesta.rtatexto", laRespuesta.rtatexto);
+        //  console.log("antecedentes[j].rtaOrigen", antecedentes[j].rtaOrigen);
+
+        seValidanAntecedentes =
+          laRespuesta.rtatexto == antecedentes[j].rtaOrigen;
+
+        j = j + 1;
+      }
+    }
+    //console.log(" seValidanAntecedentes: ", seValidanAntecedentes);
+    //4- si se cumplen, validar la rta de la pregunta actual
+    //console.log("seValidanAntecedentes", seValidanAntecedentes);
+    if (antecedentes && seValidanAntecedentes) {
+      switch (reglasMultiples[i].condicion) {
+        case 1:
+          valida = preguntaActual.rta == reglasMultiples[i].rtaDestino;
+          break;
+        case 2:
+          valida = !(preguntaActual.rta == reglasMultiples[i].rtaDestino);
+          break;
+      }
+    }
+
+    if (!valida && seValidanAntecedentes) {
+      mensajeError = reglasMultiples[i].mensaje;
+    }
+    i = i + 1;
+  }
+  //console.log(" mensajeErrorServerX: ", mensajeError);
+  return mensajeError;
+}

@@ -6,11 +6,7 @@ import ReactDOM from "react-dom";
 import { validar } from "./validar";
 import LoaderExampleText from "/imports/ui/Dashboard/LoaderExampleText.js";
 import "react-s-alert/dist/s-alert-default.css";
-import {
-  updateRespuestaString,
-  updateContactoPregunta,
-  validarReglaMultiple
-} from "/api/methods.js";
+import { updateRespuestaString, updateContactoPregunta } from "/api/methods.js";
 import {
   BrowserRouter as Router,
   Switch,
@@ -66,87 +62,34 @@ export default class RtaBooleanUpdate extends Component {
       especifique: ""
       //  activo: true
     };
-    const preguntaActual = {
-      codigoPregunta: this.props.pregunta.codigo,
-      rta: this.state.valor,
-      contactoid: this.props.pregunta.contactoid
-    };
     // Call the Method
     //insertLocacion.validate(one);
+    let mensaje = validar(
+      this.props.respuestas,
+      this.props.pregunta.codigo,
+      this.state.valor,
+      this.props.reglas,
+      this.props.pregunta.tipo
+    );
+    var valido = mensaje == "";
+    if (valido) this.setState({ hiddeValidar: true });
+    else this.setState({ hiddeValidar: false, mensajeError: mensaje });
 
-    //determinar si existe regla para esta pregunta y esta rta
-    var i = 0;
-    var encontro = false;
-    var pos = -1;
-    if (this.props.reglasMultiples) {
-      //console.log(this.props.reglasMultiples);
-      while (i < this.props.reglasMultiples.length && !encontro) {
-        if (
-          this.props.reglasMultiples[i].codigoPreguntaDestino ==
-          this.props.pregunta.codigo
-        ) {
-          encontro = true;
-          pos = i;
+    // Call the Method
+    //insertLocacion.validate(one);
+    if (valido) {
+      updateRespuestaString.call(one, (err, res) => {
+        if (err) {
+          console.log(err);
+        } else {
+          this.setState({
+            hidden: false
+            //  valor: null
+          });
         }
-        i = i + 1;
-      }
-    }
-    var mensajeMultiple = "";
-    if (encontro) {
-      mensajeMultiple = validarReglaMultiple.call(
-        preguntaActual,
-        (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
-            var valido = mensajeMultiple == "";
-            if (valido) {
-              this.setState({ hiddeValidar: true });
-              updateRespuestaString.call(one, (err, res) => {
-                if (err) {
-                  console.log(err);
-                } else {
-                  this.setState({
-                    hidden: false
-                  });
-                }
-              });
-            } else
-              this.setState({
-                hiddeValidar: false,
-                mensajeError: mensajeMultiple
-              });
-          }
-        }
-      );
-    } else {
-      let mensaje = validar(
-        this.props.respuestas,
-        this.props.pregunta.codigo,
-        this.state.valor,
-        this.props.reglas,
-        this.props.pregunta.tipo
-      );
-      var valido = mensaje == "";
-      if (valido) this.setState({ hiddeValidar: true });
-      else this.setState({ hiddeValidar: false, mensajeError: mensaje });
-
-      // Call the Method
-      //insertLocacion.validate(one);
-      if (valido) {
-        updateRespuestaString.call(one, (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
-            this.setState({
-              hidden: false
-              //  valor: null
-            });
-          }
-        });
-        // Clear form
-        //  ReactDOM.findDOMNode(this.refs.inputRespuesta).value = "";
-      }
+      });
+      // Clear form
+      //  ReactDOM.findDOMNode(this.refs.inputRespuesta).value = "";
     }
   }
   renderForm() {

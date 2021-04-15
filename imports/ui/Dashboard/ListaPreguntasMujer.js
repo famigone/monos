@@ -35,6 +35,8 @@ import Rta2doIle630 from "./Respuestas/Rta2doIle630.jsx";
 import Rta2doIle630Update from "./Respuestas/Rta2doIle630Update.jsx";
 import Respuesta from "/imports/api/respuesta.js";
 import Contacto from "/imports/api/contacto.js";
+import ReglaMultiple from "/imports/api/reglaMultiple.js";
+import ReglaMultipleDetalle from "/imports/api/reglaMultipleDetalle.js";
 import { withTracker } from "meteor/react-meteor-data";
 import LoaderExampleText from "/imports/ui/Dashboard/LoaderExampleText.js";
 import { updateContactoPreguntaSgte } from "/api/methods.js";
@@ -545,7 +547,9 @@ export default withTracker(({ preguntas, id }) => {
     Meteor.subscribe("respuestaOne", id),
     Meteor.subscribe("contactoOne", id),
     Meteor.subscribe("reglas"),
-    Meteor.subscribe("reglaMultiple")
+    Meteor.subscribe("reglaMultiple"),
+    Meteor.subscribe("reglaMultipleDetalleTodes")
+    //  Meteor.subscribe("reglaMultipleDetalleTodes")
   ];
   //  console.log("contactoid:" + id);
   const loading = handles.some(handle => !handle.ready());
@@ -555,6 +559,7 @@ export default withTracker(({ preguntas, id }) => {
     contacto: Contacto.findOne(id),
     respuestas: Respuesta.find().fetch(),
     reglas: Regla.find().fetch(),
-    reglasMultiples: ReglaMultiple.find().fetch()
+    reglasMultiples: ReglaMultiple.find().fetch(),
+    reglasMultiplesDetalle: ReglaMultipleDetalle.find().fetch()
   };
 })(ListaPreguntasMujer);

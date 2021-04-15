@@ -254,7 +254,7 @@ class ListaPreguntas extends Component {
           rta={this.obtenerRtaActual()}
           reglas={this.props.reglas}
           reglasMultiples={this.props.reglasMultiples}
-          //reglasMultiplesDetalleTodes={this.props.reglasMultiplesDetalleTodes}
+          reglasMultiplesDetalleTodes={this.props.reglasMultiplesDetalleTodes}
         />
       ) : (
         <RtaCombo
@@ -382,6 +382,7 @@ class ListaPreguntas extends Component {
             cambiarActual={this.onUpdateActual}
             reglas={this.props.reglas}
             reglasMultiples={this.props.reglasMultiples}
+            reglasMultiplesDetalle={this.props.reglasMultiplesDetalle}
             respuestas={this.props.respuestas}
           />
         );
@@ -548,8 +549,8 @@ export default withTracker(({ preguntas, id }) => {
     Meteor.subscribe("respuestaOne", id),
     Meteor.subscribe("contactoOne", id),
     Meteor.subscribe("reglas"),
-    Meteor.subscribe("reglaMultiple")
-    ///Meteor.subscribe("reglaMultipleDetalleTodes")
+    Meteor.subscribe("reglaMultiple"),
+    Meteor.subscribe("reglaMultipleDetalleTodes")
   ];
   //  console.log("contactoid:" + id);
   const loading = handles.some(handle => !handle.ready());
@@ -559,7 +560,7 @@ export default withTracker(({ preguntas, id }) => {
     contacto: Contacto.findOne(id),
     respuestas: Respuesta.find().fetch(),
     reglas: Regla.find().fetch(),
-    reglasMultiples: ReglaMultiple.find().fetch()
-    //    reglasMultiplesDetalleTodes: ReglaMultipleDetalle.find().fetch()
+    reglasMultiples: ReglaMultiple.find().fetch(),
+    reglasMultiplesDetalle: ReglaMultipleDetalle.find().fetch()
   };
 })(ListaPreguntas);

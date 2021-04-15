@@ -7,11 +7,7 @@ import { options } from "./combo";
 import { validar } from "./validar";
 import LoaderExampleText from "/imports/ui/Dashboard/LoaderExampleText.js";
 import "react-s-alert/dist/s-alert-default.css";
-import {
-  updateRespuestaString,
-  updateContactoPregunta,
-  validarReglaMultiple
-} from "/api/methods.js";
+import { updateRespuestaString, updateContactoPregunta } from "/api/methods.js";
 import {
   BrowserRouter as Router,
   Switch,
@@ -102,7 +98,7 @@ export default class RtaComboUpdate extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-
+    //console.log("laaaaaaaapreeeeeeeg", this.props.pregunta);
     // Find the text field via the React ref
     var inputRespuesta = "";
     if (this.state.valor === "Otro")
@@ -112,15 +108,13 @@ export default class RtaComboUpdate extends Component {
     const one = {
       id: this.props.rta._id,
       rtatexto: this.state.valor,
-      especifique: inputRespuesta
+      especifique: inputRespuesta,
+      codigoPregunta: this.props.pregunta.codigo,
+      contactoId: this.props.rta.contactoid
       //activo: this.props.rta.activo
       //  activo: true
     };
-    const preguntaActual = {
-      codigoPregunta: this.props.pregunta.codigo,
-      rta: this.state.valor,
-      contactoid: this.props.pregunta.contactoid
-    };
+
     let mensaje = validar(
       this.props.respuestas,
       this.props.pregunta.codigo,
@@ -128,73 +122,31 @@ export default class RtaComboUpdate extends Component {
       this.props.reglas,
       this.props.pregunta.tipo
     );
-    //determinar si existe regla para esta pregunta y esta rta
-    var i = 0;
-    var encontro = false;
-    var pos = -1;
-    if (this.props.reglasMultiples) {
-      //console.log(this.props.reglasMultiples);
-      while (i < this.props.reglasMultiples.length && !encontro) {
-        if (
-          this.props.reglasMultiples[i].codigoPreguntaDestino ==
-          this.props.pregunta.codigo
-        ) {
-          encontro = true;
-          pos = i;
-        }
-        i = i + 1;
-      }
-    }
-    var mensajeMultiple = "";
-    if (encontro) {
-      mensajeMultiple = validarReglaMultiple.call(
-        preguntaActual,
-        (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
-            var valido = mensajeMultiple == "";
-            if (valido) {
-              this.setState({ hiddeValidar: true });
-              updateRespuestaString.call(one, (err, res) => {
-                if (err) {
-                  console.log(err);
-                } else {
-                  this.setState({
-                    hidden: false
-                  });
-                }
-              });
-            } else
-              this.setState({
-                hiddeValidar: false,
-                mensajeError: mensaje + mensajeMultiple
-              });
-          }
-        }
-      );
-    } else {
-      var valido = mensaje == "";
-      if (valido) this.setState({ hiddeValidar: true });
-      else this.setState({ hiddeValidar: false, mensajeError: mensaje }); //
-      //console.log("validooooooooo essss: ", valido);
-      if (valido) {
-        this.setState({ validar: true });
-      } else this.setState({ validar: false });
-      var valido = true;
-      if (valido) {
-        updateRespuestaString.call(one, (err, res) => {
-          if (err) {
-            console.log(err);
-          } else {
+
+    var valido = mensaje == "";
+    if (valido) this.setState({ hiddeValidar: true });
+    else this.setState({ hiddeValidar: false, mensajeError: mensaje }); //
+    //console.log("validooooooooo essss: ", valido);
+    if (valido) {
+      this.setState({ validar: true });
+    } else this.setState({ validar: false });
+    var valido = true;
+    if (valido) {
+      updateRespuestaString.call(one, (err, res) => {
+        if (err) {
+          console.log(err);
+        } else {
+          if (res == "") {
             this.setState({
               hidden: false
             });
+          } else {
+            this.setState({ hiddeValidar: false, mensajeError: res });
           }
-        });
-      }
-      // Clear form
+        }
+      });
     }
+    // Clear form
   }
 
   renderForm() {
