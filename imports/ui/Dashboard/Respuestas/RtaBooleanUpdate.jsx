@@ -59,7 +59,9 @@ export default class RtaBooleanUpdate extends Component {
     const one = {
       id: this.props.rta._id,
       rtatexto: this.state.valor,
-      especifique: ""
+      especifique: "",
+      codigoPregunta: this.props.pregunta.codigo,
+      contactoId: this.props.rta.contactoid
       //  activo: true
     };
     // Call the Method
@@ -82,10 +84,13 @@ export default class RtaBooleanUpdate extends Component {
         if (err) {
           console.log(err);
         } else {
-          this.setState({
-            hidden: false
-            //  valor: null
-          });
+          if (res == "") {
+            this.setState({
+              hidden: false
+            });
+          } else {
+            this.setState({ hiddeValidar: false, mensajeError: res });
+          }
         }
       });
       // Clear form

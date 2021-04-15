@@ -57,6 +57,7 @@ export default class RtaBoolean extends Component {
         rtatexto: this.state.valor
         //  activo: true
       };
+
       let mensaje = validar(
         this.props.respuestas,
         this.props.pregunta.codigo,
@@ -70,22 +71,30 @@ export default class RtaBoolean extends Component {
 
       // Call the Method
       //insertLocacion.validate(one);
+
       if (valido) {
         insertRespuesta.call(one, (err, res) => {
           if (err) {
             console.log(err);
           } else {
-            this.setState({ valor: null });
-            //marcar la contactoPregunta como contestada
-            const two = { id: this.props.pregunta._id };
-            updateContactoPregunta.call(two, (err, res) => {
-              if (err) {
-                console.log(err);
-              } else {
-              }
-            });
-            // seteamos el nuevo Actual
-            this.props.cambiarActual(this.props.pregunta.codigo, one.rtatexto);
+            if (res == "") {
+              this.setState({ valor: null });
+              //marcar la contactoPregunta como contestada
+              const two = { id: this.props.pregunta._id };
+              updateContactoPregunta.call(two, (err, res) => {
+                if (err) {
+                  console.log(err);
+                } else {
+                }
+              });
+              // seteamos el nuevo Actual
+              this.props.cambiarActual(
+                this.props.pregunta.codigo,
+                one.rtatexto
+              );
+            } else {
+              this.setState({ hiddeValidar: false, mensajeError: res });
+            }
           }
         });
       }
