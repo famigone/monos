@@ -625,7 +625,7 @@ export const updateRespuestaFecha = new ValidatedMethod({
 });
 
 function validarReglaMultipleX(preguntaActual) {
-  console.log(preguntaActual);
+  //  console.log(preguntaActual);
   //1- obtener todas las reglas para este CÓDIGO
   var reglasMultiples = ReglaMultiple.find({
     codigoPreguntaDestino: preguntaActual.codigoPregunta,
@@ -637,7 +637,7 @@ function validarReglaMultipleX(preguntaActual) {
   //bandera de reglas
   var valida = true;
   var mensajeError = "";
-  console.log("reglasMultiples ", reglasMultiples.length);
+  //console.log("reglasMultiples ", reglasMultiples.length);
   while (i < reglasMultiples.length && seValidanAntecedentes && valida) {
     //2- para cada regla recuperar los antecedentes
     //console.log("reglaMultiple _id", reglasMultiples[i]._id);
@@ -647,7 +647,7 @@ function validarReglaMultipleX(preguntaActual) {
     }).fetch();
     //3- obtener cada rta de ese concecuente y determinar si se cumple las conjunciones
     var j = 0;
-    console.log("antecedentesX ", antecedentes);
+    //console.log("antecedentesX ", antecedentes);
     if (antecedentes) {
       while (j < antecedentes.length && seValidanAntecedentes) {
         var laRespuesta = Respuesta.findOne({
