@@ -110,12 +110,9 @@ Meteor.publish("contactoOne", function(id) {
 
 Meteor.publish("contactopreguntatodes", function(contactoid) {
   //return ContactoPregunta.find();
-  return ContactoPregunta.find(
-    {
-      contactoid: contactoid
-    },
-    { sort: { orden: 1 } }
-  );
+  return ContactoPregunta.find({
+    contactoid: contactoid
+  });
 });
 
 Meteor.publish("respuesta", function(contactoid, codigo) {
