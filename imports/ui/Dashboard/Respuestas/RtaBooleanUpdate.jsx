@@ -88,6 +88,14 @@ export default class RtaBooleanUpdate extends Component {
             this.setState({
               hidden: false
             });
+            ///////////////////////////////////////////////////////
+            //esto lo agregué el 05/05/21 para arreglar lo de el salto en el update
+            this.props.cambiarActual(
+              this.props.pregunta.codigo,
+              this.state.valor
+            );
+            ///////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////
           } else {
             this.setState({ hiddeValidar: false, mensajeError: res });
           }
