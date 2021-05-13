@@ -2759,8 +2759,8 @@ options[1170] = [
   },
   {
     key: 13,
-    text: "Nadie sabe",
-    value: "Nadie sabe"
+    text: "Nadie me acompaña",
+    value: "Nadie me acompaña"
   },
   {
     key: 14,
@@ -3000,8 +3000,8 @@ options[170] = [
   },
   {
     key: 13,
-    text: "Nadie sabe",
-    value: "Nadie sabe"
+    text: "Nadie me acompaña",
+    value: "Nadie me acompaña"
   },
   {
     key: 14,

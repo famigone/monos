@@ -90,7 +90,7 @@ export const insertPregNenaSegundoFem = new ValidatedMethod({
       codigo: "710",
       orden: 710,
       contactoid: contactoid,
-      texto: "Expulsa saco gestacional en el 1er trimestre",
+      texto: "Expulsa saco gestacional",
       estado: false,
       tipo: "C",
       habilitado: false,

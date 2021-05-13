@@ -79,7 +79,8 @@ export default class RtaComboUpdate extends Component {
           "Interrupción Legal e Interrupción Voluntaria del Embarazo") ||
       (this.props.pregunta.codigo == 830 &&
         this.props.pregunta.seccion ==
-          "Acompañamiento Aborto Libre y Feminista");
+          "Acompañamiento Aborto Libre y Feminista") ||
+      this.props.pregunta.codigo == 670;
     //console.log("termino: ", rta);
     return parar;
   }

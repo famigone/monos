@@ -46,7 +46,7 @@ export default class RtaCombo extends Component {
     this.state = {
       valor: "",
       termino: false,
-      terminoILE: false,
+
       hiddeValidar: true,
       mensajeError: ""
     };
@@ -127,10 +127,11 @@ export default class RtaCombo extends Component {
                   "Interrupción Legal e Interrupción Voluntaria del Embarazo") ||
               (this.props.pregunta.codigo == 830 &&
                 this.props.pregunta.seccion ==
-                  "Acompañamiento Aborto Libre y Feminista");
-            var terminoILE = this.props.pregunta.codigo == 670;
+                  "Acompañamiento Aborto Libre y Feminista") ||
+              this.props.pregunta.codigo == 670;
+
             //console.log("parar ", parar);
-            if (terminoILE) this.setState({ terminoILE: true });
+
             if (!parar) {
               this.props.cambiarActual(
                 this.props.pregunta.codigo,
@@ -197,12 +198,7 @@ export default class RtaCombo extends Component {
           <Button color="purple" type="submit">
             Siguiente
           </Button>
-          <Message color="purple" floating hidden={!this.state.terminoILE}>
-            <Message.Header>
-              <Icon name="heart outline" />
-              Carga finalizada.
-            </Message.Header>
-          </Message>
+
           <Message color="purple" floating hidden={!this.state.termino}>
             <Message.Header>
               <Icon name="heart outline" />
