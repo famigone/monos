@@ -498,7 +498,10 @@ export const deleteILE = new ValidatedMethod({
   run(one) {
     //console.log("one.contactoid ", one.contactoid);
     return ContactoPregunta.update(
-      { contactoid: one.contactoid, orden: { $gte: 520 } },
+      {
+        contactoid: one.contactoid,
+        seccion: "Interrupción Legal e Interrupción Voluntaria del Embarazo"
+      },
       {
         $set: {
           activo: false
@@ -516,7 +519,10 @@ export const deleteFEM = new ValidatedMethod({
   }).validator(),
   run(one) {
     return ContactoPregunta.update(
-      { contactoid: one.contactoid, orden: { $gte: 520 } },
+      {
+        contactoid: one.contactoid,
+        seccion: "Acompañamiento Aborto Libre y Feminista"
+      },
       {
         $set: {
           activo: false
@@ -658,8 +664,11 @@ function validarReglaMultipleX(preguntaActual) {
         //  console.log("antecedentes[j].rtaOrigen", antecedentes[j].rtaOrigen);
 
         seValidanAntecedentes =
-          laRespuesta.rtatexto == antecedentes[j].rtaOrigen;
-
+          laRespuesta.rtatexto.toUpperCase() ==
+          antecedentes[j].rtaOrigen.toUpperCase();
+        //  console.log("______", j);
+        //  console.log("laRespuesta.rtatexto:", laRespuesta.rtatexto);
+        //  console.log("antecedentes[j].rtaOrigen:", antecedentes[j].rtaOrigen);
         j = j + 1;
       }
     }
@@ -669,10 +678,15 @@ function validarReglaMultipleX(preguntaActual) {
     if (antecedentes && seValidanAntecedentes) {
       switch (reglasMultiples[i].condicion) {
         case 1:
-          valida = preguntaActual.rta == reglasMultiples[i].rtaDestino;
+          valida =
+            preguntaActual.rta.toUpperCase() ==
+            reglasMultiples[i].rtaDestino.toUpperCase();
           break;
         case 2:
-          valida = !(preguntaActual.rta == reglasMultiples[i].rtaDestino);
+          valida = !(
+            preguntaActual.rta.toUpperCase() ==
+            reglasMultiples[i].rtaDestino.toUpperCase()
+          );
           break;
       }
     }

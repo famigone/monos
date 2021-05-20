@@ -302,8 +302,11 @@ class ListaPreguntasMujer extends Component {
   renderSwitch() {
     //L texto libre, F fecha, N número, C combo, M múltiple, B boolean
     var actual = 0;
+    //console.log("this.state.activeItem:", this.state.activeItem);
     if (this.state.activeItem) actual = this.state.activeItem;
     const laPregunta = this.props.preguntas[this.state.activeItem];
+    //console.log("this.props.preguntas: ", this.props.preguntas);
+    //console.log("laPregunta: ", this.props.preguntas[this.state.activeItem]);
     switch (laPregunta.tipo) {
       case "L": {
         //console.log("la borrega: "+)

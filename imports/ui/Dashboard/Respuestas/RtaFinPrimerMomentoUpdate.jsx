@@ -8,7 +8,8 @@ import { insertPregNenaSegundoFem } from "/api/insertPreguntasNenaSegundoFem.js"
 import LoaderExampleText from "/imports/ui/Dashboard/LoaderExampleText.js";
 import "react-s-alert/dist/s-alert-default.css";
 import {
-  insertRespuesta,
+  //insertRespuesta,
+  updateRespuestaString,
   updateContactoPregunta,
   deleteILE,
   deleteFEM
@@ -68,14 +69,18 @@ export default class RtaFinPrimerMomentoUpdate extends Component {
     event.preventDefault();
 
     // Find the text field via the React ref
-    //  console.log("this.props.rta ", this.props.rta);
-    //  console.log("this.state.valor ", this.state.valor);
+    //console.log("this.props.rta ", this.props.rta);
+    //console.log("this.props.rta.rtatexto ", this.props.rta.rtatexto);
+    //console.log("this.state.valor ", this.state.valor);
     const borrarILE =
       this.props.rta.rtatexto == "Decide solicitar ILE/IVE" &&
-      this.state.valor != this.props.rta;
+      this.state.valor !== this.props.rta.rtatexto;
     const borrarFEM =
       this.props.rta.rtatexto == "Resuelve Aborto libre y feminista" &&
-      this.state.valor != this.props.rta;
+      this.state.valor !== this.props.rta.rtatexto;
+    console.log("borrarILE", borrarILE);
+    console.log("borrarFEM", borrarFEM);
+    console.log("this.props.rta.contactoid", this.props.rta.contactoid);
     const onedelete = { contactoid: this.props.rta.contactoid };
 
     if (borrarILE) {
@@ -94,33 +99,31 @@ export default class RtaFinPrimerMomentoUpdate extends Component {
       });
     }
     const one = {
-      contactoid: this.props.pregunta.contactoid,
-      contactopreguntaid: this.props.pregunta._id,
-      codigo: this.props.pregunta.codigo,
-      rtatexto: this.state.valor
-      //  activo: true
+      id: this.props.rta._id,
+      rtatexto: this.state.valor,
+      especifique: "",
+      codigoPregunta: this.props.pregunta.codigo,
+      contactoId: this.props.rta.contactoid
     };
     // Call the Method
-    // insertamos la respuesta y marcamos como contestada
+    // actualizamos la respuesta y marcamos como contestada
     if (!(this.state.valor === "")) {
-      insertRespuesta.call(one, (err, res) => {
+      updateRespuestaString.call(one, (err, res) => {
         if (err) {
           console.log(err);
         } else {
           //marcar la contactoPregunta como contestada
           const two = { id: this.props.pregunta._id };
-          console.log(this.state.valor);
+          //console.log(this.state.valor);
           updateContactoPregunta.call(two, (err, res) => {
             if (err) {
               console.log(err);
             } else {
               if (this.state.valor == "Decide solicitar ILE/IVE") {
-                this.props.cambiarActual(this.props.pregunta.codigo);
                 this.crearSegundoMomentoIle();
               } else if (
                 this.state.valor == "Resuelve Aborto libre y feminista"
               ) {
-                this.props.cambiarActual(this.props.pregunta.codigo);
                 this.crearSegundoMomentoFem();
               } else if (
                 this.state.valor == "No vuelve a conectarse" ||
@@ -137,21 +140,25 @@ export default class RtaFinPrimerMomentoUpdate extends Component {
   }
   crearSegundoMomentoIle() {
     const one = {};
-
     one.contactoid = this.props.pregunta.contactoid;
     insertPregNenaSegundoILE.call(one, (err, res) => {
       if (err) {
         console.log(err);
+      } else {
+        //console.log("cambia actual: ", this.props.pregunta.codigo);
+        this.props.cambiarActual(this.props.pregunta.codigo, this.state.valor);
       }
     });
   }
   crearSegundoMomentoFem() {
     const one = {};
-
     one.contactoid = this.props.pregunta.contactoid;
     insertPregNenaSegundoFem.call(one, (err, res) => {
       if (err) {
         console.log(err);
+      } else {
+        console.log("cambia actual: ", this.props.pregunta.codigo);
+        this.props.cambiarActual(this.props.pregunta.codigo, this.state.valor);
       }
     });
   }
