@@ -325,7 +325,7 @@ options[1320] = [
   {
     key: 22,
     text: "25 o más",
-    value: "24 o más"
+    value: "25 o más"
   }
 ];
 
@@ -1350,7 +1350,7 @@ options[700] = [
   {
     key: 22,
     text: "25 o más",
-    value: "24 o más"
+    value: "25 o más"
   }
 ];
 options[560] = [
@@ -1462,7 +1462,7 @@ options[560] = [
   {
     key: 22,
     text: "25 o más",
-    value: "24 o más"
+    value: "25 o más"
   }
 ];
 options[580] = [
@@ -2397,7 +2397,7 @@ options[410] = [
   {
     key: 22,
     text: "25 o más",
-    value: "24 o más"
+    value: "25 o más"
   }
 ];
 

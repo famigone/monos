@@ -70,8 +70,9 @@ class ListaPreguntasMujer extends Component {
         else rta = actual + 10;
         break;
       case 700:
+        rta = actual + 10;
         if (Number(rtatexto) > 12) rta = 720;
-        else rta = actual + 10;
+        if (rtatexto == "25 o más") rta = 720;
         break;
       case 710:
         rta = 760;
@@ -424,7 +425,7 @@ class ListaPreguntasMujer extends Component {
           active={menuActivo === pregunta.texto}
           onClick={this.handleItemClick}
           //cambiar para habilitar
-          disabled={!pregunta.habilitado}
+          //disabled={!pregunta.habilitado}
         >
           <Label circular color={pregunta.estado ? "purple" : "teal"} />
           {pregunta.texto}
