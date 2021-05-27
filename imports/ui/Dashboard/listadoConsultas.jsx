@@ -8,6 +8,7 @@ import Consultas from "./consultas.jsx";
 import ReactDOM from "react-dom";
 import DatePicker from "react-datepicker";
 import NuevaPregunta from "./NuevaPregunta.jsx";
+import CuentaContactos from "./CuentaContactos.jsx";
 import MostrarProtocola from "./MostrarProtocola.jsx";
 import "react-datepicker/dist/react-datepicker.css";
 import { deleteContacto } from "/api/methods.js";
@@ -126,6 +127,7 @@ class ListadoConsultas extends Component {
   };
   renderForm() {
     return (
+      <Segment.Group>
       <Segment raised>
         <Header as="h2" dividing>
           <Icon name="clock" />
@@ -145,6 +147,7 @@ class ListadoConsultas extends Component {
                   placeholder="Seleccionar"
                   search
                   selection
+                  clearable
                   value={this.state.usuarioid}
                   onChange={this.handleOnChange}
                   options={this.options()}
@@ -192,6 +195,14 @@ class ListadoConsultas extends Component {
           </Button>
         </Form>
       </Segment>
+      <Segment align="right">
+      Total: <CuentaContactos
+                fechaDesde={this.state.fechaDesde}
+                fechaHasta={this.state.fechaHasta}
+                usuarioid={this.state.usuarioid}
+              />
+      </Segment>
+     </Segment.Group>
     );
   }
   eliminar() {

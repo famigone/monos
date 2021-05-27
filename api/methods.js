@@ -62,6 +62,48 @@ export const analisis = new ValidatedMethod({
   }
 });
 
+export const contarContactos = new ValidatedMethod({
+  name: "contarContactos",
+  validate: new SimpleSchema({
+    fechaDesde: {
+      type: Date
+    },
+    fechaHasta: {
+      type: Date
+    },
+    usuarioid: {
+      type: String
+    }
+  }).validator(),
+  run(one) {
+    const desde = new Date(one.fechaDesde);
+    const hasta = new Date(one.fechaHasta);
+    const usuarioid = one.usuarioid;
+    const bol = one.usuarioid === "";
+    if (bol) {
+      const rta = Contacto.find({
+        activo: true,
+        createdAt: {
+          $gte: desde,
+          $lte: hasta
+        }
+      }).count();
+      return rta;
+    } else {
+      const rta = Contacto.find({
+        activo: true,
+        createdBy: usuarioid,
+        createdAt: {
+          $gte: desde,
+          $lte: hasta
+        }
+      }).count();
+      return rta;
+    }
+    //console.log(rta);
+  }
+});
+
 //este método inserta las preguntas para una consulta
 export const insertContactoPreguntaBase = new ValidatedMethod({
   name: "insertContactoPreguntaBase.insert",

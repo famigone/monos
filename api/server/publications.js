@@ -71,8 +71,24 @@ Meteor.publish("contacto", function(
   };
   const desde = new Date(fechaDesde);
   const hasta = new Date(fechaHasta);
-  if (codigo === null || codigo === 0)
-    return Contacto.find(
+  //sin código, sin grupa
+  if ((codigo === null || codigo === 0) &&
+     (usuarioid === null || usuarioid === 0 || usuarioid === ""))
+    {return Contacto.find(
+      {
+        activo: true,
+        //createdBy: usuarioid,
+        createdAt: {
+          $gte: desde,
+          $lte: hasta
+        }
+      },
+      options
+    );}
+  //sin código, con grupa
+  else if ((codigo === null || codigo === 0) &&
+     !(usuarioid === null || usuarioid === 0 || usuarioid === ""))
+    {return Contacto.find(
       {
         activo: true,
         createdBy: usuarioid,
@@ -82,16 +98,30 @@ Meteor.publish("contacto", function(
         }
       },
       options
-    );
-  else
-    return Contacto.find(
+    );}
+  //con código, sin grupa
+  else  if (!(codigo === null || codigo === 0) &&
+     (usuarioid === null || usuarioid === 0 || usuarioid === ""))
+    {return Contacto.find(
       {
         activo: true,
-        createdBy: usuarioid,
+        //createdBy: usuarioid,
         autonumerico: codigo
       },
       options
-    );
+    );}
+    //con código, con grupa
+    else  if (!(codigo === null || codigo === 0) &&
+       !(usuarioid === null || usuarioid === 0 || usuarioid === ""))
+      {        
+        return Contacto.find(
+        {
+          activo: true,
+          createdBy: usuarioid,
+          autonumerico: codigo,
+        },
+        options
+      );}
 });
 
 Meteor.publish("contactopregunta", function(contactoid, contactopreguntaid) {
