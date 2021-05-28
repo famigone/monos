@@ -55,11 +55,11 @@ export default class RtaComboUpdate extends Component {
   }
 
   componentDidUpdate(prevProps) {
-      console.log("estado: ", this.state.valor);
-      console.log("estado anterior: ", prevProps.rta);
-      console.log("props actuales: ", this.props.rta);
-    if (this.props.rta.rtatexto !== prevProps.rta.rtatexto)
-      this.setState({ valor: this.props.rta.rtatexto });
+    //  console.log("estado: ", this.state.valor);
+    //  console.log("estado anterior: ", prevProps.rta);
+    //  console.log("props actuales: ", this.props.rta);
+      if (this.props.rta.rtatexto !== prevProps.rta.rtatexto)
+        this.setState({ valor: this.props.rta.rtatexto });
   }
 
   setTermino() {
