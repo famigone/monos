@@ -277,11 +277,13 @@ class ListaPreguntasMujer extends Component {
   obtenerRtaActual() {
     //console.log("itema activo " + this.state.activeItem);
     //console.log(Respuestas.findOne({ codigo: String(this.state.activeItem) }));
-    console.log("codigo que va a buscar: " + String(this.props.preguntas[this.state.activeItem].codigo));
-    return Respuesta.findOne({
+    //console.log("codigo que va a buscar: " + String(this.props.preguntas[this.state.activeItem].codigo));
+    var rta =  Respuesta.findOne({
       //contactoid: this.props.id,
       codigo: String(this.props.preguntas[this.state.activeItem].codigo)
     });
+    console.log("retorno: ",rta);
+    return rta;
   }
   obtenerRtas() {
     //console.log("itema activo " + this.state.activeItem);
