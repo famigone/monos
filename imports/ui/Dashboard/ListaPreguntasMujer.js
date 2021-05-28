@@ -557,7 +557,7 @@ export default withTracker(({ preguntas, id }) => {
     //Meteor.subscribe("reglaMultipleDetalleTodes")
     //  Meteor.subscribe("reglaMultipleDetalleTodes")
   ];
-  //  console.log("contactoid:" + id);
+  console.log("contactoid:" + id);
   const loading = handles.some(handle => !handle.ready());
   return {
     preguntas: preguntas,
