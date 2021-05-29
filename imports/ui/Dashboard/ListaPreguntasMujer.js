@@ -281,7 +281,7 @@ class ListaPreguntasMujer extends Component {
     return Respuesta.findOne({
       //contactoid: this.props.id,
       codigo: String(this.props.preguntas[this.state.activeItem].codigo)
-    });    
+    });
   }
   obtenerRtas() {
     //console.log("itema activo " + this.state.activeItem);
@@ -425,7 +425,7 @@ class ListaPreguntasMujer extends Component {
           active={menuActivo === pregunta.texto}
           onClick={this.handleItemClick}
           //cambiar para habilitar
-          disabled={!pregunta.habilitado}
+          //disabled={!pregunta.habilitado}
         >
           <Label circular color={pregunta.estado ? "purple" : "teal"} />
           {pregunta.texto}

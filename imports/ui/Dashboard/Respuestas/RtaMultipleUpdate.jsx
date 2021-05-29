@@ -57,7 +57,7 @@ export default class RtaMultipleUpdate extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.rtas !== prevProps.rtas)
-      this.setState({ valor: this.armarCadena() });
+      this.setState({ valor: this.armarCadena(), hidden:true });
   }
 
   //  componentDidUpdate(prevProps) {
@@ -94,7 +94,7 @@ export default class RtaMultipleUpdate extends Component {
       if (err) {
         console.log(err);
       } else {
-        //console.log("sexitoo: ", ret);
+
       }
     });
   }
@@ -131,6 +131,14 @@ export default class RtaMultipleUpdate extends Component {
               console.log(err);
             } else {
               this.setState({ hiddenFin: false });
+              ///////////////////////////////////////////////////////
+              //esto lo agregué el 05/05/21 para arreglar lo de el salto en el update
+              this.props.cambiarActual(
+                this.props.pregunta.codigo,
+                this.state.valor
+              );
+              ///////////////////////////////////////////////////////
+              ///////////////////////////////////////////////////////
             }
           });
         });
