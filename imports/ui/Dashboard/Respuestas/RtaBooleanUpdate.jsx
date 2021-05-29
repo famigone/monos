@@ -51,6 +51,17 @@ export default class RtaBooleanUpdate extends Component {
     //console.log(value);
     this.setState({ valor: value });
   };
+
+
+  componentDidUpdate(prevProps) {
+    //  console.log("estado: ", this.state.valor);
+    //  console.log("estado anterior: ", prevProps.rta);
+    //  console.log("props actuales: ", this.props.rta);
+      if (this.props.rta.rtatexto !== prevProps.rta.rtatexto)
+        this.setState({ valor: this.props.rta.rtatexto, hidden:true });
+  }
+
+
   handleSubmit(event) {
     event.preventDefault();
 
