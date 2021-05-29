@@ -254,12 +254,14 @@ class ListaPreguntasMujer extends Component {
         />
       );
     else {
-      return laPregunta.estado ? (
+      var laRta = this.obtenerRtaActual();
+      //console.log("rta desde afuera: ", nono);
+      return (laPregunta.estado && laRta) ? (
         <RtaComboUpdate
           pregunta={laPregunta}
           cambiarActual={this.onUpdateActual}
           respuestas={this.props.respuestas}
-          rta={this.obtenerRtaActual()}
+          rta={laRta}
           reglas={this.props.reglas}
           //reglasMultiples={this.props.reglasMultiples}
         />
