@@ -251,7 +251,8 @@ export const insertRespuesta = new ValidatedMethod({
       contactoid: one.contactoid
     };
     mensaje = validarReglaMultipleX(actual);
-    if (mensaje == "") {
+    var estaDuplicada = respuestaDuplicada(one.contactoid, one.codigo);
+    if ((mensaje == "")&&(!estaDuplicada)) {
       one.activo = true;
       Respuesta.insert(one);
       return "";
@@ -671,6 +672,18 @@ export const updateRespuestaFecha = new ValidatedMethod({
     );
   }
 });
+
+function respuestaDuplicada(contactoid, codigo){
+  //codigos de rtas múltiples, estas deben retornar falso
+  var multiples = ["1120","1150", "1160", "1170", "130", "150", "160", "170"];
+  estaDuplicada = false;
+  if (!(codigo in multiples))
+  {
+    var rtas = Respuesta.find({contactoid:contactoid, codigo:codigo}).fetch();
+    estaDuplicada = rtas.length > 0;
+  }
+  return estaDuplicada;
+}
 
 function validarReglaMultipleX(preguntaActual) {
   //  console.log(preguntaActual);
