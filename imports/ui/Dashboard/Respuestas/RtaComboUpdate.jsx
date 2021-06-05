@@ -132,7 +132,7 @@ export default class RtaComboUpdate extends Component {
     if (valido) {
       this.setState({ validar: true });
     } else this.setState({ validar: false });
-    var valido = true;
+    //var valido = true;
     if (valido) {
       updateRespuestaString.call(one, (err, res) => {
         if (err) {
