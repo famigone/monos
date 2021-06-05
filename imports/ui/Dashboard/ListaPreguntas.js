@@ -236,6 +236,7 @@ class ListaPreguntas extends Component {
         <Rta2doIle630Update
           pregunta={laPregunta}
           rta={this.obtenerRtaActual()}
+          cambiarActual={this.onUpdateActual}
         />
       ) : (
         <Rta2doIle630

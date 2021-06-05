@@ -82,20 +82,22 @@ export default class Rta2doIle630Update extends Component {
     const one = {
       id: this.props.rta._id,
       rtatexto: this.state.valor,
-      especifique: inputRespuesta
+      especifique: inputRespuesta,
+      codigoPregunta: this.props.rta.codigo,
+      contactoId: this.props.rta.contactoid
       //activo: this.props.rta.activo
       //  activo: true
     };
     // Call the Method
     //insertLocacion.validate(one);
     updateRespuestaString.call(one, (err, res) => {
+      var fueServer=false;
       if (err) {
         console.log(err);
       } else {
         this.setState({
           hidden: false
         });
-
         if (
           this.props.pregunta.codigo == 630 &&
           this.props.pregunta.seccion ==
@@ -104,6 +106,7 @@ export default class Rta2doIle630Update extends Component {
         ) {
           //console.log("entrooooooooooooooooooooooo");
           this.crearSegundoMomentoFem();
+          fueServer=true;
         }
         if (
           this.props.pregunta.codigo == 630 &&
@@ -118,7 +121,23 @@ export default class Rta2doIle630Update extends Component {
         ) {
           //console.log("BORRARRRRRRRRRRRRRRRRRRRRRRRRRR");
           this.borrarSegundoMomentoFem();
+          fueServer=true;
         }
+        if (!fueServer && (!this.setTermino())){
+          console.log("adentrooo fueServer")
+          ///////////////////////////////////////////////////////
+          //esto lo agregué el 05/05/21 para arreglar lo de el salto en el update
+          this.props.cambiarActual(
+            this.props.pregunta.codigo,
+            this.state.valor
+          );
+          ///////////////////////////////////////////////////////
+          ///////////////////////////////////////////////////////
+        }
+
+
+
+
       }
     });
     // Clear form
@@ -131,7 +150,15 @@ export default class Rta2doIle630Update extends Component {
       if (err) {
         console.log(err);
       } else {
-        //  console.log("borro: ", rta);
+        ///////////////////////////////////////////////////////
+        //esto lo agregué el 05/05/21 para arreglar lo de el salto en el update
+        if (!this.setTermino())
+          this.props.cambiarActual(
+            this.props.pregunta.codigo,
+            this.state.valor
+          );
+        ///////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////
       }
     });
   }
@@ -142,6 +169,16 @@ export default class Rta2doIle630Update extends Component {
     insertPregNenaSegundoFem.call(one, (err, res) => {
       if (err) {
         console.log(err);
+      }else{
+        ///////////////////////////////////////////////////////
+        //esto lo agregué el 05/05/21 para arreglar lo de el salto en el update
+        if (!this.setTermino())
+          this.props.cambiarActual(
+            this.props.pregunta.codigo,
+            this.state.valor
+          );
+        ///////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////
       }
     });
   }
@@ -218,13 +255,13 @@ export default class Rta2doIle630Update extends Component {
             </Form.Field>
           </Form.Group>
           <Button color="teal" type="submit">
-            Siguiente
+            Guardar
           </Button>
         </Form>
         <Message color={"violet"} floating hidden={this.state.hidden}>
           <Message.Header>
             <Icon name="heart outline" />
-            Respuesta modificada con éxito.
+            Carga concluída
           </Message.Header>
         </Message>
         <Message color={"purple"} floating hidden={!this.state.termino}>
