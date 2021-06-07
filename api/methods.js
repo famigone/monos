@@ -10,6 +10,82 @@ import { Meteor } from "meteor/meteor";
 //import { Mongo } from "meteor/mongo";
 //import { aggregate } from "meteor/sakulstra:aggregate";
 
+export const exportProtos = new ValidatedMethod({
+  name: "exportProtos",
+  validate: new SimpleSchema({
+    desde: { type: Date },
+    hasta: { type: Date },
+    usuarioid: {
+      type: String
+    }
+  }).validator(),
+  run(one) {
+    const desde = new Date(one.desde);
+    const hasta = new Date(one.hasta);
+    var resul;
+    var rtas;
+    //obtenemos las respuestas
+    console.log("one.usuarioid: ",one.usuarioid)
+    if ((one.usuarioid)){
+      rtas = Respuesta.find({activo:true,
+                              createdAt: {
+                                $gte: desde,
+                                $lte: hasta
+                              },
+                              createdBy:one.usuarioid}
+                            ).fetch();
+    }
+
+    if (!(one.usuarioid)){
+      rtas = Respuesta.find({activo:true,
+                              createdAt: {
+                                $gte: desde,
+                                $lte: hasta
+                              }}
+                          ).fetch();
+    }
+    //console.log(rtas)
+    //armamos la fila
+    return  parsearRtas(rtas);
+  }
+
+});
+
+function parsearRtas(rtas) {
+  var unaFila;
+  var resultado;
+  resultado = rtas.map(function (rta, index, array) {
+        if (rta.rtaFecha){
+            unaFila= {grupa: rta.userName(),
+                      fechaProtocola: rta.fechaProto(),
+                      numeroProtocola: rta.numero(),
+                      tipo: rta.tipo(),
+                      momento: rta.momento(),
+                      seccion: rta.seccion(),
+                      pregunta: rta.pregunta(),
+                      respuesta: moment(rta.rtaFecha).format('DD-MM-YYYY'),
+                      activo: rta.activox()
+
+            }
+        }else{
+            unaFila = {grupa: rta.userName(),
+                      fechaProtocola: rta.fechaProto(),
+                      numeroProtocola: rta.numero(),
+                      tipo: rta.tipo(),
+                      momento: rta.momento(),
+                      seccion: rta.seccion(),
+                      pregunta: rta.pregunta(),
+                      respuesta: rta.rtatexto,
+                      activo: rta.activox()
+
+            }
+        }
+
+        return unaFila;
+  });
+return resultado;
+}
+
 export const analisis = new ValidatedMethod({
   name: "analisis",
   validate: new SimpleSchema({
@@ -252,7 +328,7 @@ export const insertRespuesta = new ValidatedMethod({
     };
     mensaje = validarReglaMultipleX(actual);
     var estaDuplicada = respuestaDuplicada(one.contactoid, one.codigo);
-  
+
     if ((mensaje == "")&&(!estaDuplicada)) {
       one.activo = true;
       Respuesta.insert(one);

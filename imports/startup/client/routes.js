@@ -26,6 +26,7 @@ import ReglasMultiplesHome from "../../ui/Dashboard/ReglasMultiplesHome.jsx";
 import AbmUsuarios from "../../ui/Dashboard/abmUsuarios.jsx";
 import NuevaPregunta from "../../ui/Dashboard/NuevaPregunta.jsx";
 import Analisis from "../../ui/Dashboard/Analisis.jsx";
+import Descargar from "../../ui/Dashboard/Descargar.jsx";
 import CabeceraFuncional from "../../ui/Dashboard/cabecerafuncional.js";
 ////////////////////////////////
 const browserHistory = createBrowserHistory();
@@ -61,6 +62,7 @@ export const Ruteador = () => (
           <Route exact path="/nuevapregunta/:id" children={<NuevaPregunta />} />
           <Route exact path="/nuevapregunta" component={NuevaPregunta} />
           <Route exact path="/analisis" component={Analisis} />
+          <Route exact path="/descargar" component={Descargar} />
           <Route exact path="/usuarios" component={AbmUsuarios} />
           <Route
             exact

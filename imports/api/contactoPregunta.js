@@ -42,4 +42,24 @@ ContactoPregunta.schema = new SimpleSchema({
   }
 });
 
+ContactoPregunta.helpers({
+  userName() {
+    return Contacto.findOne(this.contactoid).userName();
+  },
+  fechaProto() {
+    return moment(Contacto.findOne(this.contactoid).createdAt).format('DD-MM-YYYY');
+  },
+  numero() {
+    return Contacto.findOne(this.contactoid).autonumerico;
+  },
+  tipox() {
+    var resul="";
+    if (Contacto.findOne(this.contactoid).tipo == 1)
+        resul = "niñeces" ;
+    else
+        resul = "+18";
+    return resul;
+  }
+});
+
 ContactoPregunta.attachSchema(ContactoPregunta.schema);

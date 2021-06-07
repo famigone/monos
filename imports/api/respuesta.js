@@ -56,4 +56,31 @@ Respuesta.schema = new SimpleSchema({
   }
 });
 
+Respuesta.helpers({
+  userName() {
+    return ContactoPregunta.findOne(this.contactopreguntaid).userName();
+  },
+  pregunta() {
+    return ContactoPregunta.findOne(this.contactopreguntaid).texto;
+  },
+  momento() {
+    return ContactoPregunta.findOne(this.contactopreguntaid).momento;
+  },
+  seccion() {
+    return ContactoPregunta.findOne(this.contactopreguntaid).seccion;
+  },
+  fechaProto() {
+    return ContactoPregunta.findOne(this.contactopreguntaid).fechaProto();
+  },
+  numero() {
+    return ContactoPregunta.findOne(this.contactopreguntaid).numero();
+  },
+  tipo() {
+    return ContactoPregunta.findOne(this.contactopreguntaid).tipox();
+  },
+  activox() {
+    return ContactoPregunta.findOne(this.contactopreguntaid).activo;
+  }
+});
+
 Respuesta.attachSchema(Respuesta.schema);

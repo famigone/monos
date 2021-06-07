@@ -144,6 +144,7 @@ export default class RtaComboUpdate extends Component {
             });
             ///////////////////////////////////////////////////////
             //esto lo agregué el 05/05/21 para arreglar lo de el salto en el update
+            if (!this.setTermino())
             this.props.cambiarActual(
               this.props.pregunta.codigo,
               this.state.valor
@@ -217,7 +218,7 @@ export default class RtaComboUpdate extends Component {
         <Message color={"violet"} floating hidden={this.state.hidden}>
           <Message.Header>
             <Icon name="heart outline" />
-            Respuesta modificada con éxito.
+            Carga finalizada.
           </Message.Header>
         </Message>
         <Message color={"purple"} floating hidden={!this.state.termino}>
