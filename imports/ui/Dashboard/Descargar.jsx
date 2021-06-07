@@ -53,7 +53,8 @@ class Descargar extends Component {
       fechaDesde: new Date(),
       fechaHasta: new Date(),
       usuarioid: Meteor.userId(),
-      username: Meteor.user().username
+      username: Meteor.user().username,
+      descargando: false
     };
   }
 
@@ -152,6 +153,9 @@ class Descargar extends Component {
             <Icon name="file excel" /> Descargar
           </Button>
         </Form>
+        <Message  floating hidden={!this.state.descargando}>
+            <LoaderExampleText />
+        </Message>
       </Segment>
     );
   }
@@ -162,7 +166,7 @@ class Descargar extends Component {
       hasta: this.state.fechaHasta,
       usuarioid: this.state.usuarioid
     };
-
+    this.setState({descargando:true});
     //console.log(one);
     const rta = exportProtos.call(one, (err, res) => {
       if (err) {
@@ -177,6 +181,7 @@ class Descargar extends Component {
          hiddenElement.target = '_blank';
          hiddenElement.download = usuario +" "+ moment(one.desde).format('DD-MM-YYYY')+' hasta '+moment(one.hasta).format('DD-MM-YYYY')+'.csv';
          hiddenElement.click();
+         this.setState({descargando:false})
       }
     });
 
@@ -196,6 +201,7 @@ class Descargar extends Component {
           <Grid.Column width={1} />
           <Grid.Column width={14}>{this.renderForm()}</Grid.Column>
           <Grid.Column width={1} />
+
         </Grid.Row>
         <Grid.Row/>
         <Grid.Row/>
