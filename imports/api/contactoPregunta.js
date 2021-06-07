@@ -59,6 +59,9 @@ ContactoPregunta.helpers({
     else
         resul = "+18";
     return resul;
+  }, 
+  contactoActivo(){
+    return Contacto.findOne(this.contactoid).activo;
   }
 });
 

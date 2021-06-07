@@ -80,6 +80,9 @@ Respuesta.helpers({
   },
   activox() {
     return ContactoPregunta.findOne(this.contactopreguntaid).activo;
+  },
+  contactoActivo() {
+    return ContactoPregunta.findOne(this.contactopreguntaid).contactoActivo();
   }
 });
 
