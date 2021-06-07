@@ -55,6 +55,8 @@ function parsearRtas(rtas) {
   var unaFila;
   var resultado;
   resultado = rtas.map(function (rta, index, array) {
+        var especifique= ""
+        if (rta.especifique) especifique = rta.especifique;
         if (rta.rtaFecha){
             unaFila= {grupa: rta.userName(),
                       fechaProtocola: rta.fechaProto(),
@@ -64,6 +66,7 @@ function parsearRtas(rtas) {
                       seccion: rta.seccion(),
                       pregunta: rta.pregunta(),
                       respuesta: moment(rta.rtaFecha).format('DD-MM-YYYY'),
+                      especifique: especifique,
                       activo: rta.activox()
 
             }
@@ -76,6 +79,7 @@ function parsearRtas(rtas) {
                       seccion: rta.seccion(),
                       pregunta: rta.pregunta(),
                       respuesta: rta.rtatexto,
+                      especifique: especifique,
                       activo: rta.activox()
 
             }
