@@ -115,8 +115,10 @@ export const analisis = new ValidatedMethod({
     const hasta = new Date(one.fechaHasta);
     const usuarioid = one.usuarioid;
     const bol = one.usuarioid === "";
+    resul = 0;
+    var rtas;
     if (bol) {
-      const rta = Respuesta.find({
+      rtas = Respuesta.find({
         codigo: one.codigo,
         rtatexto: one.rta,
         activo: true,
@@ -124,10 +126,9 @@ export const analisis = new ValidatedMethod({
           $gte: desde,
           $lte: hasta
         }
-      }).count();
-      return rta;
+      }).fetch();
     } else {
-      const rta = Respuesta.find({
+       rtas = Respuesta.find({
         codigo: one.codigo,
         rtatexto: one.rta,
         activo: true,
@@ -136,12 +137,24 @@ export const analisis = new ValidatedMethod({
           $gte: desde,
           $lte: hasta
         }
-      }).count();
-      return rta;
+      }).fetch();
+
     }
-    //console.log(rta);
+
+    resul =  calcularCount(rtas);
+    return resul;
   }
 });
+
+function calcularCount(rtas){
+  var cant = 0;
+  rtas.forEach((rta) => {
+    if (rta.activo && rta.activox() && rta.contactoActivo()) {
+      cant = cant + 1;
+    }
+  });
+ return cant;
+}
 
 export const contarContactos = new ValidatedMethod({
   name: "contarContactos",
