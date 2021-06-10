@@ -299,6 +299,7 @@ class ListaPreguntas extends Component {
     var actual = 0;
     if (this.state.activeItem) actual = this.state.activeItem;
     const laPregunta = this.props.preguntas[this.state.activeItem];
+    if (laPregunta){
     switch (laPregunta.tipo) {
       case "L": {
         //console.log("la borrega: "+)
@@ -388,7 +389,7 @@ class ListaPreguntas extends Component {
           />
         );
         break;
-    }
+    }}
   }
   renderAutonumerico() {
     return (

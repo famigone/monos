@@ -311,6 +311,7 @@ class ListaPreguntasMujer extends Component {
     const laPregunta = this.props.preguntas[this.state.activeItem];
     //console.log("this.props.preguntas: ", this.props.preguntas);
     //console.log("laPregunta: ", this.props.preguntas[this.state.activeItem]);
+    if (laPregunta){
     switch (laPregunta.tipo) {
       case "L": {
         //console.log("la borrega: "+)
@@ -392,6 +393,7 @@ class ListaPreguntasMujer extends Component {
         );
         break;
     }
+  }
   }
   renderAutonumerico() {
     return (
