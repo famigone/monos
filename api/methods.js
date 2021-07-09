@@ -7,6 +7,7 @@ import ReglaMultiple from "/imports/api/reglaMultiple.js";
 import ReglaMultipleDetalle from "/imports/api/reglaMultipleDetalle.js";
 import { Accounts } from "meteor/accounts-base";
 import { Meteor } from "meteor/meteor";
+import { options } from "./mapeo";
 //import { Mongo } from "meteor/mongo";
 //import { aggregate } from "meteor/sakulstra:aggregate";
 
@@ -25,7 +26,7 @@ export const exportProtos = new ValidatedMethod({
     var resul;
     var rtas;
     //obtenemos las respuestas
-    console.log("one.usuarioid: ",one.usuarioid)
+    //console.log("one.usuarioid: ",one.usuarioid)
     if ((one.usuarioid)){
       rtas = Respuesta.find({activo:true,
                               createdAt: {
@@ -51,6 +52,25 @@ export const exportProtos = new ValidatedMethod({
 
 });
 
+function mapearCodigo(codigoPregunta, rta){
+  //esto importa los códigos de mapeo.js (ese archivo le asigna un número único a cada rta)
+  //busca la rta parámetro y retorna el código
+  var elCodigo = 0;
+  if (options[codigoPregunta]){
+    var codigos = options[codigoPregunta];
+    var i = 0;
+    var encontrado = false;
+    while ((i < codigos.length) && (!encontrado)) {
+      if (codigos[i].text==rta) {
+        elCodigo = codigos[i].value;
+        encontrado = true;
+      }
+      i++;
+    }
+  }
+  return elCodigo;
+}
+
 function parsearRtas(rtas) {
   var unaFila;
   var resultado;
@@ -66,6 +86,8 @@ function parsearRtas(rtas) {
                         momento: rta.momento(),
                         seccion: rta.seccion(),
                         pregunta: rta.pregunta(),
+                        codigoPregunta: rta.codigo,
+                        codigorespuesta: 0,
                         respuesta: moment(rta.rtaFecha).format('DD-MM-YYYY'),
                         especifique: especifique,
                       //  activo: rta.activox(),
@@ -79,6 +101,8 @@ function parsearRtas(rtas) {
                         momento: rta.momento(),
                         seccion: rta.seccion(),
                         pregunta: rta.pregunta(),
+                        codigoPregunta: rta.codigo,
+                        codigorespuesta: mapearCodigo(rta.codigo, rta.rtatexto),
                         respuesta: rta.rtatexto,
                         especifique: especifique,
                       //  activo: rta.activox()
