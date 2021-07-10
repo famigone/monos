@@ -4198,3 +4198,15 @@ options[510] = [
     value: 694
   }
 ];
+options[415] = [
+  {
+    key: 1,
+    text: "SI",
+    value: 695
+  },
+  {
+    key: 2,
+    text: "NO",
+    value: 696
+  }
+];
