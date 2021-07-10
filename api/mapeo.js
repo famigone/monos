@@ -368,12 +368,12 @@ options[1270] = [
 options[1250] = [
   {
     key: 1,
-    text: "Sí",
+    text: "SI",
     value: 65
   },
   {
     key: 2,
-    text: "No",
+    text: "NO",
     value: 66
   },
   {
@@ -4110,3 +4110,35 @@ options[170] = [
     value: 678
   }
 ];
+
+options[630] = [
+{
+  key: 1,
+  text: "No: Decide continuar el embarazo",
+  value: 679
+},
+{
+  key: 2,
+  text: "No: Nos cuenta que va a buscar otra solución",
+  value: 680
+},
+{
+  key: 3,
+  text: "No: La acompañamos con Aborto Libre y Feminista",
+  value: 681
+},
+{
+  key: 4,
+  text: "Sí: y no necesitó intervención quirúrgica",
+  value: 682
+},
+{
+  key: 5,
+  text: "Sí: necesitó intervención quirúrgica AMEU",
+  value: 683
+},
+{
+  key: 6,
+  text: "Sí: necesitó intervención quirúrgica LEGRADO",
+  value: 684
+}];
