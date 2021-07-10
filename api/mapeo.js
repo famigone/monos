@@ -4142,3 +4142,59 @@ options[630] = [
   text: "Sí: necesitó intervención quirúrgica LEGRADO",
   value: 684
 }];
+
+options[1420] = [
+  {
+    key: 1,
+    text: "No vuelve a conectarse",
+    value: 685
+  },
+  {
+    key: 2,
+    text: "Decide continuar su embarazo",
+    value: 686
+  },
+  {
+    key: 3,
+    text: "Aborto espontáneo",
+    value: 687
+  },
+  {
+    key: 4,
+    text: "Decide solicitar ILE/IVE",
+    value: 688
+  },
+  {
+    key: 5,
+    text: "Resuelve Aborto libre y feminista",
+    value: 689
+  }
+];
+
+options[510] = [
+  {
+    key: 1,
+    text: "No vuelve a conectarse",
+    value: 690
+  },
+  {
+    key: 2,
+    text: "Decide continuar su embarazo",
+    value: 691
+  },
+  {
+    key: 3,
+    text: "Aborto espontáneo",
+    value: 692
+  },
+  {
+    key: 4,
+    text: "Decide solicitar ILE/IVE",
+    value: 693
+  },
+  {
+    key: 5,
+    text: "Resuelve Aborto libre y feminista",
+    value: 694
+  }
+];
