@@ -82,18 +82,13 @@ export default class RtaString extends Component {
   renderForm() {
     return (
       <div>
-        <Container textAlign="right">
-          <Label color="teal">
-            <Icon name="time" />
-            {this.props.pregunta.momento == 1
-              ? "PRIMER MOMENTO"
-              : "SEGUNDO MOMENTO"}
-          </Label>
-          <Label color="teal">
-            <Icon name="check circle" />
-            {this.props.pregunta.seccion}
-          </Label>
-        </Container>
+      <Container textAlign="right">
+
+        <Label color="red">
+          <Icon name="check circle" />
+          {this.props.pregunta.seccion}
+        </Label>
+      </Container>
         <Header as="h2" dividing>
           <Icon name="question circle outline" />
           <Header.Content>
@@ -114,7 +109,7 @@ export default class RtaString extends Component {
               />
             </Form.Field>
           </Form.Group>
-          <Button color="purple" type="submit">
+          <Button color="yellow" type="submit">
             Siguiente
           </Button>
         </Form>

@@ -13,6 +13,9 @@ import "../imports/api/respuesta.js";
 import "../imports/api/regla.js";
 import "../imports/api/reglaMultiple.js";
 import "../imports/api/reglaMultipleDetalle.js";
+import "/api/insertPreguntasTangible.js";
+import "/api/insertPreguntasBloques.js";
+import "/api/insertPreguntasTexto.js";
 
 Meteor.startup(() => {
   //let server = Meteor.settings.mqttHost;

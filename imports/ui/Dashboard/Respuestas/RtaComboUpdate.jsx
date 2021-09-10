@@ -167,13 +167,8 @@ export default class RtaComboUpdate extends Component {
     return (
       <div>
         <Container textAlign="right">
-          <Label color="teal">
-            <Icon name="time" />
-            {this.props.pregunta.momento == 1
-              ? "PRIMER MOMENTO"
-              : "SEGUNDO MOMENTO"}
-          </Label>
-          <Label color="teal">
+
+          <Label color="red">
             <Icon name="check circle" />
             {this.props.pregunta.seccion}
           </Label>
@@ -211,7 +206,7 @@ export default class RtaComboUpdate extends Component {
               </Form.Field>
             ) : null}
           </Form.Group>
-          <Button color="teal" type="submit">
+          <Button color="yellow" type="submit">
             Guardar
           </Button>
         </Form>

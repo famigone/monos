@@ -16,6 +16,7 @@ import "react-s-alert/dist/s-alert-css-effects/genie.css";
 import "react-s-alert/dist/s-alert-css-effects/jelly.css";
 import "react-s-alert/dist/s-alert-css-effects/stackslide.css";
 
+
 import ReactDOM from "react-dom";
 import { withTracker } from "meteor/react-meteor-data";
 import {
@@ -54,16 +55,17 @@ export default class App extends Component {
 
   render() {
     return (
-      //#FBFCFC
-      //#F7F9F9
+
+      //#FBF6EA
       <div
-        style={{ backgroundColor: "#F4F6F6", width: "100%", height: "100%" }}
+      style={{ backgroundColor: "#F9F3E3", width: "100%", height: "100%" }}
       >
-        <BarraEstado />
-        {this.getContentView()}
-        <Segment />
-        <Alert stack={{ limit: 3 }} html={true} />
-        <Footer />
+      <BarraEstado />
+
+      {this.getContentView()}
+
+
+      <Footer />
       </div>
     );
   }

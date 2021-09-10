@@ -45,7 +45,7 @@ export default class LoginForm extends Component {
       } else {
         // successful log in
         //console.log("EXITOOOOOOOOOO");
-        this.props.history.push("/");
+        this.props.history.push("/selector");
       }
     });
   };
@@ -68,7 +68,7 @@ export default class LoginForm extends Component {
         <Grid.Row />
         <Grid.Row>
           <center>
-            <img src="/img/socorristas.png" />
+            <img src="/img/comonosfue.png" />
           </center>{" "}
         </Grid.Row>
         <Grid.Row>
@@ -95,12 +95,12 @@ export default class LoginForm extends Component {
                   value={this.state.password}
                 />
 
-                <Button color="purple" fluid size="large">
+              <Button color="yellow" fluid size="large">
                   Login
                 </Button>
               </Segment>
             </Form>
-            <Message>Socorristas en Red - Protocolas</Message>
+            <Message>CÓMONOSFUE es un software de la plataforma PASAYO</Message>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row />

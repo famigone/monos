@@ -368,10 +368,11 @@ export const insertRespuesta = new ValidatedMethod({
       rta: one.rtatexto,
       contactoid: one.contactoid
     };
-    mensaje = validarReglaMultipleX(actual);
+    //mensaje = validarReglaMultipleX(actual);
     var estaDuplicada = respuestaDuplicada(one.contactoid, one.codigo);
+    //console.log("estaDuplicada "+estaDuplicada)
 
-    if ((mensaje == "")&&(!estaDuplicada)) {
+    if ((!estaDuplicada)) {
       one.activo = true;
       Respuesta.insert(one);
       return "";
@@ -383,7 +384,7 @@ export const insertRespuesta = new ValidatedMethod({
 
 function respuestaDuplicada(contactoid, codigo){
   //codigos de rtas múltiples, estas deben retornar falso
-  var multiples = ["1120","1150", "1160", "1170", "130", "150", "160", "170"];
+  var multiples = ["1050"];
   estaDuplicada = false;
   if (!(multiples.includes(codigo)))
   {

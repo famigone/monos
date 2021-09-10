@@ -101,13 +101,8 @@ export default class RtaMultipleUpdate extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.setState({ hiddeErrorSePaso: true });
-    let preguntaControl =
-      this.props.pregunta.codigo == "1120" ||
-      this.props.pregunta.codigo == "130";
-    let cantRtas = this.state.valor.length > 3;
-    if (preguntaControl && cantRtas) {
-      this.setState({ hiddeErrorSePaso: false });
-    } else {
+
+
       this.eliminarAnteriores();
       if (!(this.state.valor === "")) {
         var inputRespuesta;
@@ -126,6 +121,7 @@ export default class RtaMultipleUpdate extends Component {
             especifique: inputRespuesta
             //  activo: true
           };
+
           insertRespuesta.call(one, (err, res) => {
             if (err) {
               console.log(err);
@@ -146,7 +142,7 @@ export default class RtaMultipleUpdate extends Component {
           null;
         }
       }
-    }
+
     // Clear form
   }
 
@@ -154,18 +150,13 @@ export default class RtaMultipleUpdate extends Component {
     //console.log(this.props.rtas;
     return (
       <div>
-        <Container textAlign="right">
-          <Label color="teal">
-            <Icon name="time" />
-            {this.props.pregunta.momento == 1
-              ? "PRIMER MOMENTO"
-              : "SEGUNDO MOMENTO"}
-          </Label>
-          <Label color="teal">
-            <Icon name="check circle" />
-            {this.props.pregunta.seccion}
-          </Label>
-        </Container>
+      <Container textAlign="right">
+
+        <Label color="red">
+          <Icon name="check circle" />
+          {this.props.pregunta.seccion}
+        </Label>
+      </Container>
         <Header as="h2" dividing>
           <Icon name="pencil" />
           <Header.Content>
@@ -194,10 +185,10 @@ export default class RtaMultipleUpdate extends Component {
               </Form.Field>
             ) : null}
           </Form.Group>
-          <Button color="teal" type="submit">
+          <Button color="brown" type="submit">
             Guardar
           </Button>
-          <Message color={"violet"} floating hidden={this.state.hiddenFin}>
+          <Message color={"yellow"} floating hidden={this.state.hiddenFin}>
             <Message.Header>
               <Icon name="heart outline" />
               Modificación realizada con éxito!

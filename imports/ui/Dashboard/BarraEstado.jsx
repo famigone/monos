@@ -28,21 +28,24 @@ export default class MenuExampleSecondary extends Component {
     const { activeItem } = this.state;
 
     return (
-      <Menu inverted color="purple">
-        <Menu.Item>
-          {/*<Image centered size="tiny" src="/img/ripioh_white.png" />*/}
-          SOCORRISTAS EN RED
-        </Menu.Item>
+      <Menu inverted color="yellow">
         <Menu.Item
           as={Link}
-          to="/listadoconsultas"
+          to="/selector"
           onClick={this.handleItemClick}
         >
-          <Icon name="th list" />
+          {/*<Image centered size="tiny" src="/img/ripioh_white.png" />*/}
+          <b>CÓMONOSFUE</b>
+        </Menu.Item>
+        <Menu.Item
+
+        >
+          
+
         </Menu.Item>
 
         <Menu.Item as={Link} to="/nuevocontacto" onClick={this.handleItemClick}>
-          <Icon name="child" />
+          <b>TANGIBLE</b>
         </Menu.Item>
 
         <Menu.Item
@@ -50,41 +53,22 @@ export default class MenuExampleSecondary extends Component {
           to="/nuevocontactomujer"
           onClick={this.handleItemClick}
         >
-          <b>+18</b>
+          <b>BLOQUES</b>
+        </Menu.Item>
+        <Menu.Item
+          as={Link}
+          to="/nuevocontactomujer"
+          onClick={this.handleItemClick}
+        >
+          <b>TEXTUAL</b>
         </Menu.Item>
 
         <Menu.Menu position="right">
-          <Menu.Item
-            name="consultasadmin"
-            as={Link}
-            to="/analisis"
-            onClick={this.handleItemClick}
-            active={activeItem === "consultasadmin"}
-          >
-            <Icon name="pie chart" />
-          </Menu.Item>
-          {Meteor.user().username === "admin" ? (
-            <Menu.Item
-              name="users"
-              as={Link}
-              to="/reglas"
-              active={activeItem === "map"}
-              onClick={this.handleItemMap}
-            >
-              <Icon name="random" />
-            </Menu.Item>
-          ) : null}
-          {Meteor.user().username === "admin" ? (
-            <Menu.Item
-              name="users"
-              as={Link}
-              to="/reglasmultiples"
-              active={activeItem === "map"}
-              onClick={this.handleItemMap}
-            >
-              <Icon name="sitemap" />
-            </Menu.Item>
-          ) : null}
+
+
+
+
+
           {Meteor.user().username === "admin" ? (
             <Menu.Item
               name="users"
@@ -107,6 +91,17 @@ export default class MenuExampleSecondary extends Component {
               <Icon name="users" />
             </Menu.Item>
           ) : null}
+          {Meteor.user().username === "admin" ? (
+            <Menu.Item
+              as={Link}
+              to="/listadoconsultas"
+              onClick={this.handleItemClick}
+            >
+              <Icon name="th list" />
+            </Menu.Item>
+          ) : null}
+
+
           <Menu.Item
             active={activeItem === "Logout"}
             as={Link}

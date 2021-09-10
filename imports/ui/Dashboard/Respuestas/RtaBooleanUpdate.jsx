@@ -121,18 +121,13 @@ export default class RtaBooleanUpdate extends Component {
     //  console.log("estado: " + this.state.valor);
     return (
       <div>
-        <Container textAlign="right">
-          <Label color="teal">
-            <Icon name="time" />
-            {this.props.pregunta.momento == 1
-              ? "PRIMER MOMENTO"
-              : "SEGUNDO MOMENTO"}
-          </Label>
-          <Label color="teal">
-            <Icon name="check circle" />
-            {this.props.pregunta.seccion}
-          </Label>
-        </Container>
+      <Container textAlign="right">
+
+        <Label color="red">
+          <Icon name="check circle" />
+          {this.props.pregunta.seccion}
+        </Label>
+      </Container>
         <Header as="h2" dividing>
           <Icon name="pencil alternate" />
           <Header.Content>
@@ -165,7 +160,7 @@ export default class RtaBooleanUpdate extends Component {
             />
           </Form.Field>
 
-          <Button color="teal" type="submit">
+          <Button color="yellow" type="submit">
             Guardar
           </Button>
         </Form>

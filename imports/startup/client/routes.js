@@ -17,6 +17,10 @@ import LoginForm from "../../ui/Dashboard/LoginForm.jsx";
 
 import PrivateRoute from "./PrivateRoute.jsx";
 ////////////////////////////////
+import Tangible from "../../ui/Dashboard/Tangible.jsx";
+import Bloques from "../../ui/Dashboard/Bloques.jsx";
+import Texto from "../../ui/Dashboard/Texto.jsx";
+import MonoSelector from "../../ui/Dashboard/MonoSelector.jsx";
 import NuevoContacto from "../../ui/Dashboard/NuevoContacto.jsx";
 import NuevoContactoMujer from "../../ui/Dashboard/NuevoContactoMujer.jsx";
 import ListadoConsultas from "../../ui/Dashboard/listadoConsultas.jsx";
@@ -52,12 +56,10 @@ export const Ruteador = () => (
       <Route exact path="/login" component={LoginForm} />
       <PrivateRoute>
         <App>
-          <Route exact path="/nuevocontacto/" component={NuevoContacto} />
-          <Route
-            exact
-            path="/nuevocontactomujer/"
-            component={NuevoContactoMujer}
-          />
+          <Route exact path="/tangible/" component={Tangible} />
+          <Route exact path="/bloques/" component={Bloques} />
+          <Route exact path="/texto/" component={Texto} />
+          <Route exact path="/selector/" component={MonoSelector} />
           <Route exact path="/listadoconsultas/" component={ListadoConsultas} />
           <Route exact path="/nuevapregunta/:id" children={<NuevaPregunta />} />
           <Route exact path="/nuevapregunta" component={NuevaPregunta} />

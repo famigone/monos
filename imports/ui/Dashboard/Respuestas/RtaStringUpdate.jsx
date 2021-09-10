@@ -94,6 +94,13 @@ export default class RtaStringUpdate extends Component {
   renderForm() {
     return (
       <div>
+      <Container textAlign="right">
+
+        <Label color="red">
+          <Icon name="check circle" />
+          {this.props.pregunta.seccion}
+        </Label>
+      </Container>
         <Header as="h2" dividing>
           <Icon name="pencil alternate" />
           <Header.Content>
@@ -111,11 +118,11 @@ export default class RtaStringUpdate extends Component {
               />
             </Form.Field>
           </Form.Group>
-          <Button color="teal" type="submit">
+          <Button color="orange" type="submit">
             Guardar
           </Button>
         </Form>
-        <Message color={"violet"} floating hidden={this.state.hidden}>
+        <Message color={"yellow"} floating hidden={this.state.hidden}>
           <Message.Header>
             <Icon name="heart outline" />
             Respuesta modificada con éxito.

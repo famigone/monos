@@ -22,7 +22,7 @@ export default class Footer extends Component {
         <Segment
           inverted
           vertical
-          color="purple"
+          color="yellow"
           style={{
             position: "fixed",
             width: "100%",
@@ -31,7 +31,7 @@ export default class Footer extends Component {
         >
           <Container textAlign="center">
             {
-              "P R O T O C O L A" /*<Image centered size="small" src="/img/logogrande.png" />*/
+              "P A S A Y O" /*<Image centered size="small" src="/img/logogrande.png" />*/
             }
           </Container>
         </Segment>

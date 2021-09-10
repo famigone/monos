@@ -49,18 +49,13 @@ export default class RtaMultiple extends Component {
   renderForm() {
     return (
       <div>
-        <Container textAlign="right">
-          <Label color="teal">
-            <Icon name="time" />
-            {this.props.pregunta.momento == 1
-              ? "PRIMER MOMENTO"
-              : "SEGUNDO MOMENTO"}
-          </Label>
-          <Label color="teal">
-            <Icon name="check circle" />
-            {this.props.pregunta.seccion}
-          </Label>
-        </Container>
+      <Container textAlign="right">
+
+        <Label color="red">
+          <Icon name="check circle" />
+          {this.props.pregunta.seccion}
+        </Label>
+      </Container>
         <Header as="h2" dividing>
           <Icon name="question circle outline" />
           <Header.Content>
@@ -90,19 +85,9 @@ export default class RtaMultiple extends Component {
               </Form.Field>
             ) : null}
           </Form.Group>
-          <Message color="pink" floating hidden={this.state.hiddeValidar}>
-            <Message.Header>
-              <Icon size="huge" name="meh outline" />
-              {this.state.mensajeError}
-            </Message.Header>
-          </Message>
-          <Message color="pink" floating hidden={this.state.hiddeErrorSePaso}>
-            <Message.Header>
-              <Icon size="huge" name="meh outline" />
-              "Solo podes seleccionar un máximo de tres respuestas..."
-            </Message.Header>
-          </Message>
-          <Button color="teal" type="submit">
+
+
+          <Button color="orange" type="submit">
             Siguiente
           </Button>
         </Form>
@@ -141,13 +126,9 @@ export default class RtaMultiple extends Component {
       valido = mensaje == "";
       //console.log("contamos ", this.state.valor.length);
       //console.log("preg ", this.props.pregunta);
-      let preguntaControl =
-        this.props.pregunta.codigo == "1120" ||
-        this.props.pregunta.codigo == "130";
-      let cantRtas = this.state.valor.length > 3;
-      if (preguntaControl && cantRtas) {
-        this.setState({ hiddeErrorSePaso: false });
-      } else {
+
+
+
         this.state.valor.forEach(rta => {
           if (!valido)
             this.setState({ hiddeValidar: false, mensajeError: mensaje });
@@ -161,7 +142,7 @@ export default class RtaMultiple extends Component {
               especifique: inputRespuesta
               //  activo: true
             };
-            //  console.log("INSERTO UN MÚLTIPLE");
+              console.log("INSERTO UN MÚLTIPLE");
             insertRespuesta.call(one, (err, res) => {
               if (err) {
                 console.log(err);
@@ -183,7 +164,7 @@ export default class RtaMultiple extends Component {
         this.setState({
           valor: []
         });
-      }
+
     }
     // Clear form
   }

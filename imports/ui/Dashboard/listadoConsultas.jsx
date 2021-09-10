@@ -190,7 +190,7 @@ class ListadoConsultas extends Component {
               />
             </Form.Field>
           </Form.Group>
-          <Button color="purple" type="submit">
+          <Button color="yellow" type="submit">
             {this.state.txt}
           </Button>
         </Form>
@@ -267,7 +267,7 @@ class ListadoConsultas extends Component {
               </Header>
               <Message
                 negative
-                color="purple"
+                color="yellow"
                 floating
                 hidden={this.state.hidden}
               >

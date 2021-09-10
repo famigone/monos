@@ -95,7 +95,7 @@ class Descargar extends Component {
 
   renderForm() {
     return (
-      <Segment raised color="teal">
+      <Segment raised color="brown">
         <Header as="h2" dividing>
           <Icon name="cloud download" />
           <Header.Content>
@@ -126,7 +126,7 @@ class Descargar extends Component {
               />
             </Form.Field>
             <Form.Field>
-              <label>Grupa </label>
+              <label>Usuari@ </label>
               {Meteor.user().username === "admin" ? (
                 <Dropdown
                   placeholder="Seleccionar"
@@ -149,7 +149,7 @@ class Descargar extends Component {
             </Form.Field>
           </Form.Group>
           <Header dividing/>
-          <Button color="teal" type="submit">
+          <Button color="brown" type="submit">
             <Icon name="file excel" /> Descargar
           </Button>
         </Form>
