@@ -54,9 +54,13 @@ class AbmUsuarios extends Component {
     const password = ReactDOM.findDOMNode(this.refs.inputPass).value.trim();
     const nene = ReactDOM.findDOMNode(this.refs.inputNene).value.trim();
     const nacimiento = ReactDOM.findDOMNode(this.refs.inputNacimiento).value.trim();
+    const tutor = ReactDOM.findDOMNode(this.refs.inputTutor).value.trim();
+    const mail = ReactDOM.findDOMNode(this.refs.inputMail).value.trim();
     const profile = { nene: nene
     , nacimiento: nacimiento
-    , pass: password };
+    , pass: password
+    , tutor: tutor
+    , mail: mail };
     const one = { username: username
       , password: password
 
@@ -90,7 +94,7 @@ class AbmUsuarios extends Component {
           <Table.Row>
             <Table.HeaderCell>
               <h4>Usuari@</h4>
-              
+
             </Table.HeaderCell>
           </Table.Row>
         </Table.Header>
@@ -124,6 +128,15 @@ class AbmUsuarios extends Component {
 
             <Form.Field>
               <input ref="inputNacimiento" placeholder="Fecha de nacimiento" />
+            </Form.Field>
+          </Form.Group>
+          <Form.Group widths="equal">
+            <Form.Field>
+              <input ref="inputMail" placeholder="Correo" />
+            </Form.Field>
+
+            <Form.Field>
+              <input ref="inputTutor" placeholder="Nombre Completo Tut@r" />
             </Form.Field>
           </Form.Group>
           <Button color="brown" type="submit">
