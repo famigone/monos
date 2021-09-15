@@ -253,7 +253,7 @@ class ListadoConsultas extends Component {
                 </Button>
                 <Confirm
                   open={this.state.open}
-                  content="¿Estás segura/segure/seguro que querés eliminar esta protocola?"
+                  content="¿Estás segur@ que querés eliminar este registro?"
                   onCancel={this.handleCancel}
                   onConfirm={this.handleConfirm}
                 />
