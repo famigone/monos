@@ -80,6 +80,7 @@ export default class MenuExampleSecondary extends Component {
               <Icon name="cloud download" />
             </Menu.Item>
           ) : null}
+    
           {Meteor.user().username === "admin" ? (
             <Menu.Item
               name="users"

@@ -51,7 +51,7 @@ export const insertPregTangible = new ValidatedMethod({
   run(one) {
     one.activo = true;
     one.createdBy = Meteor.userId();
-    one.tipo = 2; //mujer
+    one.tipo = 1; //mujer
     var contactoid;
     contactoid = Contacto.insert(one);
     // console.log("TATATATA", contactoid);

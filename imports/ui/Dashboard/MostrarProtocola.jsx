@@ -9,7 +9,9 @@ import ReactDOM from "react-dom";
 import { withTracker } from "meteor/react-meteor-data";
 import SidebarExampleSidebar from "./SidebarExampleSidebar.js";
 import ListaPreguntas from "./ListaPreguntas.js";
-import ListaPreguntasMujer from "./ListaPreguntasMujer.js";
+import ListaPreguntasTangible from "./ListaPreguntasTangible.js";
+import ListaPreguntasBloques from "./ListaPreguntasBloques.js";
+import ListaPreguntasTexto from "./ListaPreguntasTexto.js";
 import LoaderExampleText from "/imports/ui/Dashboard/LoaderExampleText.js";
 import "react-s-alert/dist/s-alert-default.css";
 import { insertPregunta } from "/api/methods.js";
@@ -33,19 +35,19 @@ class MostrarProtocola extends Component {
     if (this.props.isLoading) {
       return <LoaderExampleText />;
     }
-
+  if(this.props.proto.tipo == 1)
+    return <ListaPreguntasTangible preguntas={this.props.preguntas} id={this.props.id} />
+    else if (this.props.proto.tipo == 2)
     return (
       <div>
-        {this.props.proto.tipo == 1 ? (
-          <ListaPreguntas preguntas={this.props.preguntas} id={this.props.id} />
-        ) : (
-          <ListaPreguntasMujer
-            preguntas={this.props.preguntas}
-            id={this.props.id}
-          />
-        )}
+          <ListaPreguntasTangible preguntas={this.props.preguntas} id={this.props.id} />
       </div>
-    );
+    )
+    else return (
+      <div>
+          <ListaPreguntasTangible preguntas={this.props.preguntas} id={this.props.id} />
+      </div>
+    )
   }
 }
 export default withTracker(({ id }) => {

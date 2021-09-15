@@ -51,7 +51,7 @@ export const insertPregTexto = new ValidatedMethod({
   run(one) {
     one.activo = true;
     one.createdBy = Meteor.userId();
-    one.tipo = 2; //mujer
+    one.tipo = 3; //texto
     var contactoid;
     contactoid = Contacto.insert(one);
     // console.log("TATATATA", contactoid);

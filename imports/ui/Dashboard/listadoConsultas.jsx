@@ -246,7 +246,7 @@ class ListadoConsultas extends Component {
           <Grid.Column width={11}>
             <Segment raised>
               <Header as="h2" floated="right">
-                <Button size="mini" color="teal" onClick={this.show}>
+                <Button size="mini" color="brown" onClick={this.show}>
                   Eliminar
                 </Button>
                 <Confirm
