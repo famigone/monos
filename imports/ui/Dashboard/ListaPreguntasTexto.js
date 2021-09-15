@@ -38,7 +38,7 @@ import Contacto from "/imports/api/contacto.js";
 import { withTracker } from "meteor/react-meteor-data";
 import LoaderExampleText from "/imports/ui/Dashboard/LoaderExampleText.js";
 import { updateContactoPreguntaSgte } from "/api/methods.js";
-class ListaPreguntasTexto extends Component {
+class ListaPreguntasTangible extends Component {
   getContentView() {
     return this.props.children;
   }
@@ -213,38 +213,6 @@ class ListaPreguntasTexto extends Component {
   routerCombos() {
     const laPregunta = this.props.preguntas[this.state.activeItem];
     //console.log("entro en routerCombos ", laPregunta.codigo);
-    if (laPregunta.codigo == "510")
-      return laPregunta.estado ? (
-        <RtaFinPrimerMomentoUpdate
-          pregunta={laPregunta}
-          rta={this.obtenerRtaActual()}
-          cambiarActual={this.onUpdateActual}
-        />
-      ) : (
-        <RtaFinPrimerMomento
-          pregunta={laPregunta}
-          cambiarActual={this.onUpdateActual}
-        />
-      );
-    else if (
-      laPregunta.codigo == "630" &&
-      laPregunta.momento == 2 &&
-      laPregunta.seccion ==
-        "Interrupción Legal e Interrupción Voluntaria del Embarazo"
-    )
-      return laPregunta.estado ? (
-        <Rta2doIle630Update
-          pregunta={laPregunta}
-          rta={this.obtenerRtaActual()}
-          cambiarActual={this.onUpdateActual}
-        />
-      ) : (
-        <Rta2doIle630
-          pregunta={laPregunta}
-          cambiarActual={this.onUpdateActual}
-        />
-      );
-    else {
       var laRta = this.obtenerRtaActual();
       //console.log("rta desde afuera: ", nono);
       return (laPregunta.estado && laRta) ? (
@@ -267,7 +235,7 @@ class ListaPreguntasTexto extends Component {
           //  reglasMultiplesDetalleTodes={this.props.reglasMultiplesDetalleTodes}
         />
       );
-    }
+
   }
   obtenerRtaActual() {
     //console.log("itema activo " + this.state.activeItem);
@@ -393,21 +361,22 @@ class ListaPreguntasTexto extends Component {
   }
   renderAutonumerico() {
     return (
-      <Segment inverted color="purple">
+      <Segment inverted color="yellow">
         <center>
           <div />
 
           <br />
           <br />
+
+          <Image  src='/img/mono2_transp.png' size='small' />
           <Statistic inverted size="small">
             <Statistic.Value>
               <Icon name="heart" />
               {this.props.contacto.autonumerico}
             </Statistic.Value>
-            <br />
-            <br />
 
-            <Statistic.Label>{"NIÑECES Y ADOLESCENCIAS"}</Statistic.Label>
+
+
           </Statistic>
         </center>
       </Segment>
@@ -425,9 +394,9 @@ class ListaPreguntasTexto extends Component {
           active={menuActivo === pregunta.texto}
           onClick={this.handleItemClick}
           //cambiar para habilitar
-          disabled={!pregunta.habilitado}
+          //disabled={!pregunta.habilitado}
         >
-          <Label circular color={pregunta.estado ? "purple" : "teal"} />
+          <Label circular color={pregunta.estado ? "yellow" : "red"} />
           {pregunta.texto}
         </Menu.Item>
       ));
@@ -440,80 +409,25 @@ class ListaPreguntasTexto extends Component {
         <Segment.Group raised>
           <Segment>
             <Header as="h2" textAlign="center">
-              <Icon name="paw" size="big" />
+              <Icon name="star" size="big" color="red"/>
             </Header>
           </Segment>
 
           <Segment style={{ overflow: "auto", maxHeight: 500 }}>
             <Header textAlign="center">
-              Primer Momento: Información General
+              Registremos nuestra experiencia!
             </Header>
             <Menu vertical fluid>
-              {this.renderMenu(this.props.preguntas.slice(0, 10))}
+              {this.renderMenu(this.props.preguntas)}
             </Menu>
 
-            <Header textAlign="center">
-              Contacto con la Colectiva y acompañamiento
-            </Header>
-            <Menu vertical fluid>
-              {this.renderMenu(this.props.preguntas.slice(10, 13))}
-            </Menu>
 
-            <Header textAlign="center">Sobre el aborto</Header>
-            <Menu vertical fluid>
-              {this.renderMenu(this.props.preguntas.slice(13, 18))}
-            </Menu>
-
-            <Header textAlign="center">Escolaridad y Activismos</Header>
-            <Menu vertical fluid>
-              {this.renderMenu(this.props.preguntas.slice(18, 30))}
-            </Menu>
-
-            <Header textAlign="center">Aspectos de su vida cotidiana</Header>
-            <Menu vertical fluid>
-              {this.renderMenu(this.props.preguntas.slice(30, 35))}
-            </Menu>
-
-            <Header textAlign="center">
-              Información ginecológica previa a este embarazo
-            </Header>
-            <Menu vertical fluid>
-              {this.renderMenu(this.props.preguntas.slice(35, 41))}
-            </Menu>
-
-            <Header textAlign="center">Embarazo actual</Header>
-            <Menu vertical fluid>
-              {this.renderMenu(this.props.preguntas.slice(41, 52))}
-            </Menu>
           </Segment>
         </Segment.Group>
       </div>
     );
   }
 
-  renderSegundoMomento() {
-    return (
-      <Segment.Group raised>
-        <Segment>
-          <Header as="h2" textAlign="center">
-            <Header as="h2" textAlign="center">
-              <center>
-                <Icon name="paw" size="large" />
-                <Icon name="paw" size="large" />
-              </center>
-            </Header>
-          </Header>
-        </Segment>
-
-        <Segment style={{ overflow: "auto", maxHeight: 500 }}>
-          <Header textAlign="center">Segundo Momento</Header>
-          <Menu vertical fluid>
-            {this.renderMenu(this.props.preguntas.slice(52))}
-          </Menu>
-        </Segment>
-      </Segment.Group>
-    );
-  }
 
   render() {
     if (this.props.isLoading) {
@@ -534,8 +448,7 @@ class ListaPreguntasTexto extends Component {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={1} />
-            <Grid.Column width={7}>{this.renderPrimerMomento()}</Grid.Column>
-            <Grid.Column width={7}>{this.renderSegundoMomento()}</Grid.Column>
+            <Grid.Column width={14}>{this.renderPrimerMomento()}</Grid.Column>
             <Grid.Column width={1} />
           </Grid.Row>
         </Grid>
@@ -565,4 +478,4 @@ export default withTracker(({ preguntas, id }) => {
     //reglasMultiples: ReglaMultiple.find().fetch(),
     //reglasMultiplesDetalle: ReglaMultipleDetalle.find().fetch()
   };
-})(ListaPreguntasTexto);
+})(ListaPreguntasTangible);

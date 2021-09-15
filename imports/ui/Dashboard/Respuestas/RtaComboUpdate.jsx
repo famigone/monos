@@ -63,25 +63,11 @@ export default class RtaComboUpdate extends Component {
   }
 
   setTermino() {
-    var parar =
-      (this.props.rta.rtatexto == "No vuelve a comunicarse" &&
-        this.props.pregunta.codigo == 800) ||
-      (this.props.rta.rtatexto == "No vuelve a comunicarse" &&
-        this.props.pregunta.codigo == 650 &&
-        this.props.pregunta.seccion ==
-          "Interrupción Legal e Interrupción Voluntaria del Embarazo") ||
-      (this.props.rta.rtatexto == "No" &&
-        this.props.pregunta.codigo == 660 &&
-        this.props.pregunta.seccion ==
-          "Interrupción Legal e Interrupción Voluntaria del Embarazo") ||
-      (this.props.rta.rtatexto == "Sin dato" &&
-        this.props.pregunta.codigo == 660 &&
-        this.props.pregunta.seccion ==
-          "Interrupción Legal e Interrupción Voluntaria del Embarazo") ||
-      (this.props.pregunta.codigo == 830 &&
-        this.props.pregunta.seccion ==
-          "Acompañamiento Aborto Libre y Feminista") ||
-      this.props.pregunta.codigo == 670;
+    var parar =   ((this.props.pregunta.codigo == 1100) && (this.props.pregunta.seccion == "TANGIBLE")
+                || (this.props.pregunta.codigo == 2110) && (this.props.pregunta.seccion == "BLOQUES")
+                || (this.props.pregunta.codigo == 3110) && (this.props.pregunta.seccion == "TEXTUAL")
+  );
+
     //console.log("termino: ", rta);
     return parar;
   }
@@ -210,16 +196,16 @@ export default class RtaComboUpdate extends Component {
             Guardar
           </Button>
         </Form>
-        <Message color={"violet"} floating hidden={this.state.hidden}>
+        <Message color={"red"} floating hidden={this.state.hidden}>
           <Message.Header>
             <Icon name="heart outline" />
-            Carga finalizada.
+            Muchas gracias! finalizamos el registro de esta experiencia.
           </Message.Header>
         </Message>
-        <Message color={"purple"} floating hidden={!this.state.termino}>
+        <Message color={"orange"} floating hidden={!this.state.termino}>
           <Message.Header>
             <Icon name="heart outline" />
-            Carga finalizada.
+            Muchas gracias! finalizamos el registro de esta experiencia.
           </Message.Header>
         </Message>
         <Message color="pink" floating hidden={this.state.hiddeValidar}>

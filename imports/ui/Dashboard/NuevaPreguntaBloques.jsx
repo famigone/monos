@@ -9,7 +9,7 @@ import ReactDOM from "react-dom";
 import { withTracker } from "meteor/react-meteor-data";
 import SidebarExampleSidebar from "./SidebarExampleSidebar.js";
 import ListaPreguntas from "./ListaPreguntas.js";
-import ListaPreguntasMujer from "./ListaPreguntasMujer.js";
+import ListaPreguntasBloques from "./ListaPreguntasBloques.js";
 import LoaderExampleText from "/imports/ui/Dashboard/LoaderExampleText.js";
 import "react-s-alert/dist/s-alert-default.css";
 import { insertPregunta } from "/api/methods.js";
@@ -36,7 +36,7 @@ class NuevaPreguntaBloques extends Component {
 
     return (
       <div>
-        <ListaPreguntas preguntas={this.props.preguntas} id={this.props.id} />
+        <ListaPreguntasBloques preguntas={this.props.preguntas} id={this.props.id} />
       </div>
     );
   }

@@ -8,7 +8,7 @@ import ContactoPregunta from "/imports/api/contactoPregunta.js";
 import ReactDOM from "react-dom";
 import { withTracker } from "meteor/react-meteor-data";
 import SidebarExampleSidebar from "./SidebarExampleSidebar.js";
-import ListaPreguntas from "./ListaPreguntas.js";
+import ListaPreguntasTexto from "./ListaPreguntasTexto.js";
 import ListaPreguntasMujer from "./ListaPreguntasMujer.js";
 import LoaderExampleText from "/imports/ui/Dashboard/LoaderExampleText.js";
 import "react-s-alert/dist/s-alert-default.css";
@@ -36,7 +36,7 @@ class NuevaPreguntaTexto extends Component {
 
     return (
       <div>
-        <ListaPreguntas preguntas={this.props.preguntas} id={this.props.id} />
+        <ListaPreguntasTexto preguntas={this.props.preguntas} id={this.props.id} />
       </div>
     );
   }

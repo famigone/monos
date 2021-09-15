@@ -169,13 +169,15 @@ export const insertPregTangible = new ValidatedMethod({
     };
     ContactoPregunta.insert(pregunta);
 
+
+
     var pregunta = {
       momento: 1,
       seccion: "TANGIBLE",
       codigo: "1080",
       orden: 1080,
       contactoid: contactoid,
-      texto: "¿Finalizada esta experiencia, cuál será nuestro siguiente paso?",
+      texto: "¿En esta experiencia, cuántas veces se repitió la actividad?",
       estado: false,
       tipo: "C",
       habilitado: false,
@@ -189,9 +191,9 @@ export const insertPregTangible = new ValidatedMethod({
       codigo: "1090",
       orden: 1090,
       contactoid: contactoid,
-      texto: "¿En esta experiencia, cuántas veces se repitió la actividad?",
+      texto: "¿Cuales distractores estaban presentes en el ambiente mientras transcurría la experiencia?",
       estado: false,
-      tipo: "C",
+      tipo: "M",
       habilitado: false,
       activo: true
     };
@@ -203,15 +205,13 @@ export const insertPregTangible = new ValidatedMethod({
       codigo: "1100",
       orden: 1100,
       contactoid: contactoid,
-      texto: "¿Cuales distractores estaban presentes en el ambiente mientras transcurría la experiencia?",
+      texto: "¿Finalizada esta experiencia, cuál será nuestro siguiente paso?",
       estado: false,
-      tipo: "M",
+      tipo: "C",
       habilitado: false,
       activo: true
     };
     ContactoPregunta.insert(pregunta);
-
-
 
     ///////////////////////////////
     ///////////////////////////////

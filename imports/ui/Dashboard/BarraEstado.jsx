@@ -50,14 +50,14 @@ export default class MenuExampleSecondary extends Component {
 
         <Menu.Item
           as={Link}
-          to="/tangible"
+          to="/bloques"
           onClick={this.handleItemClick}
         >
           <b>BLOQUES</b>
         </Menu.Item>
         <Menu.Item
           as={Link}
-          to="/tangible"
+          to="/texto"
           onClick={this.handleItemClick}
         >
           <b>TEXTUAL</b>
@@ -80,7 +80,7 @@ export default class MenuExampleSecondary extends Component {
               <Icon name="cloud download" />
             </Menu.Item>
           ) : null}
-    
+
           {Meteor.user().username === "admin" ? (
             <Menu.Item
               name="users"

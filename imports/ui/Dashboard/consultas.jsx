@@ -47,13 +47,22 @@ class Consultas extends Component {
         }
       >
         <Table.Cell collapsing>{contact.userName()}</Table.Cell>
+        <Table.Cell collapsing>{this.parsearTipo(contact.tipo)}</Table.Cell>
         <Table.Cell collapsing>{contact.autonumerico}</Table.Cell>
-        <Table.Cell collapsing>
-          {moment(contact.createdAt).format("DD-MM-YYYY, h:mm a")}
+        <Table.Cell >
+          {moment(contact.createdAt).format("DD-MM-YYYY")}
         </Table.Cell>
       </Table.Row>
     ));
   }
+
+parsearTipo(tipo) {
+  var rta= ""
+  if (tipo==1) rta = "Tg"
+  else if (tipo ==2) rta = "Bq"
+  else rta = "Tx"
+  return rta;
+}
 
   renderTable() {
     return (
@@ -62,6 +71,9 @@ class Consultas extends Component {
           <Table.Row>
             <Table.HeaderCell>
               <h4>USUARI@</h4>
+            </Table.HeaderCell>
+            <Table.HeaderCell>
+              <h4>NIVEL</h4>
             </Table.HeaderCell>
             <Table.HeaderCell>
               <h4>CÓDIGO</h4>

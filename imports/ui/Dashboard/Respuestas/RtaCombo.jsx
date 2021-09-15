@@ -110,25 +110,12 @@ export default class RtaCombo extends Component {
             // seteamos el nuevo Actual
             //this.props.cambiarActual(String(this.props.pregunta.orden + 1));
             //console.log("this.state.valor ", this.state.valor);
-            var parar =
-              (this.state.valor == "No vuelve a comunicarse" &&
-                this.props.pregunta.codigo == 800) ||
-              (this.state.valor == "No vuelve a comunicarse" &&
-                this.props.pregunta.codigo == 650 &&
-                this.props.pregunta.seccion ==
-                  "Interrupción Legal e Interrupción Voluntaria del Embarazo") ||
-              (this.state.valor == "No" &&
-                this.props.pregunta.codigo == 660 &&
-                this.props.pregunta.seccion ==
-                  "Interrupción Legal e Interrupción Voluntaria del Embarazo") ||
-              (this.state.valor == "Sin dato" &&
-                this.props.pregunta.codigo == 660 &&
-                this.props.pregunta.seccion ==
-                  "Interrupción Legal e Interrupción Voluntaria del Embarazo") ||
-              (this.props.pregunta.codigo == 830 &&
-                this.props.pregunta.seccion ==
-                  "Acompañamiento Aborto Libre y Feminista") ||
-              this.props.pregunta.codigo == 670;
+            var parar =   ((this.props.pregunta.codigo == 1100) && (this.props.pregunta.seccion == "TANGIBLE")
+                        || (this.props.pregunta.codigo == 2110) && (this.props.pregunta.seccion == "BLOQUES")
+                        || (this.props.pregunta.codigo == 3110) && (this.props.pregunta.seccion == "TEXTUAL")
+
+          );
+
 
             //console.log("parar ", parar);
 
@@ -139,7 +126,7 @@ export default class RtaCombo extends Component {
               );
               this.setState({ valor: "" });
             } else {
-              console.log("TERMINOOOOOOOOOOOO");
+              //console.log("TERMINOOOOOOOOOOOO");
               this.setState({ termino: true });
             }
           } else {
