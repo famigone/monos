@@ -61,7 +61,7 @@ class Consultas extends Component {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>
-              <h4>GRUPA</h4>
+              <h4>USUARI@</h4>
             </Table.HeaderCell>
             <Table.HeaderCell>
               <h4>CÓDIGO</h4>

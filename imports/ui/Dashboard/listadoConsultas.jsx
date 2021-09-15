@@ -132,7 +132,7 @@ class ListadoConsultas extends Component {
         <Header as="h2" dividing>
           <Icon name="clock" />
           <Header.Content>
-            Listado de Protocolas
+            Listado de Registros
             <Header.Subheader>
               Puede filtrar por fecha de carga
             </Header.Subheader>
@@ -230,7 +230,9 @@ class ListadoConsultas extends Component {
     return (
       <Grid>
         <Grid.Row>
-          <Grid.Column width={5}>
+            <Grid.Column width={1}>
+            </Grid.Column>
+          <Grid.Column width={4}>
             <div>
               {this.renderForm()}
               <Consultas
@@ -243,7 +245,7 @@ class ListadoConsultas extends Component {
               />
             </div>
           </Grid.Column>
-          <Grid.Column width={11}>
+          <Grid.Column width={10}>
             <Segment raised>
               <Header as="h2" floated="right">
                 <Button size="mini" color="brown" onClick={this.show}>
@@ -259,9 +261,9 @@ class ListadoConsultas extends Component {
               <Header as="h2" dividing>
                 <Icon name="tty" />
                 <Header.Content>
-                  Consulta del {this.state.consultafecha}
+                  Registro del {this.state.consultafecha}
                   <Header.Subheader>
-                    Podes modificar la consulta
+                    Podes modificar el registro
                   </Header.Subheader>
                 </Header.Content>
               </Header>
@@ -273,13 +275,15 @@ class ListadoConsultas extends Component {
               >
                 <Message.Header>
                   <Icon name="trash alternate" />
-                  Esta Protocola ha sido eliminada.
+                  Este registro ha sido eliminado.
                 </Message.Header>
               </Message>
               {this.state.consultaid && this.state.hidden ? (
                 <MostrarProtocola id={this.state.consultaid} />
               ) : null}
             </Segment>
+          </Grid.Column>
+          <Grid.Column width={1}>
           </Grid.Column>
         </Grid.Row>
       </Grid>
