@@ -42,6 +42,7 @@ export default class RtaMultiple extends Component {
   state = {
     valor: "",
     hiddeValidar: true,
+    hiddeOtro: true,
     mensajeError: "",
     hiddeErrorSePaso: true
   };
@@ -79,7 +80,7 @@ export default class RtaMultiple extends Component {
                 options={options[this.props.pregunta.orden]}
               />
             </Form.Field>
-            {this.state.valor === "Otro" ? (
+            {this.state.valor[0] === "Otro" ? (
               <Form.Field>
                 <input ref="inputRespuesta" placeholder="Especifique" />
               </Form.Field>
@@ -103,7 +104,7 @@ export default class RtaMultiple extends Component {
     this.setState({
       valor: data.value
     });
-    //console.log(this.state.valor);
+    console.log(data.value);
   };
 
   handleSubmit(event) {
@@ -111,7 +112,7 @@ export default class RtaMultiple extends Component {
     var valido = true;
     if (!(this.state.valor === "")) {
       var inputRespuesta;
-      if (this.state.valor === "Otros")
+      if (this.state.valor[0] === "Otro")
         inputRespuesta = ReactDOM.findDOMNode(
           this.refs.inputRespuesta
         ).value.trim();

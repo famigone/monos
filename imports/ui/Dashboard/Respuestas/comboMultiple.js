@@ -67,3 +67,55 @@ options[1050] = [
   },
 
 ];
+
+options[1100] = [
+  {
+    key: 1,
+    text: "Juguetes",
+    value: "juguetes"
+  },
+  {
+    key: 2,
+    text: "Familiares interactuando",
+    value: "Familiares interactuando"
+  },
+  {
+    key: 3,
+    text: "Ruidos",
+    value: "Ruidos"
+  },
+  {
+    key: 4,
+    text: "Música",
+    value: "Música"
+  },
+  {
+    key: 5,
+    text:
+      "Pantallas",
+    value:
+      "Pantallas"
+  },
+  {
+    key: 6,
+    text: "Mascotas",
+    value: "Mascotas"
+  },
+  {
+    key: 7,
+    text: "Demasiada luz",
+    value: "Demasiada luz"
+  },
+  {
+    key: 8,
+    text: "Otro",
+    value: "Otro"
+  },
+  {
+    key: 9,
+    text:
+      "Ninguno",
+    value:
+      "Ninguno"
+  }
+];

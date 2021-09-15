@@ -40,24 +40,24 @@ export default class MenuExampleSecondary extends Component {
         <Menu.Item
 
         >
-          
+
 
         </Menu.Item>
 
-        <Menu.Item as={Link} to="/nuevocontacto" onClick={this.handleItemClick}>
+        <Menu.Item as={Link} to="/tangible" onClick={this.handleItemClick}>
           <b>TANGIBLE</b>
         </Menu.Item>
 
         <Menu.Item
           as={Link}
-          to="/nuevocontactomujer"
+          to="/tangible"
           onClick={this.handleItemClick}
         >
           <b>BLOQUES</b>
         </Menu.Item>
         <Menu.Item
           as={Link}
-          to="/nuevocontactomujer"
+          to="/tangible"
           onClick={this.handleItemClick}
         >
           <b>TEXTUAL</b>

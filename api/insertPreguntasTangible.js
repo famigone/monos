@@ -175,9 +175,37 @@ export const insertPregTangible = new ValidatedMethod({
       codigo: "1080",
       orden: 1080,
       contactoid: contactoid,
-      texto: "¿Cuál será nuestro siguiente paso?",
+      texto: "¿Finalizada esta experiencia, cuál será nuestro siguiente paso?",
       estado: false,
       tipo: "C",
+      habilitado: false,
+      activo: true
+    };
+    ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 1,
+      seccion: "TANGIBLE",
+      codigo: "1090",
+      orden: 1090,
+      contactoid: contactoid,
+      texto: "¿En esta experiencia, cuántas veces se repitió la actividad?",
+      estado: false,
+      tipo: "C",
+      habilitado: false,
+      activo: true
+    };
+    ContactoPregunta.insert(pregunta);
+
+    var pregunta = {
+      momento: 1,
+      seccion: "TANGIBLE",
+      codigo: "1100",
+      orden: 1100,
+      contactoid: contactoid,
+      texto: "¿Cuales distractores estaban presentes en el ambiente mientras transcurría la experiencia?",
+      estado: false,
+      tipo: "M",
       habilitado: false,
       activo: true
     };

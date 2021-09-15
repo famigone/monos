@@ -409,7 +409,7 @@ class ListaPreguntasTangible extends Component {
         <Segment.Group raised>
           <Segment>
             <Header as="h2" textAlign="center">
-              <Icon name="star" size="big" color="yellow"/>
+              <Icon name="star" size="big" color="red"/>
             </Header>
           </Segment>
 

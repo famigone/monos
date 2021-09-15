@@ -52,23 +52,33 @@ class AbmUsuarios extends Component {
     event.preventDefault();
     const username = ReactDOM.findDOMNode(this.refs.inputUsuario).value.trim();
     const password = ReactDOM.findDOMNode(this.refs.inputPass).value.trim();
-    const one = { username: username, password: password };
+    const nene = ReactDOM.findDOMNode(this.refs.inputNene).value.trim();
+    const nacimiento = ReactDOM.findDOMNode(this.refs.inputNacimiento).value.trim();
+    const profile = { nene: nene
+    , nacimiento: nacimiento
+    , pass: password };
+    const one = { username: username
+      , password: password
+
+      };
     //nuevoUsuario.call(one, (err, res) => {
     //  if (err) {
     //    console.log(err);
     //  }
     //});
     Accounts.createUser(
-      { username: one.username, password: one.password },
+      { username: one.username, password: one.password, profile:profile},
       function(err) {
         if (err) console.log(err);
       }
     );
   }
   renderFila() {
+
     return this.props.usuarios.map(contact => (
       <Table.Row key={contact.username}>
         <Table.Cell collapsing>{contact.username}</Table.Cell>
+
       </Table.Row>
     ));
   }
@@ -79,7 +89,8 @@ class AbmUsuarios extends Component {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>
-              <h4>GRUPA</h4>
+              <h4>Usuari@</h4>
+              
             </Table.HeaderCell>
           </Table.Row>
         </Table.Header>
@@ -93,20 +104,29 @@ class AbmUsuarios extends Component {
       <Segment raised>
         <Header as="h2" dividing>
           <Icon name="address book outline" />
-          <Header.Content>Listado de Grupas</Header.Content>
+          <Header.Content>Listado de Usuari@s</Header.Content>
         </Header>
 
         <Form onSubmit={this.handleSubmit.bind(this)}>
           <Form.Group widths="equal">
             <Form.Field>
-              <input ref="inputUsuario" placeholder="Nombre de la GRUPA" />
+              <input ref="inputUsuario" placeholder="Usuario" />
             </Form.Field>
 
             <Form.Field>
               <input ref="inputPass" placeholder="ingrese una contraseña" />
             </Form.Field>
           </Form.Group>
-          <Button color="purple" type="submit">
+          <Form.Group widths="equal">
+            <Form.Field>
+              <input ref="inputNene" placeholder="Nombre de niñe" />
+            </Form.Field>
+
+            <Form.Field>
+              <input ref="inputNacimiento" placeholder="Fecha de nacimiento" />
+            </Form.Field>
+          </Form.Group>
+          <Button color="brown" type="submit">
             Guardar
           </Button>
         </Form>

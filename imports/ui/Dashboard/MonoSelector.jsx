@@ -52,7 +52,7 @@ export default class MonoSelector extends Component {
         </Card.Content>
         <Card.Content extra>
         <Link to="/tangible">
-          <Button color="orange" fluid> <center><Icon name='plus' /></center></Button>
+          <Button color="brown" fluid> <center><Icon name='plus' /></center></Button>
         </Link>
 
         </Card.Content>
@@ -72,7 +72,7 @@ export default class MonoSelector extends Component {
         </Card.Content>
         <Card.Content extra>
         <Link to="/tangible">
-          <Button color="orange" fluid> <center><Icon name='plus' /></center></Button>
+          <Button color="brown" fluid> <center><Icon name='plus' /></center></Button>
         </Link>
 
         </Card.Content>
@@ -92,7 +92,7 @@ export default class MonoSelector extends Component {
         </Card.Content>
         <Card.Content extra>
         <Link to="/tangible">
-          <Button color="orange" fluid> <center><Icon name='plus' /></center></Button>
+          <Button color="brown" fluid> <center><Icon name='plus' /></center></Button>
         </Link>
 
         </Card.Content>
