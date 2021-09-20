@@ -68,7 +68,7 @@ export default class LoginForm extends Component {
         <Grid.Row />
         <Grid.Row>
           <center>
-            <img src="/img/comonosfue.png" />
+            <Image src="/img/comonosfue.png"  size='large'/>
           </center>{" "}
         </Grid.Row>
         <Grid.Row>
@@ -100,7 +100,7 @@ export default class LoginForm extends Component {
                 </Button>
               </Segment>
             </Form>
-            <Message>CÓMONOSFUE es un software de la plataforma PASAYO</Message>
+            <Message>CÓMONOSFUE es un software de la plataforma PASAYO para el registro de experiencias de aprendizaje de programación en niñes en el espectro autista. Para solicitar usuario escribir a <b>C4@FI.UNCOMA.EDU.AR</b></Message>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row />
